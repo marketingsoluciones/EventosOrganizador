@@ -27,7 +27,7 @@ const DropdownMenu: FC<props> = ({title, items }) => {
           isOpen ? '' : 'data-[closed]:-translate-y-1 data-[closed]:opacity-0'
         }`}
       >
-        {items.map((item) => (
+        {items.map((item:any) => (
           <div key={item.title} className="p-3 ">
             <a className="block rounded-lg py-2 px-3 transition hover:bg-black/5" href={item.path}>
               <p className="font-semibold text-black">
