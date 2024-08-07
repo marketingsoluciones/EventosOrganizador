@@ -51,7 +51,7 @@ const Seccion0: FC = () => {
       </div>
 
       {/* Menú desplegable (móvil) */}
-      <div className="flex w-auto md:hidden">
+      <div className="flex w-auto md:hidden z-50">
         <button
           className={`flex flex-row items-center justify-center w-auto h-12 rounded-full ${isOpen ? 'bg-white' : 'bg-transparent'} hover:bg-gray-100`}
           onClick={handleToggleMenu}
