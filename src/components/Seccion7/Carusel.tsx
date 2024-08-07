@@ -18,6 +18,7 @@ export const CaruselPrincipal = () => {
         { title: 'Corporativos', ubication: "absolute left-[36px] right-0 top-[60px] bottom-0", imgUrl: 'https://imagedelivery.net/EfbdVs7eFECYhyroHhep9w/1a37e06b-8876-492c-56b6-1bbae9187d00/public', color: 'bg-[#EAB308]' },
         { title: 'Gastronómicos', ubication: "absolute left-[16px] right-0 top-[23px] bottom-0", imgUrl: 'https://imagedelivery.net/EfbdVs7eFECYhyroHhep9w/bd47c813-3815-499c-ca43-155d19296a00/public', color: 'bg-[#FFDA66]' },  
         { title: 'Festivales', ubication: "absolute left-[36px] right-0 top-[60px] bottom-0 ", imgUrl: 'https://imagedelivery.net/EfbdVs7eFECYhyroHhep9w/3c4a4c3d-8742-4060-fcfb-fa19fb3a4900/public', color: 'bg-[#FC9A1F]' },
+        
     ];
 
   useEffect(() => {
