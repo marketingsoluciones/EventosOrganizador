@@ -1,5 +1,7 @@
 
-import { FC } from "react";
+import { FC, useState } from "react";
+import { Modal } from "../Modal";
+import { ModalRegalos } from "./Modales/ModalRegalos";
 
 interface props {
     componentState: any;
@@ -8,6 +10,7 @@ interface props {
   }
 
 const ListaDeRegalos1: FC<props> = ({componentState, setComponentState}) => {
+  const [addInfo, setAddInfo] = useState(false);
 
   return (
 
@@ -35,7 +38,7 @@ const ListaDeRegalos1: FC<props> = ({componentState, setComponentState}) => {
 
       </div>
 
-      <button className="flex items-center justify-center bg-[#6096B9] text-white font-normal md:text-base text-xs py-2 px-4 gap-2 rounded-full hover:bg-[#4b7591] shadow-md ">
+      <button onClick={() => {setAddInfo(!addInfo)}} className="flex items-center justify-center bg-[#6096B9] text-white font-normal md:text-base text-xs py-2 px-4 gap-2 rounded-full hover:bg-[#4b7591] shadow-md ">
       Crear lista de regalos
       <svg className='w-6 h-6' data-slot="icon" fill="none" strokeWidth="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path strokeLinecap="round" strokeLinejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59"></path>
@@ -45,6 +48,18 @@ const ListaDeRegalos1: FC<props> = ({componentState, setComponentState}) => {
     </div>
   </div>
 </div>
+{
+  addInfo ? (
+      <Modal  
+      setOpenIcon="" 
+      openIcon="" 
+      classe={"w-[56%] h-[86%]"}>
+
+          <ModalRegalos addInfo={addInfo} setAddInfo={setAddInfo} />
+      </Modal>
+  ) :
+      null
+}
 </section>
 
   );

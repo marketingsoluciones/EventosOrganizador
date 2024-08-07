@@ -1,7 +1,7 @@
 
 import { FC, useState } from "react";
 import { Modal } from "../Modal";
-import { Content1 } from "./Content1";
+import { ModalEventos } from "./Modales/ModalEventos";
 
 interface props {
     componentState: any;
@@ -58,7 +58,7 @@ const MisEventos: FC<props> = ({componentState, setComponentState}) => {
       openIcon="" 
       classe={"w-[56%] h-[86%]"}>
 
-          <Content1 addInfo={addInfo} setAddInfo={setAddInfo} />
+          <ModalEventos addInfo={addInfo} setAddInfo={setAddInfo} />
       </Modal>
   ) :
       null
