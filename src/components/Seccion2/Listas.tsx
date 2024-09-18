@@ -15,7 +15,7 @@ const Listas: FC<propsListas> = ({componentState, setComponentState}) => {
   return (
 
 <section className="self-stretch flex md:flex-row items-start justify-center py-3 px-3 box-border max-w-full text-left text-base text-[#6096B9] font-inter">
-<div className="w-auto flex md:flex-row flex-col items-start justify-center gap-[16px]">
+<div className="w-auto flex md:flex-row flex-col items-start justify-center md:gap-[65px] gap-[16px]">
   
   <div className="md:w-auto h-auto flex flex-row items-start justify-start py-0 md:px-8 box-border bg-cover bg-no-repeat bg-[top] max-w-full ">
     <img src="https://imagedelivery.net/EfbdVs7eFECYhyroHhep9w/57e1a776-9f23-4cab-ceab-93aa5b3b0a00/public" alt="" />

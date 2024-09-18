@@ -15,7 +15,7 @@ const Invitaciones1: FC<props> = ({componentState, setComponentState}) => {
   return (
 
 <section className="self-stretch flex md:flex-row rounded-2xl items-start justify-center py-3 px-3 box-border max-w-full text-left text-base text-[#6096B9] font-inter">
-<div className="w-auto flex md:flex-row flex-col items-start justify-start gap-[16px]">
+<div className="w-auto flex md:flex-row flex-col items-start justify-start md:gap-[65px] gap-[16px]">
   
   <div className="h-auto md:flex-[0.75] flex flex-row items-start justify-start py-0 px-4 box-border bg-cover bg-no-repeat bg-[top] max-w-full ">
     <img src="https://imagedelivery.net/EfbdVs7eFECYhyroHhep9w/c1b910c3-1769-4404-89da-fa57931f1700/public" alt="" />

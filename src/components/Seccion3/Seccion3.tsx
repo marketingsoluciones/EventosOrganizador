@@ -56,7 +56,7 @@ const Seccion3: FC<Content> = ({title, subtitle, subtitle2}) => {
         
         <div className="self-stretch flex flex-col items-start justify-start pt-0 px-0 pb-2 gap-[3.3px] ">
           <b className="self-stretch relative md:text-[16px] text-xs text-[#6096B9] tracking-[2px]">
-            ¿RALMENTE ES PARA MÍ?
+            ¿REALMENTE ES PARA MÍ?
           </b>
           <h1 className="m-0 self-stretch relative md:text-[32px] text-2xl leading-[38.4px] font-semibold font-inherit text-[#282C2F] ">
             <p className="m-0">Con nosotros, puedes tener 2 roles...</p>
@@ -88,12 +88,12 @@ const Seccion3: FC<Content> = ({title, subtitle, subtitle2}) => {
                     <path d="M5.06667 14.9639L0 9.8972L1.26667 8.63053L5.06667 12.4305L13.2222 4.27498L14.4889 5.54164L5.06667 14.9639Z"/>
                     </svg>
                     
-                    <div className='text-gray-500'>
+                    <div className='text-gray-500 font-sans'>
                     {content.subtitle}
                     </div>
                     
                     </div>
-                    <div className='flex flex-row gap-2'>
+                    <div className='flex flex-row gap-2 font-sans'>
                     <svg className='flex w-8 h-8 text-[16px] text-gray-500 fill-current' width="15" height="19" viewBox="0 0 15 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.06667 14.9639L0 9.8972L1.26667 8.63053L5.06667 12.4305L13.2222 4.27498L14.4889 5.54164L5.06667 14.9639Z"/>
                     </svg>
