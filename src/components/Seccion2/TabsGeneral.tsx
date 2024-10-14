@@ -174,10 +174,10 @@ const TabsGeneral: React.FC<Props> = ({ componentState, setComponentState }) => 
   return (
     <main className="w-full flex flex-col items-center justify-start py-0 gap-6 box-border shrink-0">
       <div className='w-full flex-col items-center justify-center gap-0 md:block hidden'>
-      <div className='w-[100%] border-t-[10px] border-[#6096B9]'/>
+      <div className='w-[100%] border-t-[10px] border-[#284C77]'/>
             <div className="w-auto flex items-center max-w-full max-h-full justify-center">
             <svg width="1072" height="82" viewBox="0 0 1072 82" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M0.000305176 0C17.6569 4.36173 30.7781 20.6266 30.7781 40.017C30.7781 62.7478 48.8097 81.1835 71.0413 81.1835H1000.2C1022.44 81.1835 1040.47 62.7478 1040.47 40.017C1040.47 20.6266 1053.59 4.36173 1071.25 0H0.000305176Z" fill="#6096B9"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0.000305176 0C17.6569 4.36173 30.7781 20.6266 30.7781 40.017C30.7781 62.7478 48.8097 81.1835 71.0413 81.1835H1000.2C1022.44 81.1835 1040.47 62.7478 1040.47 40.017C1040.47 20.6266 1053.59 4.36173 1071.25 0H0.000305176Z" fill="#284C77"/>
 </svg>
 
 
@@ -194,7 +194,7 @@ const TabsGeneral: React.FC<Props> = ({ componentState, setComponentState }) => 
   <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
 </svg>
       </button>
-      <div className="md:!m-[0] md:absolute md:top-[22px] md:left-[] flex flex-row md:overflow-auto overflow-auto md:w-auto w-[80%] md:items-center  md:justify-center items-start justify-start md:z-50 md:gap-0 gap-5" >
+      <div className="md:!m-[0] md:absolute md:top-[0px] md:left-[] flex flex-row md:overflow-auto overflow-auto md:w-auto w-[80%] md:items-center  md:justify-center items-start justify-start md:z-50 md:gap-0 gap-5" >
         
 
 

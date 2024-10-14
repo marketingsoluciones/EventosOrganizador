@@ -21,32 +21,16 @@ export const CaruselPrincipal = () => {
         
     ];
 
-  useEffect(() => {
-    const screenWidth = window.innerWidth;
-    if (screenWidth <= 300) {
-      setSlidesPerView(1);
-    } else if (screenWidth <= 1200) {
-      setSlidesPerView(4);
-    } else {
-      setSlidesPerView(8);
-    }
-  }, []);
 
   return (
     <Swiper
-    effect={'coverflow'}
-  grabCursor={true}
-  centeredSlides={true}
-      modules={[Navigation, Pagination, Autoplay, EffectCoverflow]} // Include Autoplay module
-      spaceBetween={10}
-      slidesPerView={slidesPerView} // Dynamically set slidesPerView
+    
+      grabCursor={true}
+      centeredSlides={true}
+      modules={[Navigation, Pagination, Autoplay]} // Include Autoplay module
+      spaceBetween={180}
+      slidesPerView={10} // Dynamically set slidesPerView
       loop={true}
-      coverflowEffect={{
-        rotate: 0,
-        stretch: 0,
-        depth: 100,
-        modifier: 2.5,
-      }}
       autoplay={{ delay: 1500, disableOnInteraction: false }} // Set autoplay delay and behavior
       breakpoints={{
         340: {

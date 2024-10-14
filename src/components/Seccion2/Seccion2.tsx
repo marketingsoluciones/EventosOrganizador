@@ -12,15 +12,10 @@ const Seccion2: FC<propsSeccion2> =  ({componentState, setComponentState}) => {
 
 
   return (
-    <div className="w-[100%] bg-white max-w-full flex flex-col items-start justify-start pt-4 px-0 pb-[16.1px] box-border gap-[3px] tracking-[normal] leading-[normal] text-center md:text-sm text-[#6096B9] font-nunito-sans md:max-w-[1200px]  ">
-      <div className="self-stretch flex flex-row items-start justify-center py-0 px-5 box-border max-w-full">
-        <b className="w-auto relative tracking-[2.8px] leading-[20px] uppercase md:text-[32px] text-lg flex items-center justify-center shrink-0 max-w-full">
-        Como Gestionar tus Eventos de Tikecting
-        </b>
-      </div>
-      <div className="self-stretch flex flex-row items-start justify-center py-0 pr-[21px] pl-5 text-5xl text-[#6096B9]">
-        <h2 className="m-0 relative text-inherit text-xs tracking-[1px] leading-[32px] font-semibold font-inherit">
-          Reemplaza los procesos manuales por una aplicación de gestión avanzada
+    <div className="w-[100%] bg-white max-w-full flex flex-col items-center justify-start pt-4 px-0 pb-[16.1px] box-border gap-[3px] tracking-[normal] leading-[normal] text-center md:text-sm text-[#6096B9] font-nunito-sans md:max-w-[1200px]  ">
+      <div className="self-stretch flex flex-row items-start justify-center py-0 pr-[21px] pl-5 text-5xl text-[#284C77]">
+        <h2 className="m-0 relative text-inherit text-[24px] tracking-[1px] leading-[32px] font-normal font-inherit">
+        Gestiona en un solo lugar <span className="font-semibold">tus eventos de ticketing</span>
         </h2>
       </div>
       <div className="self-stretch rounded-md flex flex-row items-center justify-center p-5 gap-[8px] mq975:flex-wrap">
@@ -28,7 +23,9 @@ const Seccion2: FC<propsSeccion2> =  ({componentState, setComponentState}) => {
 <TabsGeneral componentState={componentState} setComponentState={setComponentState}/>
 
       </div>
-
+      <button className="cursor-pointer flex items-center justify-center bg-yellow-500 hover:bg-yellow-600 text-lg text-white rounded-full py-[8px] px-[24px] ">
+      Crear un evento de tickets
+    </button>
 
 
     </div>

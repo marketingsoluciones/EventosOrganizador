@@ -9,39 +9,26 @@ const Footer: React.FC<FooterProps> = () => {
       <section className="flex-1 flex flex-row items-start md:gap-20 gap-2 max-w-md md:text-base text-xs">
 
         <div className="flex flex-col gap-2 ">
-        <a href="#" className="font-bold md:text-xl text-base mb-4">EventosOrganizador</a>
-          <a href="#" className="text-white hover:text-gray-300">La Empresa</a>
-          <a href="#" className="text-white hover:text-gray-300">Trabaja con nosotros</a>
-          <a href="#" className="text-white hover:text-gray-300">Oficina de Prensa</a>
-          <a href="#" className="text-white hover:text-gray-300">Sustainability (ESG)</a>
+        <a href="#" className="font-bold md:text-xl text-base mb-4">Informacion</a>
+          <a href="#" className="text-white hover:text-gray-300">Soporte 24/7</a>
+          <a href="#" className="text-white hover:text-gray-300">Facturación</a>
+          <a href="#" className="text-white hover:text-gray-300">Política de Privacidad</a>
         </div>
         
         <div className="flex flex-col gap-2">
-        <a href="#" className="font-bold md:text-xl text-base mb-4">Soluciones</a>
-          <a href="#" className="text-white hover:text-gray-300">Comprar un curso</a>
-          <a href="#" className="text-white hover:text-gray-300">Central de Ayuda</a>
-          <a href="#" className="text-white hover:text-gray-300">App</a>
-          <a href="#" className="text-white hover:text-gray-300">Developers</a>
-          <a href="#" className="text-white hover:text-gray-300">Política de Privacidad</a>
-          <a href="#" className="text-white hover:text-gray-300">Journey</a>
+        <a href="#" className="font-bold md:text-xl text-base mb-4">Otros servicios</a>
+          <a href="#" className="text-white hover:text-gray-300">Recibir Master Class</a>
+          <a href="#" className="text-white hover:text-gray-300">Marca Blanca </a>
         </div>
 
-        <div className="flex flex-col gap-2">
-        <a href="#" className="font-bold md:text-xl text-base mb-4">Educación</a>
-          <a href="#" className="text-white hover:text-gray-300">Desafío Primeras Ventas</a>
-          <a href="#" className="text-white hover:text-gray-300">Webinars</a>
-          <a href="#" className="text-white hover:text-gray-300">YouTube en Español</a>
-          <a href="#" className="text-white hover:text-gray-300">Blog</a>
-        </div>
+
       </section>
 
        {/* Tercera sección: Términos y condiciones, copyright */}
-       <section className="self-stretch w-full flex flex-row items-center justify-between gap-2 mt-6 md:mt-0 md:text-base text-xs">
-        <div className='flex flex-col items-start justify-start'>
-        <div className="text-white hover:text-gray-300">Términos y Políticas</div>
-        <div className="text-white hover:text-gray-300">Canal de Denuncias (Línea Ética)</div>
-        <div className="text-white">EventosOrganizador — 2024- © Todos los derechos reservados</div>
-        </div>
+       <section className="self-stretch w-full flex flex-row md:items-end items-start justify-between gap-2 mt-6 md:mt-0 md:text-base text-xs">
+        
+        <div className="flex items-start justify-start text-white">EventosOrganizador — 2024- © Todos los derechos reservados</div>
+        
         <div className="flex flex-col items-end gap-2 mt-4">
           
           <div className='flex w-32 h-10'>

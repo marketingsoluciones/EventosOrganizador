@@ -1,121 +1,60 @@
-import React, { FC, useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { FC } from 'react';
+import Card2 from './Card2';
 
 
     
-interface Content {
-    title: string;
-    subtitle: string;
-    subtitle2: string;
-  }
 
-const Seccion3: FC<Content> = ({title, subtitle, subtitle2}) => {
-    const contentData: Content[] = [
-        {
-          title: 'Productor',
-          subtitle: 'Los productores pueden crear, alojar y vender productos digitales de creación propia, como cursos online, ebook, comunidades y mas.',
-          subtitle2: 'Enseña sobre lo que sabes y gana dinero con ello y podras mejorar tu negocio cada dia mas, sin tantas complicaciones.',
+const Seccion3: FC = () => {
+  const DataCard = 
+  [
+    {
+      imgColor:"text-blue-600",
+      title:"“Desde que utilizo Eventos Organizador, planificar eventos se ha vuelto mucho más sencillo. La interfaz es intuitiva y me permite gestionar todas las tareas en un solo lugar. ¡Mis asistentes están encantados con la experiencia!”",
+      tcolor:"text-blue-600",
+      nombre:"María López",
+      cargo:"Organizadora de eventos corporativos.",
+    },
+    {
+      imgColor:"text-orange-600",
+      title:"“Necesitaba una herramienta que me permitiera crear itinerarios personalizados. Eventos Organizador me ha sorprendido con la cantidad de opciones de personalización que ofrece. ¡Cada evento es una nueva aventura!”",
+      tcolor:"text-orange-600",
+      nombre:"Pedro García",
+      cargo:"Wedding Planner",
+    },
+    {
+      imgColor:"text-blue-600",
+      title:"“Gracias a Eventos Organizador, he logrado aumentar las ventas de mis eventos en un 30%. La herramienta de venta de entradas me permite llegar a un público más amplio. ¡Definitivamente la recomiendo!”",
+      tcolor:"text-blue-600",
+      nombre:"Ana Fernández",
+      cargo:"Organizadora de festivales musicales.",
+    },
+  ]
 
-        },
-        {
-          title: 'Afiliado',
-          subtitle: 'Un afiliado promociona los productos ya listos y recibe comisiones por las ventas realizadas.',
-          subtitle2: 'Tenemos más de 580 mil productos para afiliarte; elige tu favorito y promociónalo con nuestras herramientas.',
-
-        },
-      ];
-
-      
-      const [currentContentIndex, setCurrentContentIndex] = useState(0);
-      const [loading, setLoading] = useState(true);
-    
-      useEffect(() => {
-        const intervalId = setInterval(() => {
-          setCurrentContentIndex((prevIndex) =>
-            (prevIndex + 1) % contentData.length
-          );
-          setLoading(false); // Reset loading state on transition
-        }, 5000);
-    
-        return () => clearInterval(intervalId);
-      }, [contentData.length]);
-    
-      const currentContent = contentData[currentContentIndex];
-    
-      const handleContentClick = (index: number) => {
-        if (index !== currentContentIndex) {
-          setCurrentContentIndex(index);
-          setLoading(true); // Set loading state on transition
-        }
-      };
 
   return (
-    <section className="w-[100%] flex flex-row items-center justify-center py-20  md:px-12 px-3 box-border md:max-w-[1200px] ">
-      
-      <div className="flex-1 flex flex-col items-start justify-start gap-[12px] max-w-full">
-        
-        <div className="self-stretch flex flex-col items-start justify-start pt-0 px-0 pb-2 gap-[3.3px] ">
-          <b className="self-stretch relative md:text-[16px] text-xs text-[#6096B9] tracking-[2px]">
-            ¿REALMENTE ES PARA MÍ?
-          </b>
-          <h1 className="m-0 self-stretch relative md:text-[32px] text-2xl leading-[38.4px] font-semibold font-inherit text-[#282C2F] ">
-            <p className="m-0">Con nosotros, puedes tener 2 roles...</p>
-          </h1>
+    <div className="w-[100%] flex flex-row bg-[#F7F9FA] items-center justify-center py-20  md:px-12 px-3 box-border ">
+
+    <div className='flex flex-col items-center justify-start gap-12'>
+        <div className='flex items-start justify-start text-[#444444] text-2xl font-semibold'>
+        Descubre por qué nos eligen
         </div>
-
-        <div className="self-stretch w-full flex flex-row items-start justify-start gap-5 px-4 ">
-          
-          <AnimatePresence>
-            {contentData.map((content, index) => (
-              <motion.div
-                key={index}
-                className={`flex flex-col items-start justify-start gap-4 cursor-pointer hover:text-[#6096B9] ${
-                  currentContentIndex === index ? 'text-[#6096B9] ' : 'text-[#9EA4AC] '
-                }`}
-                onClick={() => handleContentClick(index)}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1] }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="flex flex-col items-center  ">
-                  <span className="font-semibold text-[32px] ">{content.title}</span>
-                </div>
-
-                <div className={`flex flex-col items-start justify-start ${currentContentIndex === index ? '' : 'block text-[#6096B9]'}`}>
-                  
-                    <div className='flex flex-row gap-2'>
-                    <svg className='flex w-8 h-8 text-gray-500 fill-current' width="15" height="19" viewBox="0 0 15 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.06667 14.9639L0 9.8972L1.26667 8.63053L5.06667 12.4305L13.2222 4.27498L14.4889 5.54164L5.06667 14.9639Z"/>
-                    </svg>
-                    
-                    <div className='text-gray-500 font-sans'>
-                    {content.subtitle}
-                    </div>
-                    
-                    </div>
-                    <div className='flex flex-row gap-2 font-sans'>
-                    <svg className='flex w-8 h-8 text-[16px] text-gray-500 fill-current' width="15" height="19" viewBox="0 0 15 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.06667 14.9639L0 9.8972L1.26667 8.63053L5.06667 12.4305L13.2222 4.27498L14.4889 5.54164L5.06667 14.9639Z"/>
-                    </svg>
-                  
-                    <div className='text-gray-500'>
-                    {content.subtitle2}
-                    </div>
-                    </div>
-                </div>
-
-              </motion.div>
-            ))}
-          </AnimatePresence>
-
+        <div className='w-auto absolute left-0 right-0 top-24 bottom-0 text-[#E2E3E4] md:block hidden'>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-40">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M0.522727 17V12.0909C0.522727 10.697 0.795455 9.27273 1.34091 7.81818C1.88636 6.36364 2.60606 4.99242 3.5 3.70454C4.39394 2.41666 5.36364 1.34091 6.40909 0.477272L10.6818 3C9.83333 4.33333 9.13636 5.72727 8.59091 7.18182C8.06061 8.63636 7.79545 10.2576 7.79545 12.0455V17H0.522727ZM12 17V12.0909C12 10.697 12.2727 9.27273 12.8182 7.81818C13.3636 6.36364 14.0833 4.99242 14.9773 3.70454C15.8712 2.41666 16.8409 1.34091 17.8864 0.477272L22.1591 3C21.3106 4.33333 20.6136 5.72727 20.0682 7.18182C19.5379 8.63636 19.2727 10.2576 19.2727 12.0455V17H12Z" />
+        </svg>
         </div>
+      <div className='flex md:flex-row flex-col items-start justify-start md:gap-12 gap-6 z-50'>
+      {
+              DataCard.map((item, idx) => 
+                  <div key={idx}>
+                <Card2 items={item}/>
+                  </div>
 
+                )
+              }
       </div>
-    </section>
-  
-
-
-
+    </div>
+    </div>
 
   );
 };

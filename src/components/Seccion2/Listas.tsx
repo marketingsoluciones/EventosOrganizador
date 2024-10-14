@@ -1,61 +1,32 @@
 
 import { FC, useState } from "react";
-import { Modal } from "../Modal";
-import { ModalListas } from "./Modales/ModalListas";
+import Card4 from "../Seccion5/Card4";
 
-interface propsListas {
-    componentState: any;
-    setComponentState: any;
-  
-  }
-
-const Listas: FC<propsListas> = ({componentState, setComponentState}) => {
-  const [addInfo, setAddInfo] = useState(false);
-
+const Listas: FC = () => {
   return (
 
 <section className="self-stretch flex md:flex-row items-start justify-center py-3 px-3 box-border max-w-full text-left text-base text-[#6096B9] font-inter">
-<div className="w-auto flex md:flex-row flex-col items-start justify-center md:gap-[65px] gap-[16px]">
+<div className="w-auto flex md:flex-row flex-col items-center justify-center md:gap-[32px] gap-[16px]">
   
   <div className="md:w-auto h-auto flex flex-row items-start justify-start py-0 md:px-8 box-border bg-cover bg-no-repeat bg-[top] max-w-full ">
-    <img src="https://imagedelivery.net/EfbdVs7eFECYhyroHhep9w/57e1a776-9f23-4cab-ceab-93aa5b3b0a00/public" alt="" />
+    <img src="https://imagedelivery.net/EfbdVs7eFECYhyroHhep9w/52f6e888-1996-4908-938b-a60b3d91b300/public" alt="" />
   </div>
 
   <div className="md:flex-1 flex flex-col items-start justify-start pt-5 px-0 pb-0 box-border max-w-full">
-    <div className="self-stretch flex flex-col items-start justify-start gap-[20px]">
-      <h1 className="m-0 self-stretch relative md:text-[30px] text-xl tracking-[1px] leading-[36px] font-bold font-inherit">
-      Lista de invitados
-      </h1>
-      <div className="self-stretch  h-auto relative leading-[24px] flex flex-col gap-4 items-center md:text-[18px] text-sm">
-        
-          <p className="m-0 font-light">
-          Controla tu lista de invitados de cualquier evento que realices y centralízala para poder recepcionarlos desde cualquier dispositivo móvil. Obtén información sobre los invitados así como horas de entrada, porcentaje de asistencia, número de acompañantes… Facilita el registro de los invitados mediante el envío de links privados o publicando formularios públicos en tus canales de venta.
-          </p>
+    <Card4 
+    img={
+<svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M30.0162 10.9969C30.0176 9.10239 29.5297 7.23967 28.5996 5.58925C27.6694 3.93883 26.3287 2.5567 24.7073 1.57683C23.0859 0.596958 21.2388 0.0525795 19.3452 -0.00353574C17.4516 -0.059651 15.5756 0.374399 13.899 1.25654C12.2225 2.13869 10.8022 3.439 9.77602 5.03144C8.74978 6.62389 8.15236 8.45445 8.04166 10.3457C7.93094 12.237 8.3107 14.1247 9.14413 15.826C9.97755 17.5273 11.2363 18.9844 12.7986 20.0561C9.06277 21.354 5.82353 23.7824 3.53017 27.0043C1.23681 30.2262 0.00303942 34.0821 0 38.0369H2.97143C2.97646 33.7828 4.6686 29.7045 7.67667 26.6964C10.6847 23.6884 14.7631 21.9962 19.0172 21.9912C21.9327 21.9886 24.7281 20.8297 26.7902 18.7685C28.8522 16.7074 30.0124 13.9124 30.0162 10.9969Z" fill="white"/>
+<path d="M31.8715 28.8276V22.5876H28.9V28.8276H22.66V31.7991H28.9V38.0391H31.8715V31.7991H38.1115V28.8276H31.8715Z" fill="white"/>
+</svg>
 
-      </div>
-
-      <button onClick={() => {setAddInfo(!addInfo)}} className="flex items-center justify-center bg-[#6096B9] text-white font-normal md:text-base text-xs py-2 px-4 gap-2 rounded-full hover:bg-[#4b7591] shadow-md ">
-      Saber más sobre Lista de Invitados
-      <svg className='w-6 h-6' data-slot="icon" fill="none" strokeWidth="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59"></path>
-      </svg>
-      </button>
-
-    </div>
+} 
+color={"bg-gradient-to-t from-[#77ADD0] to-[#284C77]"}
+    title={"Lista de invitados"} content={"Centraliza la información de tus invitados, facilita el registro y controla el aforo de tu evento."} />
   </div>
-</div>
-{
-  addInfo ? (
-      <Modal  
-      setOpenIcon="" 
-      openIcon="" 
-      classe={"md:w-[56%] h-[86%] w-[80%]"}>
 
-          <ModalListas addInfo={addInfo} setAddInfo={setAddInfo} />
-      </Modal>
-  ) :
-      null
-}
+</div>
+
 </section>
 
   );

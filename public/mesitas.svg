@@ -1,20 +1,3 @@
-
-import { FC } from "react";
-import Card4 from "./Card4";
-
-const Mesas1: FC = () => {
-  return (
-
-<section className="self-stretch flex md:flex-row rounded-2xl items-start justify-center py-3 px-3 box-border max-w-full text-left text-base text-[#6096B9] font-inter">
-<div className="w-auto flex md:flex-row flex-col items-center justify-start gap-[16px]">
-  
-  <div className="h-auto md:flex-[0.75] flex flex-row items-start justify-start py-0 px-4 box-border bg-cover bg-no-repeat bg-[top] max-w-full ">
-    <img src="https://imagedelivery.net/EfbdVs7eFECYhyroHhep9w/e8063695-f805-4e04-a1a4-7390adb7a300/public" alt="" />
-  </div>
-
-  <div className="md:flex-1 flex flex-col items-start justify-start pt-5 px-0 pb-0 box-border max-w-full">
-    <Card4 
-    img={
 <svg width="43" height="48" viewBox="0 0 43 48" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M34.7813 23.511C34.3922 16.0672 28.1989 10.3066 21.0368 10.7234C13.5877 11.1589 7.88815 17.2027 8.22089 24.3125C8.56973 31.7591 14.7067 37.5276 21.9063 37.1696C29.3796 36.7955 35.1516 30.6689 34.7813 23.511Z" fill="white"/>
 <path d="M2.05888 18.32C3.11726 19.0609 4.23873 19.7082 5.41045 20.2545C5.70831 20.3961 6.48382 20.1449 6.65556 19.8483C8.01604 17.6601 9.3014 15.4211 10.5626 13.1687C10.7156 12.9015 10.7182 12.2202 10.5626 12.124C8.78082 11.0552 7.14662 9.65248 5.27897 9.52423C2.8639 9.50019 0.939896 10.8869 0.260994 12.8908C-0.0754418 13.8671 -0.0818378 14.9262 0.242782 15.9065C0.567402 16.8868 1.20521 17.7344 2.05888 18.32Z" fill="white"/>
@@ -24,16 +7,3 @@ const Mesas1: FC = () => {
 <path d="M17.8215 9.14433C19.0264 9.12296 20.2366 9.14433 21.4414 9.14433C22.6919 9.14433 23.9424 9.12563 25.1982 9.14433C26.03 9.16037 26.4379 8.84509 26.403 7.96871C26.3574 6.81179 26.4272 5.6522 26.3547 4.49528C26.2681 3.27471 25.7201 2.1322 24.821 1.29801C23.922 0.463833 22.7387 0 21.5098 0C20.2809 0 19.0977 0.463833 18.1987 1.29801C17.2996 2.1322 16.7516 3.27471 16.6649 4.49528C16.5925 5.64953 16.665 6.80912 16.614 7.96871C16.5737 8.85577 16.995 9.16037 17.8215 9.14433Z" fill="white"/>
 <path d="M25.1852 38.7456C23.9803 38.7697 22.7701 38.7456 21.5653 38.7456V38.7296C20.3148 38.7296 19.0643 38.7483 17.8085 38.7296C16.9739 38.7135 16.5688 39.0342 16.6036 39.9105C16.6493 41.0648 16.5822 42.2271 16.6546 43.384C16.7412 44.6045 17.2893 45.7471 18.1883 46.5812C19.0874 47.4154 20.2706 47.8793 21.4995 47.8793C22.7284 47.8793 23.9116 47.4154 24.8107 46.5812C25.7097 45.7471 26.2578 44.6045 26.3444 43.384C26.4169 42.2297 26.3444 41.0701 26.3927 39.9105C26.433 39.0288 26.0117 38.7269 25.1852 38.7456Z" fill="white"/>
 </svg>
-
-} 
-color={"bg-gradient-to-t from-[#40789D] to-[#7EB3D6]"}
-    title={"Sitting y mesas"} content={"Distribuye a tus invitados y comparte esta información con otros proveedores."} />
-  </div>
-</div>
-
-</section>
-
-  );
-};
-
-export default Mesas1;

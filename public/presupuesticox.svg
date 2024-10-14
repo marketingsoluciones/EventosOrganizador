@@ -1,20 +1,3 @@
-
-import { FC, useState } from "react";
-import Card4 from "./Card4";
-
-const Presupuesto1: FC = () => {
-  return (
-
-<section className="self-stretch flex md:flex-row rounded-2xl items-start justify-center py-3 px-3 box-border max-w-full text-left text-base text-[#6096B9] font-inter">
-<div className="w-auto flex md:flex-row flex-col items-center justify-start md:gap-[32px] gap-[16px]">
-  
-  <div className="h-auto md:flex-[0.75] flex flex-row items-start justify-start py-0 px-4 box-border bg-cover bg-no-repeat bg-[top] max-w-full ">
-    <img src="https://imagedelivery.net/EfbdVs7eFECYhyroHhep9w/313d579f-176d-4dac-5362-84fc28292a00/public" alt="" />
-  </div>
-
-  <div className="md:flex-1 flex flex-col items-start justify-start pt-5 px-0 pb-0 box-border max-w-full">
-    <Card4 
-    img={
 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_3964_16036)">
 <path d="M3.51563 0C1.57711 0 0 1.57711 0 3.51563V17.8125H17.8125V0H3.51563ZM11.6406 10.0781H10.0781V11.6406C10.0781 12.2878 9.55344 12.8125 8.90625 12.8125C8.25906 12.8125 7.73438 12.2878 7.73438 11.6406V10.0781H6.17188C5.52469 10.0781 5 9.55344 5 8.90625C5 8.25906 5.52469 7.73438 6.17188 7.73438H7.73438V6.17188C7.73438 5.52469 8.25906 5 8.90625 5C9.55344 5 10.0781 5.52469 10.0781 6.17188V7.73438H11.6406C12.2878 7.73438 12.8125 8.25906 12.8125 8.90625C12.8125 9.55344 12.2878 10.0781 11.6406 10.0781Z" fill="white"/>
@@ -28,16 +11,3 @@ const Presupuesto1: FC = () => {
 </clipPath>
 </defs>
 </svg>
-
-} 
-color={"bg-gradient-to-t from-[#40789D] to-[#7EB3D6]"}
-    title={"Presupuesto automatizado"} content={"Manejo intuitivo de la administración del presupuesto. Posee una interfaz sencilla diseñada para centralizar y organizar los gastos operativos."} />
-  </div>
-</div>
-
-</section>
-
-  );
-};
-
-export default Presupuesto1;

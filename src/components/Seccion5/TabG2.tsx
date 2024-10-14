@@ -189,7 +189,7 @@ const TabG1: React.FC<Props> = ({ componentState, setComponentState }) => {
 </svg>
       </button>
 
-      <div className="md:!m-[0] md:absolute md:top-[5px] md:left-[]  flex flex-row overflow-auto md:w-auto w-[100%] md:items-center  md:justify-center items-start justify-start md:z-50">
+      <div className="md:!m-[0] md:absolute md:top-[-20px] md:left-[]  flex flex-row overflow-auto md:w-auto w-[100%] md:items-center  md:justify-center items-start justify-start md:z-50">
         
         <button
           onClick={() => handleTabChange('Mis Eventos')}
