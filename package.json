@@ -1,5 +1,5 @@
 {
-  "name": "builder-app",
+  "name": "app-eo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,20 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@builder.io/dev-tools": "^1.0.17",
-    "@builder.io/react": "^3.2.7",
-    "@builder.io/sdk": "^2.2.3",
-    "@fortawesome/free-solid-svg-icons": "^6.5.2",
-    "@fortawesome/react-fontawesome": "^0.2.2",
-    "@headlessui/react": "^2.1.1",
+    "@headlessui/react": "^2.1.10",
     "@heroicons/react": "^1.0.6",
-    "framer-motion": "^11.2.11",
-    "next": "14.2.4",
-    "react": "^18.3.1",
-    "react-click-away-listener": "^2.2.3",
+    "axios": "^1.7.7",
+    "next": "14.2.15",
+    "react": "^18",
     "react-dom": "^18",
-    "react-router-dom": "^6.24.1",
-    "swiper": "^11.1.4"
+    "swiper": "^11.1.14"
   },
   "devDependencies": {
     "@types/node": "^20",
