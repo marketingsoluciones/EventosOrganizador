@@ -11,8 +11,8 @@ import Reporting from './Reporting';
 import ControlDeAforo from './ControlDeAforo';
 
 interface Props {
-  componentState: any;
-  setComponentState: any;
+  componentState?: any;
+  setComponentState?: any;
 }
 
 const TabsGeneral: React.FC<Props> = ({ componentState, setComponentState }) => {
@@ -310,14 +310,14 @@ const TabsGeneral: React.FC<Props> = ({ componentState, setComponentState }) => 
       <div className="mt-4">
      
         
-        {selectedTab === 'Entradas' && <Entradas componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Reservas' && <Reservas componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Listas' && <Listas componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Control de Aforo' && <ControlDeAforo componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Crm' && <CRM componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Roles' && <Roles componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Web' && <Web componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Reporting' && <Reporting componentState={componentState} setComponentState={setComponentState}/>}
+        {selectedTab === 'Entradas' && <Entradas/>}
+        {selectedTab === 'Reservas' && <Reservas/>}
+        {selectedTab === 'Listas' && <Listas/>}
+        {selectedTab === 'Control de Aforo' && <ControlDeAforo/>}
+        {selectedTab === 'Crm' && <CRM/>}
+        {selectedTab === 'Roles' && <Roles/>}
+        {selectedTab === 'Web' && <Web/>}
+        {selectedTab === 'Reporting' && <Reporting/>}
    </div>
     </main>
   );
