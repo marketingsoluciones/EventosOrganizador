@@ -12,7 +12,7 @@ import Footer from "@/components/Footer/IndexFooter";
 import Informations from "@/components/Informations/IndexInfo";
 
 
-interface Post {
+/* interface Post {
   title: string
   _id: string
   subTitle:string
@@ -63,11 +63,11 @@ interface Props {
   componentState: any;
   setComponentState: any;
 }
-
+ */
 
 export default function Home() {
 
-  const [data,setData] = useState<Post[]>();
+/*   const [data,setData] = useState<Post[]>();
   useEffect(() => {
     fetchApi({
       query: queries.getAllPost,
@@ -81,7 +81,7 @@ export default function Home() {
 
   useEffect(() => {
     console.log(data)
-  }, [data])
+  }, [data]) */
   
 
   return (
@@ -109,7 +109,7 @@ export default function Home() {
       </div>
       
       
-      <div className="flex flex-col gap-8 items-center">
+{/*       <div className="flex flex-col gap-8 items-center">
           {data?.map((elem, idx) => {
             return(
               <div key={idx} >
@@ -118,7 +118,7 @@ export default function Home() {
             )
           })
         }
-      </div>
+      </div> */}
 <Footer/>
     </div>
   );
