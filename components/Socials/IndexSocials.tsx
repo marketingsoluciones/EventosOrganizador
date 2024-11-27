@@ -24,7 +24,7 @@ const Socials: FC<propsSeccion5> =  ({componentState, setComponentState}) => {
 
       </div>
       <button className="cursor-pointer flex items-center justify-center bg-yellow-500 hover:bg-yellow-600 text-lg text-white rounded-full py-[8px] px-[24px] ">
-      Crear un evento social 
+      <a href="https://app.eventosorganizador.com/">Crear un evento social </a>
       </button>
 
     </div>

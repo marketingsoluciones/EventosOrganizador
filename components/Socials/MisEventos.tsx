@@ -2,9 +2,12 @@
 import { FC, useState } from "react";
 import Card4 from "./Card4";
 
+interface Props {
+  componentState: any;
+  setComponentState: any;
+}
 
-
-const MisEventos: FC = () => {
+const MisEventos: FC<Props> = ({componentState, setComponentState}) => {
 
   return (
 

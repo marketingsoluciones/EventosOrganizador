@@ -8,8 +8,8 @@ import Presupuesto1 from './Presupuesto';
 import Invitaciones1 from './Invitaciones';
 
 interface Props {
-  componentState?: any;
-  setComponentState?: any;
+  componentState: any;
+  setComponentState: any;
 }
 
 const TabG1: React.FC<Props> = ({ componentState, setComponentState }) => {
@@ -290,13 +290,13 @@ const TabG1: React.FC<Props> = ({ componentState, setComponentState }) => {
       {/* Contenedor de contenido */}
       <div className="mt-4">
      
-        {selectedTab === 'Mis Eventos' && <MisEventos/>}
+        {selectedTab === 'Mis Eventos' && <MisEventos componentState={componentState} setComponentState={setComponentState}/>}
 {/*         {selectedTab === 'Resumen' && <Resumen1 componentState={componentState} setComponentState={setComponentState}/>}
- */}    {selectedTab === 'Invitados' && <Invitados1/>}
-        {selectedTab === 'Mesas' && <Mesas1/>}
-        {selectedTab === 'Lista de Regalos' && <ListaDeRegalos1/>}
-        {selectedTab === 'Presupuesto' && <Presupuesto1/>}
-        {selectedTab === 'Invitaciones' && <Invitaciones1/>}
+ */}    {selectedTab === 'Invitados' && <Invitados1 componentState={componentState} setComponentState={setComponentState}/>}
+        {selectedTab === 'Mesas' && <Mesas1 componentState={componentState} setComponentState={setComponentState}/>}
+        {selectedTab === 'Lista de Regalos' && <ListaDeRegalos1 componentState={componentState} setComponentState={setComponentState}/>}
+        {selectedTab === 'Presupuesto' && <Presupuesto1 componentState={componentState} setComponentState={setComponentState}/>}
+        {selectedTab === 'Invitaciones' && <Invitaciones1 componentState={componentState} setComponentState={setComponentState}/>}
    </div>
     </main>
   );

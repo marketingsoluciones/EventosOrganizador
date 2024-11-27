@@ -1,6 +1,28 @@
-import { FC, useState } from 'react';
+import { Component, FC, useState } from 'react';
 import { MenuIcon, XIcon } from '@heroicons/react/solid';
 import DropdownMenu from './DropdownMenu'; // Assuming DropdownMenu is a separate component for dropdown menus
+import { Ayuda } from '../Ayuda/Ayuda';
+
+
+export const menuItems = [
+  { title: 'Eventos Sociales', 
+    slug:"#",
+    component:<Ayuda/>,
+    description: 'Bodas, Cumpleaños, Baby Showers, etc.' 
+  },
+
+  { title: 'Eventos de Tikecting', 
+    slug:"#",
+    component:"",
+    description: 'Conferencias, Festivales, Restaurantes, etc.' 
+  },
+
+  { title: 'Ayuda', 
+    slug:"/help",
+    component:<Ayuda/>,
+    description: 'Eventos Online, Ebook, Suscripciones.' 
+  },
+];
 
 const Navbar: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,11 +31,7 @@ const Navbar: FC = () => {
     setIsOpen(!isOpen);
   };
 
-  const menuItems = [
-    { title: 'Eventos Sociales', href: '#', description: 'Bodas, Cumpleaños, Baby Showers, etc.' },
-    { title: 'Eventos de Tikecting', href: '#', description: 'Conferencias, Festivales, Restaurantes, etc.' },
-    { title: 'Otros Productos', href: '#', description: 'Eventos Online, Ebook, Suscripciones.' },
-  ];
+
   const menuItems2 = [
     { title: 'Inicio', href: '#',},
     { title: 'Soluciones', href: '#',},
@@ -31,9 +49,9 @@ const Navbar: FC = () => {
               {/* Menú principal (escritorio) */}
       <div className="hidden lg:flex flex-col">
         <ul className="flex flex-row justify-center gap-6 ">
-        <div className='w-auto flex items-center justify-center text-[#6096B9] font-medium'><a href="#">Inicio</a></div>
+        <div className='w-auto flex items-center justify-center text-[#6096B9] font-medium'><a href="/">Inicio</a></div>
           <DropdownMenu title="Soluciones" items={menuItems} />
-          <div className='w-auto flex items-center justify-center text-[#6096B9] font-medium' ><a href="#">Contacto</a></div>
+          <div className='w-auto flex items-center justify-center text-[#6096B9] font-medium' ><a href="/">Contacto</a></div>
         </ul>
       </div>
       </div>
@@ -43,10 +61,11 @@ const Navbar: FC = () => {
       {/* Botones de acción (escritorio) */}
       <div className="hidden lg:flex gap-2">
         <button className="px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-full hover:bg-gray-300">
-          Registrarse
+          <a href="https://app.eventosorganizador.com/login?q=register&d=/">Registrarse</a>
         </button>
         <button className="px-4 py-2 bg-[#6096B9] rounded-full text-white font-semibold hover:bg-[#4e7a97]">
-          Iniciar sesión
+          
+          <a href="https://app.eventosorganizador.com/login?d=/">Iniciar sesión</a>
         </button>
       </div>
 

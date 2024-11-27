@@ -1,8 +1,11 @@
 
 import { FC, useState } from "react";
 import Card4 from "../Socials/Card4";
-
-const Listas: FC = () => {
+interface Props {
+  componentState: any;
+  setComponentState: any;
+}
+const Listas: FC<Props> = ({componentState, setComponentState}) => {
   return (
 
 <section className="self-stretch flex md:flex-row items-start justify-center py-3 px-3 box-border max-w-full text-left text-base text-[#6096B9] font-inter">

@@ -1,8 +1,11 @@
 
 import { FC, useState } from "react";
 import Card4 from "./Card4";
-
-const Invitados1: FC = () => {
+interface Props {
+  componentState: any;
+  setComponentState: any;
+}
+const Invitados1: FC<Props> = ({componentState, setComponentState}) => {
 
 
   return (

@@ -1,7 +1,10 @@
 import { FC, useState } from "react";
 import Card4 from "../Socials/Card4";
-
-const Reservas: FC = () => {
+interface Props {
+  componentState: any;
+  setComponentState: any;
+}
+const Reservas: FC<Props> = ({componentState, setComponentState}) => {
   return (
 <section className="self-stretch flex md:flex-row rounded-2xl items-start justify-center py-3 px-3 box-border max-w-full text-left text-base text-[#6096B9] font-inter">
 <div className="w-auto flex md:flex-row flex-col items-center justify-start md:gap-[32px] gap-[16px]">

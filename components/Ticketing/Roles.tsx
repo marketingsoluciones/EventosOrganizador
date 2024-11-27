@@ -1,8 +1,11 @@
 
 import { FC } from "react";
 import Card4 from "../Socials/Card4";
-
-const Roles: FC = () => {
+interface Props {
+  componentState: any;
+  setComponentState: any;
+}
+const Roles: FC<Props> = ({componentState, setComponentState}) => {
   return (
 
 <section className="self-stretch flex md:flex-row rounded-2xl items-start justify-center py-3 px-3 box-border max-w-full text-left text-base text-[#6096B9] font-inter">

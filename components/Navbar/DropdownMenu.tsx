@@ -29,7 +29,7 @@ const DropdownMenu: FC<props> = ({title, items }) => {
       >
         {items.map((item:any) => (
           <div key={item.title} className="p-3 ">
-            <a className="block rounded-lg py-2 px-3 transition hover:bg-black/5" href={item.path}>
+            <a className="block rounded-lg py-2 px-3 transition hover:bg-black/5" href={item.slug}>
               <p className="font-semibold text-black">
                 {item.title}
                 </p>

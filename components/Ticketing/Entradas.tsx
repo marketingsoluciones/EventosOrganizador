@@ -1,8 +1,11 @@
 
 import { FC } from "react";
 import Card4 from "../Socials/Card4";
-
-const Entradas: FC = () => {
+interface Props {
+  componentState: any;
+  setComponentState: any;
+}
+const Entradas: FC<Props> = ({componentState, setComponentState}) => {
 
 
   return (
