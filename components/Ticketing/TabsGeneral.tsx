@@ -40,7 +40,7 @@ const TabsGeneral: React.FC<Props> = ({ componentState, setComponentState }) => 
     
     <svg
     className={`h-8 w-8 fill-current ${
-      selected ? 'md:text-white text-[#6096B9] ' : 'md:text-[#E5E7EB] text-gray-500'
+      selected ? 'md:text-white text-gray-300 ' : 'md:text-[#E5E7EB] text-white'
     }`}
     width="35"
     height="35"
@@ -59,7 +59,7 @@ const TabsGeneral: React.FC<Props> = ({ componentState, setComponentState }) => 
   const EntradasIcon = (selected: boolean) => (
     <svg
     className={`h-8 w-8 fill-current ${
-      selected ? 'md:text-white text-[#6096B9] ' : 'md:text-[#E5E7EB] text-gray-500'
+      selected ? 'md:text-white text-gray-300 ' : 'md:text-[#E5E7EB] text-white'
     }`}
     width="35"
     height="35"
@@ -77,7 +77,7 @@ const TabsGeneral: React.FC<Props> = ({ componentState, setComponentState }) => 
   const ReservasIcon = (selected: boolean) => (
     <svg
     className={`h-8 w-8 fill-current ${
-      selected ? 'md:text-white text-[#6096B9] ' : 'md:text-[#E5E7EB] text-gray-500'
+      selected ? 'md:text-white text-gray-300 ' : 'md:text-[#E5E7EB] text-white'
     }`}
     width="35"
     height="35"
@@ -93,7 +93,7 @@ const TabsGeneral: React.FC<Props> = ({ componentState, setComponentState }) => 
   const CrmIcon = (selected: boolean) => (
     <svg
     className={`h-8 w-8 fill-current ${
-      selected ? 'md:text-white text-[#6096B9] ' : 'md:text-[#E5E7EB] text-gray-500'
+      selected ? 'md:text-white text-gray-300 ' : 'md:text-[#E5E7EB] text-white'
     }`}
     width="35"
     height="35"
@@ -107,7 +107,7 @@ const TabsGeneral: React.FC<Props> = ({ componentState, setComponentState }) => 
   const RolesIcon = (selected: boolean) => (
     <svg
     className={`h-8 w-8 fill-current ${
-      selected ? 'md:text-white text-[#6096B9] ' : 'md:text-[#E5E7EB] text-gray-500'
+      selected ? 'md:text-white text-gray-300 ' : 'md:text-[#E5E7EB] text-white'
     }`}
     width="35"
     height="35"
@@ -123,7 +123,7 @@ const TabsGeneral: React.FC<Props> = ({ componentState, setComponentState }) => 
   const WebIcon = (selected: boolean) => (
     <svg
     className={`h-8 w-8  fill-current ${
-      selected ? 'md:text-white text-[#6096B9] ' : 'md:text-[#E5E7EB] text-gray-500'
+      selected ? 'md:text-white text-gray-300 ' : 'md:text-[#E5E7EB] text-white'
     }`}
     width="35"
     height="35"
@@ -137,7 +137,7 @@ const TabsGeneral: React.FC<Props> = ({ componentState, setComponentState }) => 
   const ReportingIcon = (selected: boolean) => (
     <svg
     className={`h-8 w-8 fill-current ${
-      selected ? 'md:text-white text-[#6096B9] ' : 'md:text-[#E5E7EB] text-gray-500'
+      selected ? 'md:text-white text-gray-300 ' : 'md:text-[#E5E7EB] text-white'
     }`}
     width="35"
     height="35"
@@ -158,7 +158,7 @@ const TabsGeneral: React.FC<Props> = ({ componentState, setComponentState }) => 
   const ControlAforoIcon = (selected: boolean) => (
     <svg
     className={`h-8 w-8 fill-current ${
-      selected ? 'md:text-white text-[#6096B9] ' : 'md:text-[#E5E7EB] text-gray-500'
+      selected ? 'md:text-white text-gray-300 ' : 'md:text-[#E5E7EB] text-white'
     }`}
     width="35"
     height="35"
@@ -172,154 +172,74 @@ const TabsGeneral: React.FC<Props> = ({ componentState, setComponentState }) => 
 
 
   return (
-    <main className="w-full flex flex-col items-center justify-start py-0 gap-6 box-border shrink-0">
-      <div className='w-full flex-col items-center justify-center gap-0 md:block hidden'>
-      <div className='w-[100%] border-t-[10px] border-[#284C77]'/>
-            <div className="w-auto flex items-center max-w-full max-h-full justify-center">
-            <svg width="1072" height="82" viewBox="0 0 1072 82" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M0.000305176 0C17.6569 4.36173 30.7781 20.6266 30.7781 40.017C30.7781 62.7478 48.8097 81.1835 71.0413 81.1835H1000.2C1022.44 81.1835 1040.47 62.7478 1040.47 40.017C1040.47 20.6266 1053.59 4.36173 1071.25 0H0.000305176Z" fill="#284C77"/>
-</svg>
-
-
-      </div>
-      </div>
-      {/* botones del scroll con svg */}
-      <div className='md:!m-[0] md:w-auto md:absolute md:top-[95px] md:left-[] w-full h-auto flex flex-row md:items-center md:justify-center items-center justify-between md:space-x-2 md:z-50'>
-      {/* izquierda */}
-      <button
-        className="w-5 h-5 rounded-full border-[1px] border-gray-400 text-gray-600 md:hidden"
-        onClick={handleScrollLeft}
-      >
-        <svg data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
-</svg>
+<main className="w-full flex flex-col items-center justify-start py-0 gap-6 box-border shrink-0">
+  <div className='w-full flex flex-col items-center justify-center gap-0 relative'>
+    <div className='w-[100%] border-t-[44px] md:border-t-[10px] lg:border-t-[10px] border-[#284C77]'/>
+    <div className="w-full flex items-center justify-center">
+      <svg width="100%" height="auto" viewBox="0 0 1072 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fillRule="evenodd" clipRule="evenodd" d="M0.000305176 0C17.6569 4.36173 30.7781 20.6266 30.7781 40.017C30.7781 62.7478 48.8097 81.1835 71.0413 81.1835H1000.2C1022.44 81.1835 1040.47 62.7478 1040.47 40.017C1040.47 20.6266 1053.59 4.36173 1071.25 0H0.000305176Z" fill="#284C77"/>
+      </svg>
+    </div>
+    <div className='absolute top-0 w-full h-full flex flex-row items-center justify-between space-x-2 z-50'>
+      <button className="w-5 h-5 rounded-full border-[1px] border-gray-400 text-gray-600 md:hidden" onClick={handleScrollLeft}>
+        <svg data-slot="icon" fill="none" strokeWidth="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
+        </svg>
       </button>
-      <div className="md:!m-[0] md:absolute md:top-[1795px] md:left-[] flex flex-row md:overflow-auto overflow-auto md:w-auto w-[80%] md:items-center  md:justify-center items-start justify-start md:z-50 md:gap-0 gap-5" >
-        
-
-
-        <button
-          onClick={() => handleTabChange('Entradas')}
-          className={`tab-button ${
-            selectedTab === 'Entradas'
-              ? 'w-[100px] flex flex-col h-full items-center justify-center md:text-white text-[#6096B9] font-semibold'
-              : 'w-[100px] flex flex-col h-full items-center justify-center md:text-[#E5E7EB] text-gray-500'
-          }`}
-        >
+      <div ref={scrollableContainerRef} className="flex flex-row overflow-auto w-full items-center justify-center z-50">
+        <button onClick={() => handleTabChange('Entradas')} className={`tab-button ${selectedTab === 'Entradas' ? 'flex flex-col w-[100px] h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col w-[100px] h-full items-center justify-center px-2 py-1 text-white'}`}>
           {EntradasIcon(selectedTab === 'Entradas')}
           Entradas
         </button>
-
-        <button
-          onClick={() => handleTabChange('Reservas')}
-          className={`tab-button ${
-            selectedTab === 'Reservas'
-              ? 'w-[100px] flex flex-col h-full items-center justify-center md:text-white text-[#6096B9] font-semibold'
-              : 'w-[100px] flex flex-col h-full items-center justify-center md:text-[#E5E7EB] text-gray-500'
-          }`}
-        >
+        <button onClick={() => handleTabChange('Reservas')} className={`tab-button ${selectedTab === 'Reservas' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
           {ReservasIcon(selectedTab === 'Reservas')}
           Reservas
         </button>
-
-        <button
-          onClick={() => handleTabChange('Listas')}
-          className={`tab-button ${
-            selectedTab === 'Listas'
-              ? 'w-[100px] flex flex-col h-full items-center justify-center md:text-white text-[#6096B9] font-semibold'
-              : 'w-[100px] flex flex-col h-full items-center justify-center md:text-[#E5E7EB] text-gray-500'
-          }`}
-        >
-          {ListasIcon(selectedTab === 'Listas') }
+        <button onClick={() => handleTabChange('Listas')} className={`tab-button ${selectedTab === 'Listas' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
+          {ListasIcon(selectedTab === 'Listas')}
           Listas
         </button>
-
-        <button
-          onClick={() => handleTabChange('Control de Aforo')}
-          className={`tab-button ${
-            selectedTab === 'Control de Aforo'
-              ? 'w-[100px] flex flex-col h-full items-center justify-center md:text-white text-[#6096B9] font-semibold'
-              : 'w-[100px] flex flex-col h-full items-center justify-center md:text-[#E5E7EB] text-gray-500'
-          }`}
-        >
-          {ControlAforoIcon(selectedTab === 'Control de Aforo') }
-         
+        <button onClick={() => handleTabChange('Control de Aforo')} className={`tab-button ${selectedTab === 'Control de Aforo' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
+          {ControlAforoIcon(selectedTab === 'Control de Aforo')}
           Aforo
         </button>
-
-        <button
-          onClick={() => handleTabChange('Crm')}
-          className={`tab-button ${
-            selectedTab === 'Crm'
-              ? 'w-[100px] flex flex-col h-full items-center justify-center md:text-white text-[#6096B9] font-semibold'
-              : 'w-[100px] flex flex-col h-full items-center justify-center md:text-[#E5E7EB] text-gray-500'
-          }`}
-        >
+        <button onClick={() => handleTabChange('Crm')} className={`tab-button ${selectedTab === 'Crm' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
           {CrmIcon(selectedTab === 'Crm')}
           Crm
         </button>
-
-        <button
-          onClick={() => handleTabChange('Roles')}
-          className={`tab-button ${
-            selectedTab === 'Roles'
-              ? 'w-[100px] flex flex-col h-full items-center justify-center md:text-white text-[#6096B9] font-semibold'
-              : 'w-[100px] flex flex-col h-full items-center justify-center md:text-[#E5E7EB] text-gray-500'
-          }`}
-        >
+        <button onClick={() => handleTabChange('Roles')} className={`tab-button ${selectedTab === 'Roles' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
           {RolesIcon(selectedTab === 'Roles')}
           RRPP
         </button>
-
-        <button
-          onClick={() => handleTabChange('Web')}
-          className={`tab-button ${
-            selectedTab === 'Web'
-              ? 'w-[100px] flex flex-col h-full items-center justify-center md:text-white text-[#6096B9] font-semibold'
-              : 'w-[100px] flex flex-col h-full items-center justify-center md:text-[#E5E7EB] text-gray-500'
-          }`}
-        >
+        <button onClick={() => handleTabChange('Web')} className={`tab-button ${selectedTab === 'Web' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
           {WebIcon(selectedTab === 'Web')}
           Web
         </button>
-
-        <button
-          onClick={() => handleTabChange('Reporting')}
-          className={`tab-button ${
-            selectedTab === 'Reporting'
-              ? 'w-[100px] flex flex-col h-full items-center justify-center md:text-white text-[#6096B9] font-semibold'
-              : 'w-[100px] flex flex-col h-full items-center justify-center md:text-[#E5E7EB] text-gray-500'
-          }`}
-        >
+        <button onClick={() => handleTabChange('Reporting')} className={`tab-button ${selectedTab === 'Reporting' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
           {ReportingIcon(selectedTab === 'Reporting')}
           Estadisticas
         </button>
       </div>
-      {/* derecha */}
-      <button
-        className="w-5 h-5 rounded-full border-[1px] border-gray-400 text-gray-600 md:hidden"
-        onClick={handleScrollRight}
-      >
-       <svg data-slot="icon" fill="none" strokeWidth="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
-</svg>
+      <button className="w-5 h-5 rounded-full border-[1px] border-gray-400 text-gray-600 md:hidden" onClick={handleScrollRight}>
+        <svg data-slot="icon" fill="none" strokeWidth="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+        </svg>
       </button>
-      </div>
+    </div>
+  </div>
 
-      {/* Contenedor de contenido */}
-      <div className="mt-4">
-     
-        
-        {selectedTab === 'Entradas' && <Entradas componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Reservas' && <Reservas componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Listas' && <Listas componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Control de Aforo' && <ControlDeAforo componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Crm' && <CRM componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Roles' && <Roles componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Web' && <Web componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Reporting' && <Reporting componentState={componentState} setComponentState={setComponentState}/>}
-   </div>
-    </main>
+  {/* Contenedor de contenido */}
+  <div className="mt-4">
+    {selectedTab === 'Entradas' && <Entradas componentState={componentState} setComponentState={setComponentState}/>}
+    {selectedTab === 'Reservas' && <Reservas componentState={componentState} setComponentState={setComponentState}/>}
+    {selectedTab === 'Listas' && <Listas componentState={componentState} setComponentState={setComponentState}/>}
+    {selectedTab === 'Control de Aforo' && <ControlDeAforo componentState={componentState} setComponentState={setComponentState}/>}
+    {selectedTab === 'Crm' && <CRM componentState={componentState} setComponentState={setComponentState}/>}
+    {selectedTab === 'Roles' && <Roles componentState={componentState} setComponentState={setComponentState}/>}
+    {selectedTab === 'Web' && <Web componentState={componentState} setComponentState={setComponentState}/>}
+    {selectedTab === 'Reporting' && <Reporting componentState={componentState} setComponentState={setComponentState}/>}
+  </div>
+</main>
   );
 };
 

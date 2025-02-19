@@ -1,4 +1,3 @@
-
 "use client";
 import React, { FC } from "react";
 import Card3 from "./Card3";
@@ -185,32 +184,24 @@ const Seccion4: FC =  () => {
     },
   ]
   return (
-<div className="self-stretch w-full flex flex-col items-start justify-start py-20 px-4 box-border gap-14 ">
-<div className="w-full flex flex-col items-center justify-center">
-  <p className="text-[16px] font-semibold text-[#6096B9] ">
-  ¿Eres proveedor de servicios para eventos? Te ofrecemos
-  </p>
-  <p className="text-[32px] font-semibold text-[#444444] ">
-  +4 funciones para ayudarte a vender más
-  </p>
+  <div className="self-stretch w-full max-w-[1200px] mx-auto flex flex-col items-start justify-start py-20 px-4 box-border gap-14">
+    <div className="w-full flex flex-col items-center justify-center">
+      <p className="text-[16px] font-semibold text-[#6096B9]">
+        ¿Eres proveedor de servicios para eventos? Te ofrecemos
+      </p>
+      <p className="text-[32px] font-semibold text-[#444444]">
+        +4 funciones para ayudarte a vender más
+      </p>
+    </div>
 
-</div>
-
-<div className='self-stretch w-full flex md:flex-row flex-col items-center justify-start md:gap-6 gap-3'>
-      {
-              DataCard.map((item, idx) => 
-                  <div key={idx}>
-                <Card3 items={item}/>
-                  </div>
-
-                )
-              }
-      </div>
-
-
-
-</div>
-
+    <div className="self-stretch w-full flex md:flex-row flex-col items-center justify-start md:gap-6 gap-3">
+      {DataCard.map((item, idx) => (
+        <div key={idx} className="flex-1">
+          <Card3 items={item} />
+        </div>
+      ))}
+    </div>
+  </div>
 );
 };
 

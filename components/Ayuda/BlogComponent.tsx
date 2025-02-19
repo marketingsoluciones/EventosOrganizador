@@ -59,7 +59,7 @@ export default function BlogComponent() {
   useEffect(() => {
     fetchApi({
       query: queries.getAllPost,
-      variables: {sort:{createdAt:-1}, skip:0, limit:10, development:"bodasdehoy" },
+      variables: {sort:{createdAt:-1}, skip:0, limit:7, development:"bodasdehoy" },
     }).then((results:Results) =>{
       setData(results.results)
       console.log(results)

@@ -5,13 +5,13 @@ import Navbar from "../Navbar/Navbar"
 
 export const Ayuda: FC = () => {
 
-    const [data, setData] = useState(null);
+/*     const [data, setData] = useState(null);
 
     useEffect(() => {
       fetch('http://localhost:3303/')
         .then(response => response.json())
         .then(setData);
-    }, []);
+    }, []); */
 
     return (
         <>

@@ -23,7 +23,7 @@ const Informations: FC = () => {
 
 
   return (
-    <div className="w-[100%] flex flex-row bg-[#F7F9FA] items-center justify-center py-20  md:px-12 px-3 box-border ">
+    <div className="w-[100%] flex flex-row bg-[#F7F9FA] items-center justify-center py-20  md:px-12 px-3 box-border max-w-[1200px] mx-auto">
 
     <div className='flex flex-col items-center justify-start gap-12'>
         <div className='flex flex-col items-center justify-center gap-3'>

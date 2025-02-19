@@ -44,7 +44,7 @@ const Navbar: FC = () => {
       {/* Logo */}
       <div className="flex flex-row items-center justify-center gap-3">
         <a href="/" className="flex items-center justify-center h-12 pr-4">
-          <img src="https://imagedelivery.net/EfbdVs7eFECYhyroHhep9w/07834526-0af0-4e12-220c-19c4f5fc5c00/public" alt="Logo" className="h-8" />
+          <img src="image/Group.svg" alt="Logo" className="h-8" />
         </a>
               {/* Menú principal (escritorio) */}
       <div className="hidden lg:flex flex-col">
