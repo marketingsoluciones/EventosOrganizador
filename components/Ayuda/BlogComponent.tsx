@@ -54,62 +54,69 @@ interface Results {
 
 
 export default function BlogComponent() {
-    const [data, setData] = useState<Post[]>();
-    const [selectedPost, setSelectedPost] = useState<Post | null>(null);
-  useEffect(() => {
-    fetchApi({
-      query: queries.getAllPost,
-      variables: {sort:{createdAt:-1}, skip:0, limit:7, development:"bodasdehoy" },
-    }).then((results:Results) =>{
-      setData(results.results)
-      console.log(results)
-      
-        // Automatically select the first post
-        if (results.results.length > 0) {
-          setSelectedPost(results.results[0]);
-        }
-    })
-    
-  }, [])
+  const [data, setData] = useState<Post[]>();
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
 
   useEffect(() => {
-    console.log(data)
-  }, [data])
-  
+      fetchApi({
+          query: queries.getAllPost,
+          variables: { sort: { createdAt: -1 }, skip: 0, limit: 7, development: "bodasdehoy" },
+      }).then((results: Results) => {
+          setData(results.results);
+          console.log(results);
+
+          // Automatically select the first post
+          if (results.results.length > 0) {
+              setSelectedPost(results.results[0]);
+          }
+      });
+  }, []);
+
+  useEffect(() => {
+      console.log(data);
+  }, [data]);
+
   const handleTitleClick = (post: Post) => {
-    setSelectedPost(post);
+      setSelectedPost(post);
   };
 
   return (
-    <div className="flex flex-row gap-8 px-4">
-      <div className="w-1/4 p-4 bg-white rounded-md shadow-2xl">
-        <ul>
-          {data?.map((post, index) => (
-            <li
-              key={index}
-              className={selectedPost === post ? 'flex items-start justify-start pl-2 text-[#6096B9] rounded-md font-semibold text-sm border-b-[1px] border-gray-100 pb-[6px]' : 'flex items-start justify-start pl-2 hover:bg-gray-200 text-[#444444] rounded-md font-normal text-sm border-b-[1px] border-gray-100 pb-[6px] '}
-              onClick={() => handleTitleClick(post)}
-            >
-              {post.title}
-            </li>
-            
-          ))}
-        </ul>
-      </div>
-      <div className="w-3/4 flex flex-col p-4 text-[#444444] gap-6">
-        {selectedPost && (
-          <div>
-            <div className="self-stretch flex items-start justify-start font-bold text-[32px] text-black ">{selectedPost.title}</div>
-            
-            <div className="self-stretch flex items-start justify-start text-sm font-semibold">{selectedPost.subTitle}</div>
-
-            <div className="self-stretch flex items-center justify-center text-sm">
-            <Markup content={selectedPost.content}/></div>
-            {/* ... other content */}
+<div className="flex flex-row gap-8 px-4 border border-gray-300 rounded-md">
+          <div className="w-1/4 h-1/4 p-4 bg-white rounded-md shadow-2xl border-r border-gray-300">
+              <ul className="border border-gray-300 rounded-md">
+                  {data?.map((post, index) => (
+                      <li
+                          key={index}
+                          className={
+                              selectedPost === post
+                                  ? 'flex items-start justify-start pl-2 text-[#6096B9] rounded-md font-semibold text-sm border-b-[1px] border-gray-100 pb-[6px]'
+                                  : 'flex items-start justify-start pl-2 hover:bg-gray-200 text-[#444444] rounded-md font-normal text-sm border-b-[1px] border-gray-100 pb-[6px]'
+                          }
+                          onClick={() => handleTitleClick(post)}
+                      >
+                          {post.title}
+                      </li>
+                  ))}
+              </ul>
           </div>
-        )}
+          <div className="w-3/4 flex flex-col p-4 text-[#444444] gap-6 border-l border-gray-300">
+              {selectedPost && (
+                  <div className="border border-gray-300 rounded-md p-4">
+                      <div className="self-stretch flex items-start justify-start font-bold text-[32px] text-black ">
+                          {selectedPost.title}
+                      </div>
+
+                      <div className="self-stretch flex items-start justify-start text-sm font-semibold">
+                          {selectedPost.subTitle}
+                      </div>
+
+                      <div className="self-stretch flex items-center justify-center text-sm">
+                          <Markup content={selectedPost.content} />
+                      </div>
+                      {/* ... other content */}
+                  </div>
+              )}
+          </div>
       </div>
-    </div>
   );
 };
-
