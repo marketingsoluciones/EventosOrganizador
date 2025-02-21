@@ -2,7 +2,7 @@ import { Component, FC, useState } from 'react';
 import { MenuIcon, XIcon } from '@heroicons/react/solid';
 import DropdownMenu from './DropdownMenu'; // Assuming DropdownMenu is a separate component for dropdown menus
 import { Ayuda } from '../Ayuda/Ayuda';
-
+import { useRouter } from 'next/router'; // Import useRouter
 
 export const menuItems = [
   { title: 'Eventos Sociales', 
@@ -26,16 +26,20 @@ export const menuItems = [
 
 const Navbar: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter(); // Initialize useRouter
 
   const handleToggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleContactClick = () => {
+    router.push('/contacto'); // Redirect to ContactoC.tsx
+  };
 
   const menuItems2 = [
-    { title: 'Inicio', href: '#',},
-    { title: 'Soluciones', href: '#',},
-    { title: 'Contacto', href: '#',},
+    { title: 'Inicio', href: '/',},
+    { title: 'Soluciones', href: '', Component:<Ayuda/>},
+    { title: 'Contacto', href: '/contacto',},
 
   ];
 
@@ -51,7 +55,7 @@ const Navbar: FC = () => {
         <ul className="flex flex-row justify-center gap-6 ">
         <div className='w-auto flex items-center justify-center text-[#6096B9] font-medium'><a href="/">Inicio</a></div>
           <DropdownMenu title="Soluciones" items={menuItems} />
-          <div className='w-auto flex items-center justify-center text-[#6096B9] font-medium' ><a href="/">Contacto</a></div>
+          <div className='w-auto flex items-center justify-center text-[#6096B9] font-medium' ><a href="contacto" onClick={handleContactClick}>Contacto</a></div>
         </ul>
       </div>
       </div>

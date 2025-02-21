@@ -40,7 +40,7 @@ const Header: FC = () => {
 
       </div>
 
-      <div className="md:w-[100%] h-auto flex items-start justify-start">
+      <div className="md:w-[100%] h-auto flex items-start justify-start max-w-[1200px]">
         <CaruselPrincipal/>
       </div>
 

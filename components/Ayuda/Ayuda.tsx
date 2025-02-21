@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react"
-import BlogComponent from "./BlogComponent"
+import BlogComponent from "../Ayuda/BlogComponent"
 import Navbar from "../Navbar/Navbar"
 
 
