@@ -3,17 +3,19 @@ import { MenuIcon, XIcon } from '@heroicons/react/solid';
 import DropdownMenu from './DropdownMenu'; // Assuming DropdownMenu is a separate component for dropdown menus
 import { Ayuda } from '../Ayuda/Ayuda';
 import { useRouter } from 'next/router'; // Import useRouter
+import { EventosSociales } from '../Socials';
+import { EventosTiketing } from '../Tiketing';
 
 export const menuItems = [
   { title: 'Eventos Sociales', 
-    slug:"#",
-    component:<Ayuda/>,
+    slug:"/socials",
+    component: <EventosSociales/> ,
     description: 'Bodas, Cumpleaños, Baby Showers, etc.' 
   },
 
   { title: 'Eventos de Tikecting', 
-    slug:"#",
-    component:"",
+    slug:"/tiketing",
+    component:<EventosTiketing/>,
     description: 'Conferencias, Festivales, Restaurantes, etc.' 
   },
 
