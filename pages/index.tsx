@@ -86,7 +86,7 @@ export default function Home() {
 
   return (
 
-    <div className="w-full flex flex-col bg-white text-black items-center justify-items-center min-h-screen px-8 pt-8 gap-4">
+    <div className="w-full flex flex-col bg-white text-black items-center justify-items-center min-h-screen pt-8 gap-4">
       <Navbar/>
       
       <div className="self-stretch flex items-center justify-center">

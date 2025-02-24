@@ -22,7 +22,7 @@ export const menuItems = [
   { title: 'Ayuda', 
     slug:"/help",
     component:<Ayuda/>,
-    description: 'Eventos Online, Ebook, Suscripciones.' 
+    description: 'Gestión, Colaboración, Planes.' 
   },
 ];
 
@@ -50,7 +50,7 @@ const Navbar: FC = () => {
       {/* Logo */}
       <div className="flex flex-row items-center justify-center gap-3">
         <a href="/" className="flex items-center justify-center h-12 pr-4">
-          <img src="image/Group.svg" alt="Logo" className="h-8" />
+          <img src="image/logo1.svg" alt="Logo" className="h-8" />
         </a>
               {/* Menú principal (escritorio) */}
       <div className="hidden lg:flex flex-col">

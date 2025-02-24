@@ -6,7 +6,7 @@ const Footer: React.FC<FooterProps> = () => {
 
   
   return (
-<footer className="w-full bg-[#6096B9] text-white py-10 px-4 md:px-10 flex flex-col items-start max-w-[1200px] mx-auto">
+<footer className="w-full bg-[#6096B9] text-white py-10 px-4 md:px-10 flex flex-col items-start mx-auto">
       {/* Primera sección: EventosOrganizador */}
       <section className="flex-1 flex flex-row items-start md:gap-20 gap-2 max-w-md md:text-base text-xs">
 
