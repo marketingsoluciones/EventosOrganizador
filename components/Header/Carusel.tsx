@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay, EffectCoverflow } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -17,44 +17,37 @@ export const CaruselPrincipal = () => {
         { title: 'Corporativos', ubication: "absolute left-[24px] right-0 top-[50px] bottom-0", imgUrl: 'https://imagedelivery.net/EfbdVs7eFECYhyroHhep9w/1a37e06b-8876-492c-56b6-1bbae9187d00/public', color: 'bg-[#EAB308]' },
         { title: 'Gastronómicos', ubication: "absolute left-[16px] right-0 top-[7px] bottom-0", imgUrl: 'https://imagedelivery.net/EfbdVs7eFECYhyroHhep9w/bd47c813-3815-499c-ca43-155d19296a00/public', color: 'bg-[#FFDA66]' },  
         { title: 'Festivales', ubication: "absolute left-[22px] right-0 top-[60px] bottom-0 ", imgUrl: 'https://imagedelivery.net/EfbdVs7eFECYhyroHhep9w/3c4a4c3d-8742-4060-fcfb-fa19fb3a4900/public', color: 'bg-[#FC9A1F]' },
+        
     ];
 
-    return (
-        <div className="py-8">
-            <Swiper
-                grabCursor={true}
-                centeredSlides={true}
-                modules={[Navigation, Pagination, Autoplay]} // Include Autoplay module
-                spaceBetween={20} // Set space between slides
-                slidesPerView={2} // Default slides per view
-                loop={true}
-                autoplay={{ delay: 1500, disableOnInteraction: false }} // Set autoplay delay and behavior
-                breakpoints={{
-                    640: {
-                        slidesPerView: 3,
-                        spaceBetween: 30,
-                    },
-                    768: {
-                        slidesPerView: 4,
-                        spaceBetween: 40,
-                    },
-                    1024: {
-                        slidesPerView: 5,
-                        spaceBetween: 50,
-                    },
-                    1200: {
-                        slidesPerView: 6,
-                        spaceBetween: 60,
-                    },
-                }}
-                className="swiper_container max-w-[1200px] mx-auto" // Set max width and center
-            >
-                {cards.map((item, idx) => (
-                    <SwiperSlide key={idx}>
-                        <Card1 item={item} />
-                    </SwiperSlide>
-                ))}
-            </Swiper>
-        </div>
-    );
+
+  return (
+    <Swiper
+    
+      grabCursor={true}
+      centeredSlides={true}
+      modules={[Navigation, Pagination, Autoplay]} // Include Autoplay module
+      spaceBetween={179}
+      slidesPerView={10} // Dynamically set slidesPerView
+      loop={true}
+      autoplay={{ delay: 1500, disableOnInteraction: false }} // Set autoplay delay and behavior
+      breakpoints={{
+        340: {
+          slidesPerView: 2,
+          spaceBetween: 6,
+        },
+        1200: {
+          slidesPerView: 8,
+          spaceBetween: 10,
+        },
+      }}
+      className="swiper_container md:max-w-[1200px] max-w-[360px] mx-auto" // Set max width and center
+    >
+      {cards.map((item, idx) => (
+        <SwiperSlide key={idx}>
+          <Card1 item={item} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  );
 };
