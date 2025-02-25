@@ -50,7 +50,7 @@ useEffect(() => {
     disableDotsControls
     disableButtonsControls
     responsive={{
-        390: { items: 1 },
+        0: { items: 6 },
         768: { items: Math.ceil(cards.length * 0.7) },
         1024: { items: cards.length }
     }}

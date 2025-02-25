@@ -165,64 +165,68 @@ const TabG1: React.FC<Props> = ({ componentState, setComponentState }) => {
 
 
   return (
-    <main className="w-full flex flex-col items-center justify-start py-0 gap-6">
-      <div className='w-full flex flex-col items-center justify-center gap-0 relative'>
-        <div className='w-[100%] border-t-[44px] md:border-t-[10px] lg:border-t-[10px]  border-[#6096B9]'/>
-        <div className="w-full flex items-center justify-center">
-          <svg width="100%" height="auto" viewBox="0 0 1072 82" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fillRule="evenodd" clipRule="evenodd" d="M0.000305176 0C17.6569 4.36173 30.7781 20.6266 30.7781 40.017C30.7781 62.7478 48.8097 81.1835 71.0413 81.1835H1000.2C1022.44 81.1835 1040.47 62.7478 1040.47 40.017C1040.47 20.6266 1053.59 4.36173 1071.25 0H0.000305176Z" fill="#6096B9"/>
-          </svg>
-        </div>
-        <div className='absolute top-0 w-full h-full flex flex-row items-center justify-between space-x-2 z-50'>
-          <button className="w-5 h-5 rounded-full border-[1px] border-gray-400 text-gray-600 md:hidden" onClick={handleScrollLeft}>
-            <svg data-slot="icon" fill="none" strokeWidth="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
-            </svg>
-          </button>
-          <div ref={scrollableContainerRef} className="flex flex-row overflow-auto w-full items-center justify-center z-50">
-            <button onClick={() => handleTabChange('Mis Eventos')} className={`tab-button ${selectedTab === 'Mis Eventos' ? 'flex flex-col w-[100px] h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col w-[100px] h-full items-center justify-center px-2 py-1 text-white'}`}>
-              {misEventosIcon(selectedTab === 'Mis Eventos')}
-              Eventos
-            </button>
-            <button onClick={() => handleTabChange('Invitados')} className={`tab-button ${selectedTab === 'Invitados' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
-              {InvitadosIcon(selectedTab === 'Invitados')}
-              Invitados
-            </button>
-            <button onClick={() => handleTabChange('Mesas')} className={`tab-button ${selectedTab === 'Mesas' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
-              {MesasIcon(selectedTab === 'Mesas')}
-              Mesas
-            </button>
-            <button onClick={() => handleTabChange('Lista de Regalos')} className={`tab-button ${selectedTab === 'Lista de Regalos' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
-              {ListaDeRegalosIcon(selectedTab === 'Lista de Regalos')}
-              Regalos
-            </button>
-            <button onClick={() => handleTabChange('Presupuesto')} className={`tab-button ${selectedTab === 'Presupuesto' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
-              {PresupuestoIcon(selectedTab === 'Presupuesto')}
-              Presupuesto
-            </button>
-            <button onClick={() => handleTabChange('Invitaciones')} className={`tab-button ${selectedTab === 'Invitaciones' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
-              {InvitacionesIcon(selectedTab === 'Invitaciones')}
-              Invitaciones
-            </button>
-          </div>
-          <button className="w-5 h-5 rounded-full border-[1px] border-gray-400 text-gray-600 md:hidden" onClick={handleScrollRight}>
-            <svg data-slot="icon" fill="none" strokeWidth="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
-            </svg>
-          </button>
-        </div>
+<main className="w-full flex flex-col items-center justify-start py-0 gap-6">
+  <div className='w-full flex flex-col items-center justify-center gap-0 relative'>
+    <div className='w-[100%] border-t-[44px] md:border-t-[10px] lg:border-t-[10px] border-[#6096B9]'/>
+    <div className="w-full flex items-center justify-center">
+      <svg width="100%" height="auto" viewBox="0 0 1072 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fillRule="evenodd" clipRule="evenodd" d="M0.000305176 0C17.6569 4.36173 30.7781 20.6266 30.7781 40.017C30.7781 62.7478 48.8097 81.1835 71.0413 81.1835H1000.2C1022.44 81.1835 1040.47 62.7478 1040.47 40.017C1040.47 20.6266 1053.59 4.36173 1071.25 0H0.000305176Z" fill="#6096B9"/>
+      </svg>
+    </div>
+
+    <div className='absolute top-0 w-full h-full flex flex-row items-center justify-between space-x-2 z-50'>
+      <button className="w-5 h-5 rounded-full border-[1px] border-gray-200 text-gray-200 md:hidden" onClick={handleScrollLeft}>
+        <svg data-slot="icon" fill="none" strokeWidth="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
+        </svg>
+      </button>
+
+      <div ref={scrollableContainerRef} className="flex flex-row overflow-auto w-full items-center justify-center px-4 z-50 max-w-[1200px]">
+        <button onClick={() => handleTabChange('Mis Eventos')} className={`tab-button ${selectedTab === 'Mis Eventos' ? 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-white'}`}>
+          {misEventosIcon(selectedTab === 'Mis Eventos')}
+          Eventos
+        </button>
+        <button onClick={() => handleTabChange('Invitados')} className={`tab-button ${selectedTab === 'Invitados' ? 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-white'}`}>
+          {InvitadosIcon(selectedTab === 'Invitados')}
+          Invitados
+        </button>
+        <button onClick={() => handleTabChange('Mesas')} className={`tab-button ${selectedTab === 'Mesas' ? 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-white'}`}>
+          {MesasIcon(selectedTab === 'Mesas')}
+          Mesas
+        </button>
+        <button onClick={() => handleTabChange('Lista de Regalos')} className={`tab-button ${selectedTab === 'Lista de Regalos' ? 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-white'}`}>
+          {ListaDeRegalosIcon(selectedTab === 'Lista de Regalos')}
+          Regalos
+        </button>
+        <button onClick={() => handleTabChange('Presupuesto')} className={`tab-button ${selectedTab === 'Presupuesto' ? 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-white'}`}>
+          {PresupuestoIcon(selectedTab === 'Presupuesto')}
+          Presupuesto
+        </button>
+        <button onClick={() => handleTabChange('Invitaciones')} className={`tab-button ${selectedTab === 'Invitaciones' ? 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-white'}`}>
+          {InvitacionesIcon(selectedTab === 'Invitaciones')}
+          Invitaciones
+        </button>
       </div>
-  
-      {/* Contenedor de contenido */}
-      <div className="mt-4">
-        {selectedTab === 'Mis Eventos' && <MisEventos componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Invitados' && <Invitados1 componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Mesas' && <Mesas1 componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Lista de Regalos' && <ListaDeRegalos1 componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Presupuesto' && <Presupuesto1 componentState={componentState} setComponentState={setComponentState}/>}
-        {selectedTab === 'Invitaciones' && <Invitaciones1 componentState={componentState} setComponentState={setComponentState}/>}
-      </div>
-    </main>
+      
+      <button className="w-5 h-5 rounded-full border-[1px] border-gray-200 text-gray-200 md:hidden" onClick={handleScrollRight}>
+        <svg data-slot="icon" fill="none" strokeWidth="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+
+  {/* Contenedor de contenido */}
+  <div className="mt-4">
+    {selectedTab === 'Mis Eventos' && <MisEventos componentState={componentState} setComponentState={setComponentState}/>}
+    {selectedTab === 'Invitados' && <Invitados1 componentState={componentState} setComponentState={setComponentState}/>}
+    {selectedTab === 'Mesas' && <Mesas1 componentState={componentState} setComponentState={setComponentState}/>}
+    {selectedTab === 'Lista de Regalos' && <ListaDeRegalos1 componentState={componentState} setComponentState={setComponentState}/>}
+    {selectedTab === 'Presupuesto' && <Presupuesto1 componentState={componentState} setComponentState={setComponentState}/>}
+    {selectedTab === 'Invitaciones' && <Invitaciones1 componentState={componentState} setComponentState={setComponentState}/>}
+  </div>
+</main>
   );
 };
 

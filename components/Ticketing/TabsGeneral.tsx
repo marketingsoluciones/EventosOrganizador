@@ -181,46 +181,48 @@ const TabsGeneral: React.FC<Props> = ({ componentState, setComponentState }) => 
       </svg>
     </div>
     <div className='absolute top-0 w-full h-full flex flex-row items-center justify-between space-x-2 z-50'>
-      <button className="w-5 h-5 rounded-full border-[1px] border-gray-400 text-gray-600 md:hidden" onClick={handleScrollLeft}>
+      <button className="w-5 h-5 rounded-full border-[1px] border-gray-200 text-gray-200 md:hidden" onClick={handleScrollLeft}>
         <svg data-slot="icon" fill="none" strokeWidth="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
         </svg>
       </button>
-      <div ref={scrollableContainerRef} className="flex flex-row overflow-auto w-full items-center justify-center z-50">
-        <button onClick={() => handleTabChange('Entradas')} className={`tab-button ${selectedTab === 'Entradas' ? 'flex flex-col w-[100px] h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col w-[100px] h-full items-center justify-center px-2 py-1 text-white'}`}>
+      
+      <div ref={scrollableContainerRef} className="flex flex-row overflow-auto w-full items-center justify-center px-4 z-50 max-w-[1200px]">
+        <button onClick={() => handleTabChange('Entradas')} className={`tab-button ${selectedTab === 'Entradas' ? 'flex flex-col flex-1 h-full items-center justify-center px-0 py-1 text-gray-300 font-semibold' : 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-white'}`}>
           {EntradasIcon(selectedTab === 'Entradas')}
           Entradas
         </button>
-        <button onClick={() => handleTabChange('Reservas')} className={`tab-button ${selectedTab === 'Reservas' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
+        <button onClick={() => handleTabChange('Reservas')} className={`tab-button ${selectedTab === 'Reservas' ? 'flex flex-col flex-1 h-full items-center justify-center px-0 py-1 text-gray-300 font-semibold' : 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-white'}`}>
           {ReservasIcon(selectedTab === 'Reservas')}
           Reservas
         </button>
-        <button onClick={() => handleTabChange('Listas')} className={`tab-button ${selectedTab === 'Listas' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
+        <button onClick={() => handleTabChange('Listas')} className={`tab-button ${selectedTab === 'Listas' ? 'flex flex-col flex-1 h-full items-center justify-center px-0 py-1 text-gray-300 font-semibold' : 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-white'}`}>
           {ListasIcon(selectedTab === 'Listas')}
           Listas
         </button>
-        <button onClick={() => handleTabChange('Control de Aforo')} className={`tab-button ${selectedTab === 'Control de Aforo' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
+        <button onClick={() => handleTabChange('Control de Aforo')} className={`tab-button ${selectedTab === 'Control de Aforo' ? 'flex flex-col flex-1 h-full items-center justify-center px-0 py-1 text-gray-300 font-semibold' : 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-white'}`}>
           {ControlAforoIcon(selectedTab === 'Control de Aforo')}
           Aforo
         </button>
-        <button onClick={() => handleTabChange('Crm')} className={`tab-button ${selectedTab === 'Crm' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
+        <button onClick={() => handleTabChange('Crm')} className={`tab-button ${selectedTab === 'Crm' ? 'flex flex-col flex-1 h-full items-center justify-center px-0 py-1 text-gray-300 font-semibold' : 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-white'}`}>
           {CrmIcon(selectedTab === 'Crm')}
           Crm
         </button>
-        <button onClick={() => handleTabChange('Roles')} className={`tab-button ${selectedTab === 'Roles' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
+        <button onClick={() => handleTabChange('Roles')} className={`tab-button ${selectedTab === 'Roles' ? 'flex flex-col flex-1 h-full items-center justify-center px-0 py-1 text-gray-300 font-semibold' : 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-white'}`}>
           {RolesIcon(selectedTab === 'Roles')}
           RRPP
         </button>
-        <button onClick={() => handleTabChange('Web')} className={`tab-button ${selectedTab === 'Web' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
+        <button onClick={() => handleTabChange('Web')} className={`tab-button ${selectedTab === 'Web' ? 'flex flex-col flex-1 h-full items-center justify-center px-0 py-1 text-gray-300 font-semibold' : 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-white'}`}>
           {WebIcon(selectedTab === 'Web')}
           Web
         </button>
-        <button onClick={() => handleTabChange('Reporting')} className={`tab-button ${selectedTab === 'Reporting' ? 'flex flex-col h-full items-center justify-center px-2 py-1 text-gray-300 font-semibold' : 'flex flex-col h-full items-center justify-center px-2 py-1 text-white'}`}>
+        <button onClick={() => handleTabChange('Reporting')} className={`tab-button ${selectedTab === 'Reporting' ? 'flex flex-col flex-1 h-full items-center justify-center px-0 py-1 text-gray-300 font-semibold' : 'flex flex-col flex-1 h-full items-center justify-center px-2 py-1 text-white'}`}>
           {ReportingIcon(selectedTab === 'Reporting')}
           Estadisticas
         </button>
       </div>
-      <button className="w-5 h-5 rounded-full border-[1px] border-gray-400 text-gray-600 md:hidden" onClick={handleScrollRight}>
+
+      <button className="w-5 h-5 rounded-full border-[1px] border-gray-200 text-gray-200 md:hidden" onClick={handleScrollRight}>
         <svg data-slot="icon" fill="none" strokeWidth="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
         </svg>
