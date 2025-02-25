@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react"
 import BlogComponent from "../Ayuda/BlogComponent"
 import Navbar from "../Navbar/Navbar"
+import Footer from "../Footer/IndexFooter"
 
 
 export const Ayuda: FC = () => {
@@ -21,6 +22,7 @@ export const Ayuda: FC = () => {
             <div className="flex items-center justify-center">
             <BlogComponent/>
             </div>
+            <Footer/>
             </div>
 
         </>
