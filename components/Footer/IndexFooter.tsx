@@ -6,9 +6,10 @@ const Footer: React.FC<FooterProps> = () => {
 
   
   return (
-<footer className="w-full bg-[#6096B9] text-white py-10 px-4 md:px-10 flex flex-col items-start mx-auto">
+<footer className="w-full bg-[#6096B9] text-white py-10 px-4 md:px-10 flex flex-col items-center mx-auto">
+<div className="w-full flex flex-col items-start md:max-w-[1100px]">
       {/* Primera sección: EventosOrganizador */}
-      <section className="w-full flex-1 flex flex-row justify-center md:justify-start md:items-start gap-20 md:gap-20 gap-2 max-w-md md:text-base text-xs">
+      <section className="w-full flex-1 flex flex-row justify-center md:justify-start md:items-start gap-20 md:gap-20 max-w-md md:text-base text-xs">
 
         <div className="flex flex-col gap-2 ">
         <a href="#" className="font-bold md:text-xl text-base mb-4">Informacion</a>
@@ -88,7 +89,8 @@ const Footer: React.FC<FooterProps> = () => {
       </a>
     </div>
   </div>
-</section>
+    </section>
+  </div>
     </footer>
   );
 };
