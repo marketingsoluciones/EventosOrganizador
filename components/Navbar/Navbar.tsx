@@ -28,6 +28,7 @@ export const menuItems = [
 
 const Navbar: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenSoluciones, setIsOpenSoluciones] = useState(false);
   const router = useRouter(); // Initialize useRouter
 
   const handleToggleMenu = () => {
@@ -40,7 +41,6 @@ const Navbar: FC = () => {
 
   const menuItems2 = [
     { title: 'Inicio', href: '/',},
-    { title: 'Soluciones', href: '', Component:<Ayuda/>},
     { title: 'Contacto', href: '/contacto',},
 
   ];
@@ -75,27 +75,45 @@ const Navbar: FC = () => {
         </button>
       </div>
 
-      {/* Menú desplegable (móvil) */}
-      <div className="flex w-auto md:hidden z-50">
-        <button
-          className={`flex flex-row items-center justify-center w-auto h-12 rounded-full ${isOpen ? 'bg-white' : 'bg-transparent'} hover:bg-gray-100`}
-          onClick={handleToggleMenu}
-        >
-          {isOpen ? <XIcon className="h-6 w-6 text-black" /> : <MenuIcon className="h-6 w-6 text-black" />}
-        </button>
+{/* Menú desplegable (móvil) */}
+<div className="flex w-auto md:hidden z-50">
+  <button
+    className={`flex flex-row items-center justify-center w-auto h-12 rounded-full ${isOpen ? 'bg-white' : 'bg-transparent'} hover:bg-gray-100`}
+    onClick={handleToggleMenu}
+  >
+    {isOpen ? <XIcon className="h-6 w-6 text-black" /> : <MenuIcon className="h-6 w-6 text-black" />}
+  </button>
 
-        {isOpen && ( // Render menu only when open
-          <div className="absolute bottom-0 left-0 right-0 top-6 h-[100px] bg-white shadow-md rounded-lg overflow-visible mt-1">
-            <ul className="flex flex-col space-y-1 px-4 py-2">
-              {menuItems2.map((item) => (
-                <li key={item.title} className="text-gray-700 hover:text-gray-900">
-                  <a href={item.href}>{item.title}</a>
-                </li>
-              ))}
+  {isOpen && ( // Render menu only when open
+    <div className="absolute top-16 left-0 right-0 bg-white shadow-md rounded-lg overflow-hidden transition-all duration-300 ease-in-out">
+      <ul className="flex flex-col space-y-1 px-4 py-2">
+        {menuItems2.map((item) => (
+          <li key={item.title} className="text-gray-700 hover:text-gray-900">
+            <a href={item.href}>{item.title}</a>
+          </li>
+        ))}
+        <li className="text-gray-700 hover:text-gray-900">
+          <button className="w-full text-left" onClick={() => setIsOpenSoluciones(!isOpenSoluciones)}>
+            Soluciones
+          </button>
+          {isOpenSoluciones && (
+            <ul className="flex flex-col space-y-1 pl-4">
+              <li className="text-gray-700 hover:text-gray-900">
+                <a href="/socials">Eventos Sociales</a>
+              </li>
+              <li className="text-gray-700 hover:text-gray-900">
+                <a href="/tiketing">Eventos de Tiketing</a>
+              </li>
+              <li className="text-gray-700 hover:text-gray-900">
+                <a href="/help">Ayuda</a>
+              </li>
             </ul>
-          </div>
-        )}
-      </div>
+          )}
+        </li>
+      </ul>
+    </div>
+  )}
+</div>
     </nav>
   );
 };
