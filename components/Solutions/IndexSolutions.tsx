@@ -185,13 +185,13 @@ const Seccion4: FC =  () => {
   ]
   return (
   <div className="self-stretch w-full max-w-[1200px] mx-auto flex flex-col items-start justify-start py-20 px-4 box-border gap-14">
-    <div className="w-full flex flex-col items-center justify-center">
-      <p className="text-[16px] font-semibold text-[#6096B9]">
-        ¿Eres proveedor de servicios para eventos? Te ofrecemos
+    <div className="w-full flex flex-col items-center justify-center text-center">
+      <p className="text-[#6096B9] font-semibold uppercase text-sm tracking-wide mb-3">
+        Para proveedores de servicios
       </p>
-      <p className="text-[32px] font-semibold text-[#444444]">
-        +4 funciones para ayudarte a vender más
-      </p>
+      <h2 className="text-3xl md:text-4xl font-bold text-[#2d3748]">
+        Funciones especiales para ayudarte a vender más
+      </h2>
     </div>
 
     <div className="self-stretch w-full flex md:flex-row flex-col items-center justify-start md:gap-6 gap-3">

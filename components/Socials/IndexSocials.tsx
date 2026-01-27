@@ -23,8 +23,8 @@ const Socials: FC<propsSeccion5> =  ({componentState, setComponentState}) => {
       <TabG1 componentState={componentState} setComponentState={setComponentState}/>
 
       </div>
-      <button className="cursor-pointer flex items-center justify-center bg-yellow-500 hover:bg-yellow-600 text-lg text-white rounded-full py-[8px] px-[24px] ">
-      <a href="https://app.eventosorganizador.com/">Crear un evento social </a>
+      <button className="cursor-pointer flex items-center justify-center bg-[#6096B9] hover:bg-[#4b7591] text-base text-white rounded-full py-3 px-8 transition-colors duration-300 shadow-md hover:shadow-lg">
+      <a href="https://app.eventosorganizador.com/">Crear un evento social</a>
       </button>
 
     </div>

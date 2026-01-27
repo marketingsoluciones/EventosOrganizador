@@ -86,25 +86,25 @@ export default function Home() {
 
   return (
 
-    <div className="w-full flex flex-col bg-white text-black items-center justify-items-center min-h-screen pt-8 gap-4">
+    <div className="w-full flex flex-col bg-white text-black items-center justify-items-center min-h-screen pt-8">
       <Navbar/>
-      
+
       <div className="self-stretch flex items-center justify-center">
       <Header/>
       </div>
-      <div className="self-stretch flex items-center justify-center">
+      <div className="self-stretch flex items-center justify-center border-t border-gray-200">
       <Informations/>
       </div>
-      <div className="self-stretch flex items-center justify-center">
+      <div className="self-stretch flex items-center justify-center border-t border-gray-200">
       <Socials/>
       </div>
-      <div className="self-stretch flex items-center justify-center">
+      <div className="self-stretch flex items-center justify-center border-t border-gray-200">
       <Ticketing/>
       </div>
-      <div className="self-stretch flex items-center justify-center">
+      <div className="self-stretch flex items-center justify-center border-t border-gray-200">
       <Testimonies/>
       </div>
-      <div className="self-stretch flex items-center justify-center">
+      <div className="self-stretch flex items-center justify-center border-t border-gray-200">
       <Solutions/>
       </div>
       
