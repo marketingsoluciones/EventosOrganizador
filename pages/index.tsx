@@ -7,6 +7,7 @@ import Header from "@/components/Header/IndexHeader";
 import Socials from "@/components/Socials/IndexSocials";
 import Ticketing from "@/components/Ticketing/IndexTicketing";
 import Solutions from "@/components/Solutions/IndexSolutions";
+import ProductFeatures from "@/components/Solutions/ProductFeatures";
 import Testimonies from "@/components/Testimonies/IndexTestim";
 import Footer from "@/components/Footer/IndexFooter";
 import Informations from "@/components/Informations/IndexInfo";
@@ -106,6 +107,9 @@ export default function Home() {
       </div>
       <div className="self-stretch flex items-center justify-center border-t border-gray-200">
       <Solutions/>
+      </div>
+      <div className="self-stretch flex items-center justify-center border-t border-gray-200 bg-gray-50">
+      <ProductFeatures/>
       </div>
       
       

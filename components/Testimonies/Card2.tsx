@@ -1,16 +1,21 @@
 import React, { FC } from 'react';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 
-interface props 
+interface props
 {
     items: any;
 }
 
 
 const Card2: FC<props> = ({items}) => {
-
+  const { ref, isVisible } = useScrollReveal({ threshold: 0.2 });
 
   return (
-    <div className="group w-full max-w-[300px] min-h-[340px] flex flex-col rounded-2xl bg-white shadow-lg hover:shadow-2xl items-start justify-between py-8 px-7 gap-5 border border-gray-100 hover:border-[#6096B9] transition-all duration-500 hover:scale-105 relative overflow-hidden">
+    <div
+      ref={ref}
+      className={`group w-full max-w-[300px] min-h-[340px] flex flex-col rounded-2xl bg-white shadow-lg hover:shadow-2xl items-start justify-between py-8 px-7 gap-5 border border-gray-100 hover:border-[#6096B9] transition-all duration-500 hover:scale-105 relative overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      style={{ transition: 'opacity 0.6s ease-out, transform 0.6s ease-out' }}
+    >
 
       {/* Decorative gradient overlay */}
       <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#6096B9]/10 to-transparent rounded-full blur-2xl transition-all duration-500 group-hover:scale-150"></div>

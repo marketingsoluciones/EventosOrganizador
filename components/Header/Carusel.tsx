@@ -29,8 +29,9 @@ export const CaruselPrincipal = () => {
       spaceBetween={30}
       slidesPerView={3}
       loop={true}
+      speed={800}
       autoplay={{
-        delay: 3000,
+        delay: 4000,
         disableOnInteraction: false,
         pauseOnMouseEnter: true
       }}
@@ -41,10 +42,10 @@ export const CaruselPrincipal = () => {
       }}
       effect="coverflow"
       coverflowEffect={{
-        rotate: 5,
+        rotate: 8,
         stretch: 0,
-        depth: 180,
-        modifier: 1,
+        depth: 200,
+        modifier: 1.2,
         slideShadows: false,
       }}
       breakpoints={{
@@ -52,16 +53,31 @@ export const CaruselPrincipal = () => {
           slidesPerView: 1.1,
           spaceBetween: 20,
           centeredSlides: true,
+          coverflowEffect: {
+            rotate: 5,
+            depth: 150,
+            modifier: 1,
+          }
         },
         480: {
           slidesPerView: 1.2,
           spaceBetween: 20,
           centeredSlides: true,
+          coverflowEffect: {
+            rotate: 6,
+            depth: 160,
+            modifier: 1,
+          }
         },
         640: {
           slidesPerView: 1.4,
           spaceBetween: 25,
           centeredSlides: true,
+          coverflowEffect: {
+            rotate: 7,
+            depth: 180,
+            modifier: 1.1,
+          }
         },
         768: {
           slidesPerView: 1.8,
