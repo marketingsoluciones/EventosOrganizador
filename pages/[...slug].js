@@ -4,25 +4,16 @@ import { menuItems } from "../components/Navbar/Navbar"
 
 const BusinessSlug = ({ props }) => {
   const router = useRouter()
-  console.log(100410, router.query, menuItems)
 
   const [optionSelect, setOptionSelect] = useState(0);
 
   useEffect(() => {
-    console.log(optionSelect)
-  }, [optionSelect])
-
-  useEffect(() => {
     const pathNames = window.location.pathname.split("/").filter(item => item !== '')
-    console.log(100420, pathNames)
-    console.log(1004, router.query.slug)
-    const f1 = menuItems.findIndex(elem => elem.slug === `/${router.query.slug[0]}`)
+    const f1 = menuItems.findIndex(elem => elem.slug === `/${router.query.slug?.[0]}`)
     if (f1 > -1) {
       setOptionSelect(f1)
-    } else {
-      router.push(`/${router.route.split("/")[1]}/${dataComponents[0].slug}`)
     }
-  }, [router]) 
+  }, [router.query.slug]) 
 /* 
   const dataComponents = [
     {
