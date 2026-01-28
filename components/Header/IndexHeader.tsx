@@ -41,7 +41,7 @@ const Header: FC = () => {
           Con EventosOrganizador.com crea tus eventos, comparte, colabora, invita y difunde de manera profesional.
         </div>
 
-        <div className='flex md:flex-row flex-col items-stretch md:items-center justify-center gap-3 md:gap-4 mt-6 md:mt-8 w-full max-w-[500px] md:max-w-none px-2 animate-fade-in' style={{animationDelay: '0.3s'}}>
+        <div className='flex md:flex-row flex-col items-stretch md:items-center justify-center gap-3 md:gap-4 mt-6 md:mt-8 w-full max-w-[650px] md:max-w-none px-2 animate-fade-in' style={{animationDelay: '0.3s'}}>
           <button className="group relative flex items-center justify-center bg-gradient-to-r from-[#6096B9] to-[#4b7591] text-white font-medium text-[16px] md:text-[17px] py-4 md:py-[17px] px-7 md:px-9 gap-2 md:gap-3 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] overflow-hidden w-full md:w-auto button-press ripple-effect">
             <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
             <a href="https://app.eventosorganizador.com/" className="relative flex items-center justify-center gap-2 md:gap-3 z-10 w-full">
@@ -49,6 +49,14 @@ const Header: FC = () => {
               <svg className='w-5 h-5 group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0' fill="none" strokeWidth="2.5" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
               </svg>
+            </a>
+          </button>
+          <button className="group flex items-center justify-center bg-green-600 text-white font-medium text-[16px] md:text-[17px] py-4 md:py-[17px] px-7 md:px-9 gap-2 md:gap-3 rounded-xl hover:bg-green-700 transition-all duration-300 hover:scale-[1.02] shadow-md hover:shadow-xl w-full md:w-auto button-press">
+            <a href="/agendar-reunion" className="flex items-center justify-center gap-2 md:gap-3 w-full">
+              <svg className='w-5 h-5 flex-shrink-0' fill="none" strokeWidth="2.5" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"></path>
+              </svg>
+              <span className="whitespace-nowrap">Agendar Reunión</span>
             </a>
           </button>
           <button className="group flex items-center justify-center bg-white text-[#6096B9] border-2 border-[#6096B9] font-medium text-[16px] md:text-[17px] py-4 md:py-[17px] px-7 md:px-9 gap-2 md:gap-3 rounded-xl hover:bg-[#6096B9] hover:text-white transition-all duration-300 hover:scale-[1.02] shadow-md hover:shadow-xl w-full md:w-auto button-press smooth-color">
