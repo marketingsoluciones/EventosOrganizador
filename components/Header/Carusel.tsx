@@ -9,6 +9,7 @@ import Card1 from './Card'; // Import your Card component
 
 export const CaruselPrincipal = () => {
     const cards = [
+        { title: '¿Qué eventos creamos hoy?', ubication: "", imgUrl: '', color: "bg-gradient-to-br from-[#6096B9] via-[#4b7591] to-[#6096B9]", isIntro: true },
         { title: 'Bodas', ubication: "absolute left-[18px] right-0 top-[5px] bottom-0", imgUrl: 'https://imagedelivery.net/EfbdVs7eFECYhyroHhep9w/32a4df11-f3b6-493b-1d17-69a550d7cd00/public', color: "bg-gradient-to-br from-[#FF6B9D] via-[#C239B3] to-[#6096B9]" },
         { title: 'Cumpleaños', ubication: "absolute left-[16px] right-0 top-[9px] bottom-0 ", imgUrl: 'https://imagedelivery.net/EfbdVs7eFECYhyroHhep9w/2c9e41b7-0e7b-4a0b-9234-7061e299b600/public', color: 'bg-gradient-to-br from-[#FFA07A] via-[#FF6B9D] to-[#FF1493]' },
         { title: 'BeachClubs', ubication: "absolute left-[26px] right-0 top-[35px] bottom-0", imgUrl: 'https://imagedelivery.net/EfbdVs7eFECYhyroHhep9w/cc253fd1-5ace-4518-e4c4-5199e7cd5000/public', color:'bg-gradient-to-br from-[#4FACFE] via-[#00F2FE] to-[#43E97B]' },

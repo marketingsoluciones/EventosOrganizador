@@ -47,7 +47,7 @@ const ConsultoresPage = () => (
     <Navbar />
     <HeroSection
       badge="Para Consultores"
-      title={<>Mientras duermes, <span style={{ color: '#6EE7B7' }}>encontramos clientes</span></>}
+      title={<>Mientras duermes, <span style={{ color: COLOR }}>encontramos clientes</span></>}
       subtitle="Prospección 24/7 de empresas que necesitan tus servicios. Pipeline de proyectos, propuestas y facturación. Todo en uno."
       primaryCTA={{ label: 'Empieza gratis 14 días', href: 'https://app.eventosorganizador.com/login?q=register&d=/' }}
       secondaryCTA={{ label: 'Solicitar demo', href: '/demo' }}
@@ -56,7 +56,15 @@ const ConsultoresPage = () => (
       color={COLOR}
     />
     <PainPointsSection painPoints={painPoints} color={COLOR} />
-    <FeatureGrid features={features} cols={3} />
+    <section className="w-full bg-white py-20 px-4">
+      <div className="max-w-[1200px] mx-auto">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Herramientas para consultores que quieren crecer</h2>
+          <p className="text-lg text-gray-600">Prospección automática, pipeline de proyectos, propuestas y facturación por hito.</p>
+        </div>
+        <FeatureGrid features={features} cols={3} />
+      </div>
+    </section>
     <TestimonialSection testimonials={testimonials} title="Caso de éxito" color={COLOR} />
     <FAQSection faqs={faqs} />
     <CTASection title="Nunca más meses sin facturar" description="Prospección automática 24/7. 14 días gratis." guarantees={['Pipeline lleno', 'Facturación integrada', 'Sin tarjeta de crédito']} color={COLOR} />

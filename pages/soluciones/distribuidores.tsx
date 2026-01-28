@@ -47,7 +47,7 @@ const DistribuidoresPage = () => (
     <Navbar />
     <HeroSection
       badge="Para Distribuidores"
-      title={<>Encuentra nuevos <span style={{ color: '#A5B4FC' }}>puntos de venta</span> por zona</>}
+      title={<>Encuentra nuevos <span style={{ color: COLOR }}>puntos de venta</span> por zona</>}
       subtitle="Localiza establecimientos, gestiona catálogo con precios por cliente e inventario multi-almacén. Tu fuerza comercial potenciada."
       primaryCTA={{ label: 'Empieza gratis 14 días', href: 'https://app.eventosorganizador.com/login?q=register&d=/' }}
       secondaryCTA={{ label: 'Solicitar demo', href: '/demo' }}
@@ -56,7 +56,15 @@ const DistribuidoresPage = () => (
       color={COLOR}
     />
     <PainPointsSection painPoints={painPoints} color={COLOR} />
-    <FeatureGrid features={features} cols={3} />
+    <section className="w-full bg-white py-20 px-4">
+      <div className="max-w-[1200px] mx-auto">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Expande tu red de distribución</h2>
+          <p className="text-lg text-gray-600">Búsqueda de puntos de venta, catálogo digital, inventario multi-almacén y facturación integrada.</p>
+        </div>
+        <FeatureGrid features={features} cols={3} />
+      </div>
+    </section>
     <TestimonialSection testimonials={testimonials} title="Caso de éxito" color={COLOR} />
     <FAQSection faqs={faqs} />
     <CTASection title="Expande tu red de distribución" description="Nuevos puntos de venta cada semana. 14 días gratis." guarantees={['Búsqueda por zona', 'Catálogo digital', 'Sin tarjeta de crédito']} color={COLOR} />

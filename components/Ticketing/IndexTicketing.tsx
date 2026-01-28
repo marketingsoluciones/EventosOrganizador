@@ -1,34 +1,39 @@
 "use client";
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import TabsGeneral from "./TabsGeneral";
+
 interface propsSeccion2 {
   componentState?: any;
   setComponentState?: any;
-
 }
 
-
-const Ticketing: FC<propsSeccion2> =  ({componentState, setComponentState}) => {
-
-
+const Ticketing: FC<propsSeccion2> = ({ componentState, setComponentState }) => {
   return (
-    <div className="w-[100%] bg-white max-w-full flex flex-col items-center justify-start pt-4 px-0 pb-[16.1px] box-border gap-[3px] tracking-[normal] leading-[normal] text-center md:text-sm text-[#6096B9] font-nunito-sans md:max-w-[1200px]  ">
-      <div className="self-stretch flex flex-row items-start justify-center py-0 pr-[21px] pl-5 text-5xl text-[#284C77]">
-        <h2 className="m-0 relative text-inherit text-[24px] tracking-[1px] leading-[32px] font-normal font-inherit">
-        Gestiona en un solo lugar <span className="font-semibold">tus eventos de ticketing</span>
-        </h2>
+    <section className="w-full bg-[#f6f9fc] py-24 px-6">
+      <div className="max-w-[1200px] mx-auto">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
+          <div className="max-w-lg">
+            <p className="text-sm font-medium text-[#6096B9] uppercase tracking-wide mb-3">Ticketing</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
+              Gestiona tus eventos de ticketing en un solo lugar
+            </h2>
+          </div>
+          <a
+            href="https://app.eventosorganizador.com/"
+            className="group inline-flex items-center gap-2 text-[15px] font-medium text-[#6096B9] hover:text-[#4b7591] transition-colors shrink-0"
+          >
+            Crear un evento de tickets
+            <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+
+        <div className="w-full rounded-lg overflow-hidden">
+          <TabsGeneral componentState={componentState} setComponentState={setComponentState} />
+        </div>
       </div>
-      <div className="self-stretch rounded-md flex flex-row items-center justify-center p-5 gap-[8px] mq975:flex-wrap">
-        
-<TabsGeneral componentState={componentState} setComponentState={setComponentState}/>
-
-      </div>
-      <button className="cursor-pointer flex items-center justify-center bg-[#6096B9] hover:bg-[#4b7591] text-base text-white rounded-full py-3 px-8 transition-colors duration-300 shadow-md hover:shadow-lg">
-      <a href="https://app.eventosorganizador.com/">Crear un evento de tickets</a>
-    </button>
-
-
-    </div>
+    </section>
   );
 };
 

@@ -36,7 +36,7 @@ const AnalyticsPage = () => {
 
       <HeroSection
         badge="Analytics"
-        title={<>Decisiones con datos, <span className="text-white/80">no con intuiciones</span></>}
+        title={<>Decisiones con datos, <span className="text-[#6096B9]">no con intuiciones</span></>}
         subtitle="Dashboards en tiempo real, audit logs completos, calidad de datos automática y exportación a cualquier formato. Tu negocio, en números."
         primaryCTA={{ label: 'Empieza gratis 14 días', href: 'https://app.eventosorganizador.com/login?q=register&d=/' }}
         secondaryCTA={{ label: 'Ver demo', href: '/demo' }}
@@ -44,17 +44,29 @@ const AnalyticsPage = () => {
         breadcrumb={[{ label: 'Funcionalidades', href: '/funcionalidades' }, { label: 'Analytics' }]}
       />
 
-      <FeatureGrid features={features} cols={2} />
+      <section className="w-full bg-white py-20 px-4">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Analiza tu negocio en profundidad</h2>
+            <p className="text-lg text-gray-600">Dashboards, auditoría, calidad de datos y exportación en todos los formatos</p>
+          </div>
+          <FeatureGrid features={features} cols={2} />
+        </div>
+      </section>
 
-      <StatsBar
-        stats={[
-          { value: 'Real-time', label: 'Dashboards WebSockets' },
-          { value: '100%', label: 'Trazabilidad' },
-          { value: 'Auto', label: 'Limpieza de datos' },
-          { value: 'PDF/XLS/API', label: 'Formatos de exportación' },
-        ]}
-        variant="gradient"
-      />
+      <section className="w-full py-16 px-4">
+        <div className="max-w-[1200px] mx-auto">
+          <StatsBar
+            stats={[
+              { value: 'Real-time', label: 'Dashboards WebSockets' },
+              { value: '100%', label: 'Trazabilidad' },
+              { value: 'Auto', label: 'Limpieza de datos' },
+              { value: 'PDF/XLS/API', label: 'Formatos de exportación' },
+            ]}
+            variant="gradient"
+          />
+        </div>
+      </section>
 
       <FAQSection faqs={faqs} />
 

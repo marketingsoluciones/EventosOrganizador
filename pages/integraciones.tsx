@@ -124,17 +124,17 @@ export default function Integraciones() {
         </section>
 
         {/* API Section */}
-        <section className="w-full bg-gray-900 py-20 px-4">
+        <section className="w-full bg-[#f6f9fc] py-20 px-4">
           <div className="max-w-[1200px] mx-auto">
             <div className="flex flex-col lg:flex-row items-start gap-12">
               <div className="flex-1">
                 <span className="inline-block px-4 py-2 bg-[#6096B9]/20 text-[#6096B9] rounded-full text-sm font-medium mb-6">
                   API para Desarrolladores
                 </span>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                   API REST completa
                 </h2>
-                <p className="text-lg text-gray-400 mb-8 leading-relaxed">
+                <p className="text-lg text-gray-500 mb-8 leading-relaxed">
                   Construye integraciones personalizadas con nuestra API documentada.
                 </p>
                 <div className="space-y-4">
@@ -144,8 +144,8 @@ export default function Integraciones() {
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
                       <div>
-                        <p className="text-white font-medium">{feature.titulo}</p>
-                        <p className="text-gray-400 text-sm">{feature.descripcion}</p>
+                        <p className="text-gray-900 font-medium">{feature.titulo}</p>
+                        <p className="text-gray-500 text-sm">{feature.descripcion}</p>
                       </div>
                     </div>
                   ))}

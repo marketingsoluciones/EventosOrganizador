@@ -38,7 +38,7 @@ const AutomatizacionesPage = () => {
 
       <HeroSection
         badge="Automatizaciones"
-        title={<>Tu negocio funciona <span className="text-white/80">mientras duermes</span></>}
+        title={<>Tu negocio funciona <span className="text-[#6096B9]">mientras duermes</span></>}
         subtitle="Colas de trabajo 24/7, workers distribuidos y jobs programados. Automatiza captación, seguimiento, facturación y todo lo repetitivo."
         primaryCTA={{ label: 'Empieza gratis 14 días', href: 'https://app.eventosorganizador.com/login?q=register&d=/' }}
         secondaryCTA={{ label: 'Ver demo', href: '/demo' }}
@@ -46,17 +46,29 @@ const AutomatizacionesPage = () => {
         breadcrumb={[{ label: 'Funcionalidades', href: '/funcionalidades' }, { label: 'Automatizaciones' }]}
       />
 
-      <FeatureGrid features={features} cols={3} />
+      <section className="w-full bg-white py-20 px-4">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Todo lo que necesitas para automatizar</h2>
+            <p className="text-lg text-gray-600">Colas, workers y triggers que trabajan por ti 24/7</p>
+          </div>
+          <FeatureGrid features={features} cols={3} />
+        </div>
+      </section>
 
-      <StatsBar
-        stats={[
-          { value: '24/7', label: 'Colas activas' },
-          { value: '∞', label: 'Automatizaciones' },
-          { value: '< 1s', label: 'Tiempo de trigger' },
-          { value: '100%', label: 'Trazabilidad' },
-        ]}
-        variant="gradient"
-      />
+      <section className="w-full py-16 px-4">
+        <div className="max-w-[1200px] mx-auto">
+          <StatsBar
+            stats={[
+              { value: '24/7', label: 'Colas activas' },
+              { value: '∞', label: 'Automatizaciones' },
+              { value: '< 1s', label: 'Tiempo de trigger' },
+              { value: '100%', label: 'Trazabilidad' },
+            ]}
+            variant="gradient"
+          />
+        </div>
+      </section>
 
       <FAQSection faqs={faqs} />
 

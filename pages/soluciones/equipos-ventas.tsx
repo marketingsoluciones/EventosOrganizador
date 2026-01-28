@@ -47,7 +47,7 @@ const EquiposVentasPage = () => (
     <Navbar />
     <HeroSection
       badge="Para Equipos de Ventas"
-      title={<>El CRM que <span className="text-white/80">genera sus propios leads</span></>}
+      title={<>El CRM que <span style={{ color: '#6096B9' }}>genera sus propios leads</span></>}
       subtitle="Tu equipo abre el CRM por la mañana y encuentra leads nuevos con scoring. Solo tienen que vender."
       primaryCTA={{ label: 'Empieza gratis 14 días', href: 'https://app.eventosorganizador.com/login?q=register&d=/' }}
       secondaryCTA={{ label: 'Solicitar demo', href: '/demo' }}
@@ -56,7 +56,15 @@ const EquiposVentasPage = () => (
       color={COLOR}
     />
     <PainPointsSection painPoints={painPoints} color={COLOR} />
-    <FeatureGrid features={features} cols={3} />
+    <section className="w-full bg-white py-20 px-4">
+      <div className="max-w-[1200px] mx-auto">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Herramientas para cerrar m&aacute;s ventas</h2>
+          <p className="text-lg text-gray-600">Scoring, pipeline visual, secuencias de email y WhatsApp integrado para tu equipo comercial.</p>
+        </div>
+        <FeatureGrid features={features} cols={3} />
+      </div>
+    </section>
     <TestimonialSection testimonials={testimonials} title="Caso de éxito" color={COLOR} />
     <FAQSection faqs={faqs} />
     <CTASection title="Pipeline lleno cada mañana" description="Leads nuevos con scoring esperando a tu equipo. 14 días gratis." guarantees={['Scoring IA', 'Pipeline Kanban', 'Sin tarjeta de crédito']} color={COLOR} />

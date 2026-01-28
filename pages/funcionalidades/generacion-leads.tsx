@@ -91,7 +91,7 @@ const GeneracionLeadsPage = () => {
 
       <HeroSection
         badge="Generación de Leads"
-        title={<>Encuentra <span className="text-white/80">1.000 leads cualificados</span> en 48 horas</>}
+        title={<>Encuentra <span className="text-[#6096B9]">1.000 leads cualificados</span> en 48 horas</>}
         subtitle="Conecta con Google Places, Yelp, Foursquare y más. La cola 24/7 busca, enriquece y verifica contactos mientras duermes."
         primaryCTA={{ label: 'Empieza gratis 14 días', href: 'https://app.eventosorganizador.com/login?q=register&d=/' }}
         secondaryCTA={{ label: 'Ver demo', href: '/demo' }}
@@ -189,15 +189,19 @@ const GeneracionLeadsPage = () => {
         </div>
       </section>
 
-      <StatsBar
-        stats={[
-          { value: '+1.000', label: 'Leads por semana' },
-          { value: '6', label: 'Fuentes de datos' },
-          { value: '95%', label: 'Emails válidos' },
-          { value: '24/7', label: 'Cola activa' },
-        ]}
-        variant="gradient"
-      />
+      <section className="w-full py-16 px-4">
+        <div className="max-w-[1200px] mx-auto">
+          <StatsBar
+            stats={[
+              { value: '+1.000', label: 'Leads por semana' },
+              { value: '6', label: 'Fuentes de datos' },
+              { value: '95%', label: 'Emails válidos' },
+              { value: '24/7', label: 'Cola activa' },
+            ]}
+            variant="gradient"
+          />
+        </div>
+      </section>
 
       <FAQSection faqs={faqs} />
 

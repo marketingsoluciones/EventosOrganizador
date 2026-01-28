@@ -49,7 +49,7 @@ const FinanzasPage = () => {
 
       <HeroSection
         badge="Finanzas + OCR"
-        title={<>Foto de factura → <span className="text-white/80">datos en 5 segundos</span></>}
+        title={<>Foto de factura → <span className="text-[#6096B9]">datos en 5 segundos</span></>}
         subtitle="OCR con Claude Vision, facturación automática, wallet Stripe y tesorería multi-cuenta. Tu departamento financiero con IA."
         primaryCTA={{ label: 'Empieza gratis 14 días', href: 'https://app.eventosorganizador.com/login?q=register&d=/' }}
         secondaryCTA={{ label: 'Ver demo', href: '/demo' }}
@@ -77,17 +77,29 @@ const FinanzasPage = () => {
         </div>
       </section>
 
-      <FeatureGrid features={features} cols={3} />
+      <section className="w-full bg-white py-20 px-4">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Herramientas financieras con IA</h2>
+            <p className="text-lg text-gray-600">Facturación, cobros, tesorería y reconciliación automatizados</p>
+          </div>
+          <FeatureGrid features={features} cols={3} />
+        </div>
+      </section>
 
-      <StatsBar
-        stats={[
-          { value: '5s', label: 'OCR por factura' },
-          { value: '-80%', label: 'Tiempo admin' },
-          { value: '95%', label: 'Precisión OCR' },
-          { value: 'Multi', label: 'Cuentas bancarias' },
-        ]}
-        variant="gradient"
-      />
+      <section className="w-full py-16 px-4">
+        <div className="max-w-[1200px] mx-auto">
+          <StatsBar
+            stats={[
+              { value: '5s', label: 'OCR por factura' },
+              { value: '-80%', label: 'Tiempo admin' },
+              { value: '95%', label: 'Precisión OCR' },
+              { value: 'Multi', label: 'Cuentas bancarias' },
+            ]}
+            variant="gradient"
+          />
+        </div>
+      </section>
 
       <FAQSection faqs={faqs} />
 

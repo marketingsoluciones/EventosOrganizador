@@ -41,7 +41,7 @@ const CRMPage = () => {
 
       <HeroSection
         badge="CRM Pipeline"
-        title={<>El CRM que <span className="text-white/80">genera sus propios leads</span></>}
+        title={<>El CRM que <span className="text-[#6096B9]">genera sus propios leads</span></>}
         subtitle="Pipeline Kanban visual con scoring automático, campañas multicanal y datos en tiempo real. No solo gestiona contactos: los encuentra por ti."
         primaryCTA={{ label: 'Empieza gratis 14 días', href: 'https://app.eventosorganizador.com/login?q=register&d=/' }}
         secondaryCTA={{ label: 'Ver demo', href: '/demo' }}
@@ -49,17 +49,29 @@ const CRMPage = () => {
         breadcrumb={[{ label: 'Funcionalidades', href: '/funcionalidades' }, { label: 'CRM Pipeline' }]}
       />
 
-      <FeatureGrid features={features} cols={3} />
+      <section className="w-full bg-white py-20 px-4">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Todo lo que necesitas para vender más</h2>
+            <p className="text-lg text-gray-600">Herramientas integradas para gestionar tu pipeline de ventas de principio a fin</p>
+          </div>
+          <FeatureGrid features={features} cols={3} />
+        </div>
+      </section>
 
-      <StatsBar
-        stats={[
-          { value: '+40%', label: 'Más conversión' },
-          { value: '0-100', label: 'Scoring automático' },
-          { value: '< 1s', label: 'Actualización real-time' },
-          { value: '∞', label: 'Pipelines personalizados' },
-        ]}
-        variant="gradient"
-      />
+      <section className="w-full py-16 px-4">
+        <div className="max-w-[1200px] mx-auto">
+          <StatsBar
+            stats={[
+              { value: '+40%', label: 'Más conversión' },
+              { value: '0-100', label: 'Scoring automático' },
+              { value: '< 1s', label: 'Actualización real-time' },
+              { value: '∞', label: 'Pipelines personalizados' },
+            ]}
+            variant="gradient"
+          />
+        </div>
+      </section>
 
       <FAQSection faqs={faqs} />
 

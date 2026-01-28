@@ -81,14 +81,22 @@ const FuncionalidadesPage = () => {
 
       <HeroSection
         badge="Plataforma todo en uno"
-        title={<>Todas las herramientas que necesitas, <span className="text-white/80">en un solo lugar</span></>}
+        title={<>Todas las herramientas que necesitas, <span className="text-[#6096B9]">en un solo lugar</span></>}
         subtitle="7 módulos integrados para captar leads, gestionar clientes, facturar y analizar tu negocio. Sin integraciones rotas ni datos dispersos."
         primaryCTA={{ label: 'Empieza gratis 14 días', href: 'https://app.eventosorganizador.com/login?q=register&d=/' }}
         secondaryCTA={{ label: 'Ver demo', href: '/demo' }}
         benefits={['Sin tarjeta de crédito', '7 módulos incluidos', 'Soporte 24/7']}
       />
 
-      <FeatureGrid features={modules} cols={3} />
+      <section className="w-full bg-white py-20 px-4">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">7 módulos integrados</h2>
+            <p className="text-lg text-gray-600">Cada módulo funciona por separado, pero juntos son imparables</p>
+          </div>
+          <FeatureGrid features={modules} cols={3} />
+        </div>
+      </section>
 
       <PainPointsSection painPoints={painPoints} />
 

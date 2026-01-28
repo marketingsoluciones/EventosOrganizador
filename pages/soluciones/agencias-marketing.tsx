@@ -47,7 +47,7 @@ const AgenciasMarketingPage = () => (
     <Navbar />
     <HeroSection
       badge="Para Agencias"
-      title={<>Genera <span style={{ color: '#FFD4A0' }}>1.000 leads</span> para cualquier sector en 48h</>}
+      title={<>Genera <span style={{ color: COLOR }}>1.000 leads</span> para cualquier sector en 48h</>}
       subtitle="Ofrece generación de leads como servicio premium. Marca blanca, reporting por cliente y facturación integrada. Todo en una plataforma."
       primaryCTA={{ label: 'Empieza gratis 14 días', href: 'https://app.eventosorganizador.com/login?q=register&d=/' }}
       secondaryCTA={{ label: 'Solicitar demo', href: '/demo' }}
@@ -56,7 +56,15 @@ const AgenciasMarketingPage = () => (
       color={COLOR}
     />
     <PainPointsSection painPoints={painPoints} color={COLOR} />
-    <FeatureGrid features={features} cols={3} />
+    <section className="w-full bg-white py-20 px-4">
+      <div className="max-w-[1200px] mx-auto">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Todo lo que tu agencia necesita</h2>
+          <p className="text-lg text-gray-600">Genera leads, gestiona clientes y factura desde una sola plataforma en marca blanca.</p>
+        </div>
+        <FeatureGrid features={features} cols={3} />
+      </div>
+    </section>
     <TestimonialSection testimonials={testimonials} title="Caso de éxito" color={COLOR} />
     <FAQSection faqs={faqs} />
     <CTASection title="Potencia tu agencia" description="Genera leads para tus clientes desde hoy. 14 días gratis." guarantees={['Marca blanca', 'Multi-cliente', 'Sin tarjeta de crédito']} color={COLOR} />

@@ -38,7 +38,7 @@ const ERPPage = () => {
 
       <HeroSection
         badge="ERP"
-        title={<>Gestiona productos, inventario y proveedores <span className="text-white/80">en un solo lugar</span></>}
+        title={<>Gestiona productos, inventario y proveedores <span className="text-[#6096B9]">en un solo lugar</span></>}
         subtitle="Catálogo con variantes, inventario multi-almacén, listas de precios inteligentes y directorio de proveedores. Todo conectado con tu CRM."
         primaryCTA={{ label: 'Empieza gratis 14 días', href: 'https://app.eventosorganizador.com/login?q=register&d=/' }}
         secondaryCTA={{ label: 'Ver demo', href: '/demo' }}
@@ -46,17 +46,29 @@ const ERPPage = () => {
         breadcrumb={[{ label: 'Funcionalidades', href: '/funcionalidades' }, { label: 'ERP' }]}
       />
 
-      <FeatureGrid features={features} cols={3} />
+      <section className="w-full bg-white py-20 px-4">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Gestión integral de tu negocio</h2>
+            <p className="text-lg text-gray-600">Productos, inventario, precios y proveedores en una sola plataforma</p>
+          </div>
+          <FeatureGrid features={features} cols={3} />
+        </div>
+      </section>
 
-      <StatsBar
-        stats={[
-          { value: '∞', label: 'Productos y variantes' },
-          { value: 'Multi', label: 'Almacenes' },
-          { value: 'Auto', label: 'Precios dinámicos' },
-          { value: '100%', label: 'Integrado con CRM' },
-        ]}
-        variant="gradient"
-      />
+      <section className="w-full py-16 px-4">
+        <div className="max-w-[1200px] mx-auto">
+          <StatsBar
+            stats={[
+              { value: '∞', label: 'Productos y variantes' },
+              { value: 'Multi', label: 'Almacenes' },
+              { value: 'Auto', label: 'Precios dinámicos' },
+              { value: '100%', label: 'Integrado con CRM' },
+            ]}
+            variant="gradient"
+          />
+        </div>
+      </section>
 
       <FAQSection faqs={faqs} />
 

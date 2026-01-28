@@ -47,7 +47,7 @@ const FinanzasSolucionPage = () => (
     <Navbar />
     <HeroSection
       badge="Para Finanzas"
-      title={<>Foto de factura → <span style={{ color: '#FDE68A' }}>datos en 5 segundos</span></>}
+      title={<>Foto de factura → <span style={{ color: COLOR }}>datos en 5 segundos</span></>}
       subtitle="OCR con Claude Vision, reconciliación automática y tesorería multi-cuenta. Tu departamento financiero potenciado con IA."
       primaryCTA={{ label: 'Empieza gratis 14 días', href: 'https://app.eventosorganizador.com/login?q=register&d=/' }}
       secondaryCTA={{ label: 'Solicitar demo', href: '/demo' }}
@@ -56,7 +56,15 @@ const FinanzasSolucionPage = () => (
       color={COLOR}
     />
     <PainPointsSection painPoints={painPoints} color={COLOR} />
-    <FeatureGrid features={features} cols={3} />
+    <section className="w-full bg-white py-20 px-4">
+      <div className="max-w-[1200px] mx-auto">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Finanzas potenciadas con IA</h2>
+          <p className="text-lg text-gray-600">OCR, facturación automática, tesorería multi-cuenta y reconciliación en tiempo real.</p>
+        </div>
+        <FeatureGrid features={features} cols={3} />
+      </div>
+    </section>
     <TestimonialSection testimonials={testimonials} title="Caso de éxito" color={COLOR} />
     <FAQSection faqs={faqs} />
     <CTASection title="Automatiza tus finanzas con IA" description="OCR, facturación y reconciliación. 14 días gratis." guarantees={['OCR Claude Vision', 'Multi-cuenta', 'Sin tarjeta de crédito']} color={COLOR} />

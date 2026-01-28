@@ -7,11 +7,25 @@ interface CardProps {
     imgUrl: string;
     color: string;
     ubication: string;
+    isIntro?: boolean;
 };
 }
 
 const Card1: React.FC<CardProps> = ({ item }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
+
+  if (item.isIntro) {
+    return (
+      <div className="w-[340px] h-[420px] relative flex flex-col items-center justify-center bg-gradient-to-br from-[#6096B9] via-[#4b7591] to-[#6096B9] rounded-2xl overflow-hidden cursor-pointer group shadow-2xl">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+')] opacity-60" />
+        <span className="text-white/70 text-sm font-medium mb-4">EventosOrganizador</span>
+        <h3 className="text-3xl md:text-4xl font-bold text-white text-center px-8 leading-tight drop-shadow-lg">
+          ¿Qué eventos<br />creamos hoy?
+        </h3>
+        <div className="mt-6 w-12 h-1 bg-white/40 rounded-full" />
+      </div>
+    );
+  }
 
   return (
     <div className="w-[340px] h-[420px] relative flex flex-col bg-white shadow-2xl rounded-2xl overflow-hidden transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_35px_90px_rgba(96,150,185,0.25)] cursor-pointer group">

@@ -47,7 +47,7 @@ const StartupsPage = () => (
     <Navbar />
     <HeroSection
       badge="Para Startups"
-      title={<>Tu primer SDR <span style={{ color: '#C4B5FD' }}>que no cobra sueldo</span></>}
+      title={<>Tu primer SDR <span style={{ color: COLOR }}>que no cobra sueldo</span></>}
       subtitle="CRM + generación de leads + facturación por €49/mes. Una herramienta, un precio, cero excusas para no vender."
       primaryCTA={{ label: 'Empieza gratis 14 días', href: 'https://app.eventosorganizador.com/login?q=register&d=/' }}
       secondaryCTA={{ label: 'Solicitar demo', href: '/demo' }}
@@ -56,7 +56,15 @@ const StartupsPage = () => (
       color={COLOR}
     />
     <PainPointsSection painPoints={painPoints} color={COLOR} />
-    <FeatureGrid features={features} cols={3} />
+    <section className="w-full bg-white py-20 px-4">
+      <div className="max-w-[1200px] mx-auto">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Todo lo que necesitas por €49/mes</h2>
+          <p className="text-lg text-gray-600">CRM, generación de leads, facturación y automatizaciones en una sola herramienta.</p>
+        </div>
+        <FeatureGrid features={features} cols={3} />
+      </div>
+    </section>
     <TestimonialSection testimonials={testimonials} title="Caso de éxito" color={COLOR} />
     <FAQSection faqs={faqs} />
     <CTASection title="Empieza a vender, no a buscar" description="Tu SDR virtual trabaja 24/7. 14 días gratis." guarantees={['€49/mes', '15 min setup', 'Sin tarjeta de crédito']} color={COLOR} />

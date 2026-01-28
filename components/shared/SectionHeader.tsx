@@ -26,7 +26,7 @@ const SectionHeader: FC<SectionHeaderProps> = ({
         {title}
       </h2>
       {description && (
-        <p className="text-gray-600 text-lg leading-relaxed">
+        <p className="text-gray-500 text-lg leading-relaxed">
           {description}
         </p>
       )}

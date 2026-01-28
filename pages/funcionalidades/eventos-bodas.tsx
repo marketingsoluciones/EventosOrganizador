@@ -40,7 +40,7 @@ const EventosBodasPage = () => {
 
       <HeroSection
         badge="Eventos y Bodas"
-        title={<>El único CRM que <span className="text-white/80">entiende de bodas</span></>}
+        title={<>El único CRM que <span className="text-[#6096B9]">entiende de bodas</span></>}
         subtitle="Gestiona invitados con RSVP digital, menús con alérgenos, proveedores con ratings y calendario integrado. Diseñado por y para wedding planners."
         primaryCTA={{ label: 'Empieza gratis 14 días', href: 'https://app.eventosorganizador.com/login?q=register&d=/' }}
         secondaryCTA={{ label: 'Ver demo', href: '/demo' }}
@@ -49,18 +49,30 @@ const EventosBodasPage = () => {
         color="#EC4899"
       />
 
-      <FeatureGrid features={features} cols={3} />
+      <section className="w-full bg-white py-20 px-4">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Todo para organizar eventos perfectos</h2>
+            <p className="text-lg text-gray-600">Invitados, catering, proveedores y calendario en un solo lugar</p>
+          </div>
+          <FeatureGrid features={features} cols={3} />
+        </div>
+      </section>
 
-      <StatsBar
-        stats={[
-          { value: '+200', label: 'Bodas gestionadas/año' },
-          { value: 'RSVP', label: 'Digital integrado' },
-          { value: '100%', label: 'Control del evento' },
-          { value: '∞', label: 'Invitados por boda' },
-        ]}
-        variant="gradient"
-        color="#EC4899"
-      />
+      <section className="w-full py-16 px-4">
+        <div className="max-w-[1200px] mx-auto">
+          <StatsBar
+            stats={[
+              { value: '+200', label: 'Bodas gestionadas/año' },
+              { value: 'RSVP', label: 'Digital integrado' },
+              { value: '100%', label: 'Control del evento' },
+              { value: '∞', label: 'Invitados por boda' },
+            ]}
+            variant="gradient"
+            color="#EC4899"
+          />
+        </div>
+      </section>
 
       <FAQSection faqs={faqs} />
 

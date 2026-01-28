@@ -1,51 +1,49 @@
 import React, { FC } from 'react';
-import Card2 from './Card2';
+
+const testimonials = [
+  {
+    quote: 'Desde que utilizo Eventos Organizador, planificar eventos se ha vuelto mucho más sencillo. La interfaz es intuitiva y me permite gestionar todas las tareas en un solo lugar.',
+    name: 'María López',
+    role: 'Organizadora de eventos corporativos',
+  },
+  {
+    quote: 'Necesitaba una herramienta que me permitiera crear itinerarios personalizados. Me ha sorprendido con la cantidad de opciones de personalización que ofrece.',
+    name: 'Pedro García',
+    role: 'Wedding Planner',
+  },
+  {
+    quote: 'He logrado aumentar las ventas de mis eventos en un 30%. La herramienta de venta de entradas me permite llegar a un público más amplio.',
+    name: 'Ana Fernández',
+    role: 'Organizadora de festivales musicales',
+  },
+];
 
 const Testimonies: FC = () => {
-  const DataCard = [
-    {
-      imgColor: "text-blue-600",
-      title: "“Desde que utilizo Eventos Organizador, planificar eventos se ha vuelto mucho más sencillo. La interfaz es intuitiva y me permite gestionar todas las tareas en un solo lugar. ¡Mis asistentes están encantados con la experiencia!”",
-      tcolor: "text-blue-600",
-      nombre: "María López",
-      cargo: "Organizadora de eventos corporativos.",
-    },
-    {
-      imgColor: "text-orange-600",
-      title: "“Necesitaba una herramienta que me permitiera crear itinerarios personalizados. Eventos Organizador me ha sorprendido con la cantidad de opciones de personalización que ofrece. ¡Cada evento es una nueva aventura!”",
-      tcolor: "text-orange-600",
-      nombre: "Pedro García",
-      cargo: "Wedding Planner",
-    },
-    {
-      imgColor: "text-blue-600",
-      title: "“Gracias a Eventos Organizador, he logrado aumentar las ventas de mis eventos en un 30%. La herramienta de venta de entradas me permite llegar a un público más amplio. ¡Definitivamente la recomiendo!”",
-      tcolor: "text-blue-600",
-      nombre: "Ana Fernández",
-      cargo: "Organizadora de festivales musicales.",
-    },
-  ];
-
   return (
-<div className="w-[100%] flex flex-col bg-white items-center justify-center py-20 md:px-12 px-3 box-border max-w-[1200px] mx-auto">
-      <div className="flex flex-col items-center justify-start gap-12">
-        <div className="text-center">
-          <p className="text-[#6096B9] font-semibold uppercase text-sm tracking-wide mb-3">
-            Testimonios
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#2d3748]">
+    <section className="w-full bg-[#f6f9fc] py-24 px-6">
+      <div className="max-w-[1200px] mx-auto">
+        <div className="text-center mb-16">
+          <p className="text-sm font-medium text-[#6096B9] uppercase tracking-wide mb-3">Testimonios</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
             Lo que dicen nuestros clientes
           </h2>
         </div>
-        <div className="flex md:flex-row flex-col items-center justify-center md:gap-6 gap-6">
-          {DataCard.map((item, idx) => (
-            <div key={idx}>
-              <Card2 items={item} />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((t, idx) => (
+            <div key={idx} className="bg-white rounded-lg border border-gray-200 p-8 flex flex-col">
+              <p className="text-[15px] text-gray-600 leading-relaxed flex-1 mb-6">
+                &ldquo;{t.quote}&rdquo;
+              </p>
+              <div className="border-t border-gray-100 pt-5">
+                <p className="text-sm font-semibold text-gray-900">{t.name}</p>
+                <p className="text-sm text-gray-400">{t.role}</p>
+              </div>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -141,17 +141,18 @@ const MarcaBlanca: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="w-full bg-gradient-to-r from-[#6096B9] to-[#4b7591] py-16 px-4">
-        <div className="max-w-[800px] mx-auto text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      <section className="w-full bg-[#f6f9fc] py-16 px-4">
+        <div className="max-w-[800px] mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             ¿Cómo puedo obtener la Marca Blanca?
           </h2>
-          <p className="text-xl mb-8 text-white/90">
+          <p className="text-lg text-gray-500 mb-8">
             Si estás interesado en la opción de Marca Blanca, contáctanos y te brindaremos toda la información que necesitas.
           </p>
-          <button className="px-10 py-4 bg-white text-[#6096B9] font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-xl">
-            <a href="https://meet.brevo.com/eventosorganizador-com/agenda-2025-webinar">Contáctanos ahora</a>
-          </button>
+          <a href="https://meet.brevo.com/eventosorganizador-com/agenda-2025-webinar" className="inline-flex items-center gap-2 px-8 py-4 bg-[#6096B9] text-white font-medium rounded-xl hover:bg-[#4b7591] transition-colors shadow-md">
+            Contáctanos ahora
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+          </a>
         </div>
       </section>
 

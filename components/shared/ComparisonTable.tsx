@@ -46,7 +46,7 @@ const ComparisonTable: FC<ComparisonTableProps> = ({
           {subtitle && <p className="text-lg text-gray-600 max-w-2xl mx-auto">{subtitle}</p>}
         </div>
 
-        <div className="overflow-x-auto rounded-2xl border border-gray-200">
+        <div className="overflow-x-auto rounded-lg border border-gray-200">
           <table className="w-full text-left">
             <thead>
               <tr className="border-b border-gray-200">

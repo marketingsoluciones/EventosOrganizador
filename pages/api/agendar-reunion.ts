@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { google } from 'googleapis';
+import fs from 'fs';
+import path from 'path';
 
 interface ReunionData {
   nombre: string;
@@ -8,6 +9,34 @@ interface ReunionData {
   motivo: string;
   fecha: string;
   hora: string;
+}
+
+const BOOKINGS_FILE = path.join(process.cwd(), 'data', 'reuniones.json');
+
+function getBookings(): ReunionData[] {
+  try {
+    if (fs.existsSync(BOOKINGS_FILE)) {
+      return JSON.parse(fs.readFileSync(BOOKINGS_FILE, 'utf-8'));
+    }
+  } catch {
+    // ignore
+  }
+  return [];
+}
+
+function saveBooking(booking: ReunionData & { createdAt: string }) {
+  const dir = path.dirname(BOOKINGS_FILE);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+  const bookings = getBookings();
+  bookings.push(booking as any);
+  fs.writeFileSync(BOOKINGS_FILE, JSON.stringify(bookings, null, 2));
+}
+
+function isSlotTaken(fecha: string, hora: string): boolean {
+  const bookings = getBookings();
+  return bookings.some((b: any) => b.fecha === fecha && b.hora === hora);
 }
 
 export default async function handler(
@@ -21,118 +50,37 @@ export default async function handler(
   try {
     const { nombre, email, telefono, motivo, fecha, hora }: ReunionData = req.body;
 
-    // Validaciones
     if (!nombre || !email || !telefono || !fecha || !hora) {
       return res.status(400).json({ error: 'Faltan datos obligatorios' });
     }
 
-    // Configurar Google Calendar API
-    const auth = new google.auth.GoogleAuth({
-      credentials: {
-        type: 'service_account',
-        project_id: process.env.GOOGLE_PROJECT_ID,
-        private_key_id: process.env.GOOGLE_PRIVATE_KEY_ID,
-        private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-        client_email: process.env.GOOGLE_CLIENT_EMAIL,
-        client_id: process.env.GOOGLE_CLIENT_ID,
-      },
-      scopes: ['https://www.googleapis.com/auth/calendar'],
-    });
-
-    const calendar = google.calendar({ version: 'v3', auth });
-
-    // Crear fecha y hora del evento
-    const [year, month, day] = fecha.split('-');
-    const [hours, minutes] = hora.split(':');
-
-    const startDateTime = new Date(
-      parseInt(year),
-      parseInt(month) - 1,
-      parseInt(day),
-      parseInt(hours),
-      parseInt(minutes)
-    );
-
-    // Reunión de 30 minutos
-    const endDateTime = new Date(startDateTime.getTime() + 30 * 60000);
-
-    // Verificar si el horario está disponible
-    const existingEvents = await calendar.events.list({
-      calendarId: process.env.GOOGLE_CALENDAR_ID || 'primary',
-      timeMin: startDateTime.toISOString(),
-      timeMax: endDateTime.toISOString(),
-      singleEvents: true,
-    });
-
-    if (existingEvents.data.items && existingEvents.data.items.length > 0) {
+    // Check slot availability
+    if (isSlotTaken(fecha, hora)) {
       return res.status(400).json({
         error: 'Este horario ya no está disponible. Por favor selecciona otro.'
       });
     }
 
-    // Crear evento en Google Calendar
-    const event = {
-      summary: `Reunión: ${nombre}`,
-      description: `
-📋 **Datos del Cliente:**
-- Nombre: ${nombre}
-- Email: ${email}
-- Teléfono: ${telefono}
-${motivo ? `\n📝 **Motivo:**\n${motivo}` : ''}
-
----
-Agendado desde EventosOrganizador.com
-      `.trim(),
-      start: {
-        dateTime: startDateTime.toISOString(),
-        timeZone: 'Europe/Madrid',
-      },
-      end: {
-        dateTime: endDateTime.toISOString(),
-        timeZone: 'Europe/Madrid',
-      },
-      attendees: [
-        { email: email },
-        { email: process.env.GOOGLE_ORGANIZER_EMAIL || 'eventosorganizador.com@gmail.com' }
-      ],
-      reminders: {
-        useDefault: false,
-        overrides: [
-          { method: 'email', minutes: 24 * 60 }, // 1 día antes
-          { method: 'popup', minutes: 60 }, // 1 hora antes
-        ],
-      },
-      conferenceData: {
-        createRequest: {
-          requestId: `${Date.now()}-${nombre.replace(/\s/g, '')}`,
-          conferenceSolutionKey: { type: 'hangoutsMeet' },
-        },
-      },
-    };
-
-    const response = await calendar.events.insert({
-      calendarId: process.env.GOOGLE_CALENDAR_ID || 'primary',
-      requestBody: event,
-      conferenceDataVersion: 1,
-      sendUpdates: 'all', // Envía emails a todos los asistentes
+    // Save booking
+    saveBooking({
+      nombre,
+      email,
+      telefono,
+      motivo,
+      fecha,
+      hora,
+      createdAt: new Date().toISOString()
     });
-
-    // Enviar email de confirmación adicional (opcional - usando tu propio sistema)
-    // Aquí puedes integrar SendGrid, Nodemailer, etc.
 
     return res.status(200).json({
       success: true,
       message: 'Reunión agendada exitosamente',
-      eventId: response.data.id,
-      meetLink: response.data.hangoutLink,
     });
 
   } catch (error: any) {
     console.error('Error al agendar reunión:', error);
-
     return res.status(500).json({
       error: 'Error al agendar la reunión. Por favor intenta nuevamente.',
-      details: process.env.NODE_ENV === 'development' ? error.message : undefined
     });
   }
 }

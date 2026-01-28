@@ -47,7 +47,7 @@ const VenuesPage = () => (
     <Navbar />
     <HeroSection
       badge="Para Venues"
-      title={<>Gestiona tu venue <span style={{ color: '#93C5FD' }}>como un profesional</span></>}
+      title={<>Gestiona tu venue <span style={{ color: COLOR }}>como un profesional</span></>}
       subtitle="Calendario de reservas, presupuestos automáticos en segundos y pipeline de eventos. Tu finca o venue siempre con la agenda llena."
       primaryCTA={{ label: 'Empieza gratis 14 días', href: 'https://app.eventosorganizador.com/login?q=register&d=/' }}
       secondaryCTA={{ label: 'Solicitar demo', href: '/demo' }}
@@ -56,7 +56,15 @@ const VenuesPage = () => (
       color={COLOR}
     />
     <PainPointsSection painPoints={painPoints} color={COLOR} />
-    <FeatureGrid features={features} cols={3} />
+    <section className="w-full bg-white py-20 px-4">
+      <div className="max-w-[1200px] mx-auto">
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Gestiona tu venue de forma profesional</h2>
+          <p className="text-lg text-gray-600">Calendario de reservas, presupuestos automáticos, catering y captación de clientes.</p>
+        </div>
+        <FeatureGrid features={features} cols={3} />
+      </div>
+    </section>
     <TestimonialSection testimonials={testimonials} title="Caso de éxito" color={COLOR} />
     <FAQSection faqs={faqs} />
     <CTASection title="Tu venue, siempre lleno" description="Calendario, presupuestos y captación en un solo lugar. 14 días gratis." guarantees={['Calendario online', 'Presupuestos auto', 'Sin tarjeta de crédito']} color={COLOR} />
