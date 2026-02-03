@@ -44,9 +44,10 @@ export default function Document() {
         {/* Verificación de dominio - Facebook/Meta */}
         <meta name="facebook-domain-verification" content="1405266637758081" />
 
-        {/* Favicon y Apple Touch Icon */}
+        {/* Favicon, Apple Touch Icon y PWA */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon.ico" />
+        <link rel="manifest" href="/manifest.json" />
 
         {/* Preconexiones para rendimiento */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

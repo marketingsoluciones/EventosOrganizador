@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "producto": "Produkt",
+    "soluciones": "Lösungen",
+    "precios": "Preise",
+    "demo": "Demo",
+    "iniciarSesion": "Anmelden",
+    "empiezaGratis": "Kostenlos starten"
+  },
+  "nav.producto": {
+    "generacionLeads": "Lead-Generierung",
+    "generacionLeadsDesc": "24/7-Warteschlange + 6 Datenquellen",
+    "crmPipeline": "CRM Pipeline",
+    "crmPipelineDesc": "Kanban + Scoring 0-100",
+    "erp": "ERP",
+    "erpDesc": "Katalog, Inventar, Lieferanten",
+    "finanzas": "Finanzen + OCR",
+    "finanzasDesc": "KI-gestützte Rechnungsstellung",
+    "automatizaciones": "Automatisierungen",
+    "automatizacionesDesc": "24/7-Warteschlangen und Worker",
+    "eventosBodas": "Events & Hochzeiten",
+    "eventosBodasDesc": "RSVP, Catering, Dienstleister",
+    "analytics": "Analytics",
+    "analyticsDesc": "Echtzeit-Dashboards"
+  },
+  "nav.soluciones": {
+    "agenciasMarketing": "Marketing-Agenturen",
+    "agenciasMarketingDesc": "Leads für Ihre Kunden",
+    "equiposVentas": "Vertriebsteams",
+    "equiposVentasDesc": "CRM mit Lead-Generierung",
+    "weddingPlanners": "Hochzeitsplaner",
+    "weddingPlannersDesc": "CRM für Hochzeiten",
+    "startups": "Startups",
+    "startupsDesc": "Ihr erster virtueller SDR",
+    "finanzas": "Finanzen",
+    "finanzasDesc": "OCR und KI-Rechnungsstellung",
+    "consultores": "Berater",
+    "consultoresDesc": "Nächtliche Akquise",
+    "venues": "Venues",
+    "venuesDesc": "Locationverwaltung",
+    "distribuidores": "Distributoren",
+    "distribuidoresDesc": "Neue Verkaufsstellen"
+  },
+  "hero": {
+    "badge": "Führende Plattform für Eventmanagement",
+    "question": "Welches",
+    "suffix": "heute?",
+    "rotating1": "Event gestalten wir",
+    "rotating2": "Hochzeit planen wir",
+    "rotating3": "Festival starten wir",
+    "rotating4": "Konferenz veranstalten wir",
+    "rotating5": "Erlebnis schaffen wir",
+    "subtitle": "Mit EventosOrganizador.com erstellen Sie Ihre Events, teilen, arbeiten zusammen, laden ein und bewerben professionell.",
+    "cta1": "Erstes Event erstellen",
+    "cta2": "Termin vereinbaren",
+    "cta3": "Kostenlose Master Class"
+  },
+  "footer": {
+    "description": "Die All-in-One-Plattform für die Organisation von gesellschaftlichen Events und Ticketing mit professionellen Tools.",
+    "producto": "Produkt",
+    "soluciones": "Lösungen",
+    "recursos": "Ressourcen",
+    "legal": "Rechtliches",
+    "acceso": "Zugang",
+    "funcionalidades": "Funktionen",
+    "precios": "Preise",
+    "demo": "Demo",
+    "masterClass": "Master Class",
+    "marcaBlanca": "White Label",
+    "agendarReunion": "Termin vereinbaren",
+    "contacto": "Kontakt",
+    "soporte": "24/7-Support",
+    "privacidad": "Datenschutzrichtlinie",
+    "iniciarSesion": "Anmelden",
+    "registroGratis": "Kostenlos registrieren",
+    "derechos": "Alle Rechte vorbehalten."
+  },
+  "common": {
+    "learnMore": "Mehr erfahren",
+    "getStarted": "Jetzt starten",
+    "contactUs": "Kontaktieren Sie uns"
+  }
+}

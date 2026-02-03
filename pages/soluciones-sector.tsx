@@ -1,4 +1,5 @@
 import React from 'react';
+import { GetStaticPropsContext } from 'next';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/IndexFooter';
 import Head from 'next/head';
@@ -75,6 +76,14 @@ const sectores = [
     }
   }
 ];
+
+export async function getStaticProps(context: GetStaticPropsContext) {
+  return {
+    props: {
+      messages: (await import(`../messages/${context.locale ?? 'es'}.json`)).default,
+    },
+  };
+}
 
 export default function SolucionesSector() {
   return (

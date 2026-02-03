@@ -1,4 +1,5 @@
 import React from 'react';
+import { GetStaticPropsContext } from 'next';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/IndexFooter';
 import Head from 'next/head';
@@ -42,6 +43,14 @@ const apiFeatures = [
   { titulo: 'SDKs Oficiales', descripcion: 'Librerías para JavaScript, Python, PHP y más.' },
   { titulo: 'Rate Limits Generosos', descripcion: 'Hasta 10,000 requests por minuto en planes empresariales.' }
 ];
+
+export async function getStaticProps(context: GetStaticPropsContext) {
+  return {
+    props: {
+      messages: (await import(`../messages/${context.locale ?? 'es'}.json`)).default,
+    },
+  };
+}
 
 export default function Integraciones() {
   return (

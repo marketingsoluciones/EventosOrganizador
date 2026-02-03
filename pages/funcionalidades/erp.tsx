@@ -1,4 +1,5 @@
 import React from 'react';
+import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/IndexFooter';
@@ -84,3 +85,11 @@ const ERPPage = () => {
 };
 
 export default ERPPage;
+
+export async function getStaticProps(context: GetStaticPropsContext) {
+  return {
+    props: {
+      messages: (await import(`../../messages/${context.locale ?? 'es'}.json`)).default,
+    },
+  };
+}

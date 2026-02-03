@@ -3,6 +3,7 @@ import { MenuIcon, XIcon } from '@heroicons/react/solid';
 import { Ayuda } from '../Ayuda/Ayuda';
 import { EventosSociales } from '../Socials';
 import { EventosTiketing } from '../Tiketing';
+import LanguageSelector from '../LanguageSelector/LanguageSelector';
 
 // Menú Soluciones (por tipo de evento) — legacy export
 export const menuItems = [
@@ -90,6 +91,7 @@ const Navbar: FC = () => {
 
         {/* CTAs — desktop */}
         <div className="hidden lg:flex items-center gap-2 shrink-0">
+          <LanguageSelector />
           <a href="https://app.eventosorganizador.com/login?d=/" className="px-4 py-2 text-[13px] text-gray-500 font-medium hover:text-gray-900 transition-colors rounded-full hover:bg-gray-50">
             Iniciar sesión
           </a>
@@ -126,6 +128,9 @@ const Navbar: FC = () => {
           <a href="/demo" className="block py-2.5 text-sm text-gray-700 font-medium hover:text-[#6096B9]">Demo</a>
 
           <div className="pt-4 mt-3 border-t border-gray-100 space-y-2">
+            <div className="flex items-center justify-center py-2">
+              <LanguageSelector />
+            </div>
             <a href="https://app.eventosorganizador.com/login?d=/" className="block py-2.5 text-center text-sm text-gray-700 font-medium border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
               Iniciar sesión
             </a>

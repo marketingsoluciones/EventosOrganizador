@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "producto": "Prodotto",
+    "soluciones": "Soluzioni",
+    "precios": "Prezzi",
+    "demo": "Demo",
+    "iniciarSesion": "Accedi",
+    "empiezaGratis": "Inizia gratis"
+  },
+  "nav.producto": {
+    "generacionLeads": "Generazione lead",
+    "generacionLeadsDesc": "Coda 24/7 + 6 fonti dati",
+    "crmPipeline": "CRM Pipeline",
+    "crmPipelineDesc": "Kanban + scoring 0-100",
+    "erp": "ERP",
+    "erpDesc": "Catalogo, inventario, fornitori",
+    "finanzas": "Finanza + OCR",
+    "finanzasDesc": "Fatturazione con IA",
+    "automatizaciones": "Automazioni",
+    "automatizacionesDesc": "Code e worker 24/7",
+    "eventosBodas": "Eventi e Matrimoni",
+    "eventosBodasDesc": "RSVP, catering, fornitori",
+    "analytics": "Analytics",
+    "analyticsDesc": "Dashboard in tempo reale"
+  },
+  "nav.soluciones": {
+    "agenciasMarketing": "Agenzie Marketing",
+    "agenciasMarketingDesc": "Lead per i tuoi clienti",
+    "equiposVentas": "Team commerciali",
+    "equiposVentasDesc": "CRM che genera lead",
+    "weddingPlanners": "Wedding Planner",
+    "weddingPlannersDesc": "CRM per matrimoni",
+    "startups": "Startup",
+    "startupsDesc": "Il tuo primo SDR virtuale",
+    "finanzas": "Finanza",
+    "finanzasDesc": "OCR e fatturazione IA",
+    "consultores": "Consulenti",
+    "consultoresDesc": "Prospezione notturna",
+    "venues": "Venue",
+    "venuesDesc": "Gestione delle location",
+    "distribuidores": "Distributori",
+    "distribuidoresDesc": "Nuovi punti vendita"
+  },
+  "hero": {
+    "badge": "Piattaforma leader nella gestione eventi",
+    "question": "Quale",
+    "suffix": "oggi?",
+    "rotating1": "evento creiamo",
+    "rotating2": "matrimonio organizziamo",
+    "rotating3": "festival lanciamo",
+    "rotating4": "conferenza realizziamo",
+    "rotating5": "esperienza creiamo",
+    "subtitle": "Con EventosOrganizador.com crea i tuoi eventi, condividi, collabora, invita e promuovi in modo professionale.",
+    "cta1": "Crea il tuo primo evento",
+    "cta2": "Prenota una riunione",
+    "cta3": "Master Class gratuita"
+  },
+  "footer": {
+    "description": "La piattaforma tutto-in-uno per organizzare eventi sociali e di biglietteria con strumenti professionali.",
+    "producto": "Prodotto",
+    "soluciones": "Soluzioni",
+    "recursos": "Risorse",
+    "legal": "Note legali",
+    "acceso": "Accesso",
+    "funcionalidades": "Funzionalità",
+    "precios": "Prezzi",
+    "demo": "Demo",
+    "masterClass": "Master Class",
+    "marcaBlanca": "White Label",
+    "agendarReunion": "Prenota una riunione",
+    "contacto": "Contatti",
+    "soporte": "Supporto 24/7",
+    "privacidad": "Informativa sulla privacy",
+    "iniciarSesion": "Accedi",
+    "registroGratis": "Registrazione gratuita",
+    "derechos": "Tutti i diritti riservati."
+  },
+  "common": {
+    "learnMore": "Scopri di più",
+    "getStarted": "Inizia ora",
+    "contactUs": "Contattaci"
+  }
+}

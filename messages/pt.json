@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "producto": "Produto",
+    "soluciones": "Soluções",
+    "precios": "Preços",
+    "demo": "Demo",
+    "iniciarSesion": "Entrar",
+    "empiezaGratis": "Comece grátis"
+  },
+  "nav.producto": {
+    "generacionLeads": "Geração de Leads",
+    "generacionLeadsDesc": "Fila 24/7 + 6 fontes de dados",
+    "crmPipeline": "CRM Pipeline",
+    "crmPipelineDesc": "Kanban + scoring 0-100",
+    "erp": "ERP",
+    "erpDesc": "Catálogo, inventário, fornecedores",
+    "finanzas": "Finanças + OCR",
+    "finanzasDesc": "Faturamento com IA",
+    "automatizaciones": "Automatizações",
+    "automatizacionesDesc": "Filas e workers 24/7",
+    "eventosBodas": "Eventos e Casamentos",
+    "eventosBodasDesc": "RSVP, catering, fornecedores",
+    "analytics": "Analytics",
+    "analyticsDesc": "Dashboards em tempo real"
+  },
+  "nav.soluciones": {
+    "agenciasMarketing": "Agências de Marketing",
+    "agenciasMarketingDesc": "Leads para seus clientes",
+    "equiposVentas": "Equipes de Vendas",
+    "equiposVentasDesc": "CRM que gera leads",
+    "weddingPlanners": "Wedding Planners",
+    "weddingPlannersDesc": "CRM para casamentos",
+    "startups": "Startups",
+    "startupsDesc": "Seu primeiro SDR virtual",
+    "finanzas": "Finanças",
+    "finanzasDesc": "OCR e faturamento com IA",
+    "consultores": "Consultores",
+    "consultoresDesc": "Prospecção noturna",
+    "venues": "Venues",
+    "venuesDesc": "Gestão de espaços",
+    "distribuidores": "Distribuidores",
+    "distribuidoresDesc": "Novos pontos de venda"
+  },
+  "hero": {
+    "badge": "Plataforma líder em gestão de eventos",
+    "question": "Que",
+    "suffix": "hoje?",
+    "rotating1": "evento criamos",
+    "rotating2": "casamento organizamos",
+    "rotating3": "festival lançamos",
+    "rotating4": "conferência realizamos",
+    "rotating5": "experiência criamos",
+    "subtitle": "Com EventosOrganizador.com, crie seus eventos, compartilhe, colabore, convide e divulgue de forma profissional.",
+    "cta1": "Crie seu primeiro evento",
+    "cta2": "Agendar reunião",
+    "cta3": "Master Class grátis"
+  },
+  "footer": {
+    "description": "A plataforma tudo-em-um para organizar eventos sociais e de bilheteria com ferramentas profissionais.",
+    "producto": "Produto",
+    "soluciones": "Soluções",
+    "recursos": "Recursos",
+    "legal": "Jurídico",
+    "acceso": "Acesso",
+    "funcionalidades": "Funcionalidades",
+    "precios": "Preços",
+    "demo": "Demo",
+    "masterClass": "Master Class",
+    "marcaBlanca": "Marca Branca",
+    "agendarReunion": "Agendar reunião",
+    "contacto": "Contato",
+    "soporte": "Suporte 24/7",
+    "privacidad": "Política de Privacidade",
+    "iniciarSesion": "Entrar",
+    "registroGratis": "Cadastro gratuito",
+    "derechos": "Todos os direitos reservados."
+  },
+  "common": {
+    "learnMore": "Saiba mais",
+    "getStarted": "Começar",
+    "contactUs": "Fale conosco"
+  }
+}

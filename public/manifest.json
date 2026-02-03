@@ -1,0 +1,19 @@
+{
+  "name": "EventosOrganizador",
+  "short_name": "EventosOrg",
+  "description": "Plataforma de gestión de eventos con CRM, ticketing y automatizaciones",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4F46E5",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "es"
+}

@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "producto": "Produit",
+    "soluciones": "Solutions",
+    "precios": "Tarifs",
+    "demo": "Démo",
+    "iniciarSesion": "Se connecter",
+    "empiezaGratis": "Commencer gratuitement"
+  },
+  "nav.producto": {
+    "generacionLeads": "Génération de leads",
+    "generacionLeadsDesc": "File d'attente 24h/24 + 6 sources de données",
+    "crmPipeline": "CRM Pipeline",
+    "crmPipelineDesc": "Kanban + scoring 0-100",
+    "erp": "ERP",
+    "erpDesc": "Catalogue, inventaire, fournisseurs",
+    "finanzas": "Finance + OCR",
+    "finanzasDesc": "Facturation par IA",
+    "automatizaciones": "Automatisations",
+    "automatizacionesDesc": "Files et workers 24h/24",
+    "eventosBodas": "Événements et Mariages",
+    "eventosBodasDesc": "RSVP, traiteur, prestataires",
+    "analytics": "Analytics",
+    "analyticsDesc": "Tableaux de bord en temps réel"
+  },
+  "nav.soluciones": {
+    "agenciasMarketing": "Agences Marketing",
+    "agenciasMarketingDesc": "Des leads pour vos clients",
+    "equiposVentas": "Équipes commerciales",
+    "equiposVentasDesc": "CRM générateur de leads",
+    "weddingPlanners": "Wedding Planners",
+    "weddingPlannersDesc": "CRM pour les mariages",
+    "startups": "Startups",
+    "startupsDesc": "Votre premier SDR virtuel",
+    "finanzas": "Finance",
+    "finanzasDesc": "OCR et facturation IA",
+    "consultores": "Consultants",
+    "consultoresDesc": "Prospection nocturne",
+    "venues": "Venues",
+    "venuesDesc": "Gestion de lieux",
+    "distribuidores": "Distributeurs",
+    "distribuidoresDesc": "Nouveaux points de vente"
+  },
+  "hero": {
+    "badge": "Plateforme leader de gestion d'événements",
+    "question": "Quel",
+    "suffix": "aujourd'hui ?",
+    "rotating1": "événement créons-nous",
+    "rotating2": "mariage organisons-nous",
+    "rotating3": "festival lançons-nous",
+    "rotating4": "conférence préparons-nous",
+    "rotating5": "expérience créons-nous",
+    "subtitle": "Avec EventosOrganizador.com, créez vos événements, partagez, collaborez, invitez et diffusez comme un pro.",
+    "cta1": "Créez votre premier événement",
+    "cta2": "Planifier une réunion",
+    "cta3": "Master Class gratuite"
+  },
+  "footer": {
+    "description": "La plateforme tout-en-un pour organiser des événements sociaux et de billetterie avec des outils professionnels.",
+    "producto": "Produit",
+    "soluciones": "Solutions",
+    "recursos": "Ressources",
+    "legal": "Mentions légales",
+    "acceso": "Accès",
+    "funcionalidades": "Fonctionnalités",
+    "precios": "Tarifs",
+    "demo": "Démo",
+    "masterClass": "Master Class",
+    "marcaBlanca": "Marque blanche",
+    "agendarReunion": "Planifier une réunion",
+    "contacto": "Contact",
+    "soporte": "Support 24h/24",
+    "privacidad": "Politique de confidentialité",
+    "iniciarSesion": "Se connecter",
+    "registroGratis": "Inscription gratuite",
+    "derechos": "Tous droits réservés."
+  },
+  "common": {
+    "learnMore": "En savoir plus",
+    "getStarted": "Commencer",
+    "contactUs": "Nous contacter"
+  }
+}

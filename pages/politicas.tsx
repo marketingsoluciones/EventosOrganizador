@@ -1,9 +1,15 @@
+import { GetStaticPropsContext } from 'next';
+import Head from 'next/head';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/IndexFooter';
 
 const Politica: React.FC = () => {
   return (
     <div className="w-full flex flex-col bg-white text-black items-center justify-items-center min-h-screen pt-8">
+      <Head>
+        <title>Política de Privacidad — EventosOrganizador</title>
+        <meta name="description" content="Política de privacidad de EventosOrganizador. Conoce cómo protegemos tus datos personales." />
+      </Head>
       <Navbar />
 
       {/* Hero Section */}
@@ -147,3 +153,11 @@ const Politica: React.FC = () => {
 };
 
 export default Politica;
+
+export async function getStaticProps(context: GetStaticPropsContext) {
+  return {
+    props: {
+      messages: (await import(`../messages/${context.locale ?? 'es'}.json`)).default,
+    },
+  };
+}

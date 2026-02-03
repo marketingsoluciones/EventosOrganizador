@@ -1,10 +1,16 @@
 import React from 'react';
+import { GetStaticPropsContext } from 'next';
+import Head from 'next/head';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/IndexFooter';
 
 const MasterClass: React.FC = () => {
   return (
     <div className="w-full flex flex-col bg-white text-black items-center justify-items-center min-h-screen pt-8">
+      <Head>
+        <title>Master Class Gratis — EventosOrganizador</title>
+        <meta name="description" content="Aprende a gestionar eventos profesionalmente con nuestra Master Class gratuita. Técnicas, herramientas y estrategias." />
+      </Head>
       <Navbar />
 
       {/* Hero Section */}
@@ -177,3 +183,11 @@ const MasterClass: React.FC = () => {
 };
 
 export default MasterClass;
+
+export async function getStaticProps(context: GetStaticPropsContext) {
+  return {
+    props: {
+      messages: (await import(`../messages/${context.locale ?? 'es'}.json`)).default,
+    },
+  };
+}

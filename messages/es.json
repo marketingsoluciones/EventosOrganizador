@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "producto": "Producto",
+    "soluciones": "Soluciones",
+    "precios": "Precios",
+    "demo": "Demo",
+    "iniciarSesion": "Iniciar sesión",
+    "empiezaGratis": "Empieza Gratis"
+  },
+  "nav.producto": {
+    "generacionLeads": "Generación de Leads",
+    "generacionLeadsDesc": "Cola 24/7 + 6 fuentes de datos",
+    "crmPipeline": "CRM Pipeline",
+    "crmPipelineDesc": "Kanban + scoring 0-100",
+    "erp": "ERP",
+    "erpDesc": "Catálogo, inventario, proveedores",
+    "finanzas": "Finanzas + OCR",
+    "finanzasDesc": "Facturación con IA",
+    "automatizaciones": "Automatizaciones",
+    "automatizacionesDesc": "Colas y workers 24/7",
+    "eventosBodas": "Eventos y Bodas",
+    "eventosBodasDesc": "RSVP, catering, proveedores",
+    "analytics": "Analytics",
+    "analyticsDesc": "Dashboards en tiempo real"
+  },
+  "nav.soluciones": {
+    "agenciasMarketing": "Agencias Marketing",
+    "agenciasMarketingDesc": "Leads para tus clientes",
+    "equiposVentas": "Equipos de Ventas",
+    "equiposVentasDesc": "CRM que genera leads",
+    "weddingPlanners": "Wedding Planners",
+    "weddingPlannersDesc": "CRM para bodas",
+    "startups": "Startups",
+    "startupsDesc": "Tu primer SDR virtual",
+    "finanzas": "Finanzas",
+    "finanzasDesc": "OCR y facturación IA",
+    "consultores": "Consultores",
+    "consultoresDesc": "Prospección nocturna",
+    "venues": "Venues",
+    "venuesDesc": "Gestión de fincas",
+    "distribuidores": "Distribuidores",
+    "distribuidoresDesc": "Nuevos puntos de venta"
+  },
+  "hero": {
+    "badge": "Plataforma líder en gestión de eventos",
+    "question": "¿Qué",
+    "suffix": "hoy?",
+    "rotating1": "evento creamos",
+    "rotating2": "boda organizamos",
+    "rotating3": "festival lanzamos",
+    "rotating4": "conferencia hacemos",
+    "rotating5": "experiencia creamos",
+    "subtitle": "Con EventosOrganizador.com crea tus eventos, comparte, colabora, invita y difunde de manera profesional.",
+    "cta1": "Crea tu primer Evento",
+    "cta2": "Agendar Reunión",
+    "cta3": "Master Class Gratis"
+  },
+  "footer": {
+    "description": "La plataforma todo en uno para organizar eventos sociales y de ticketing con herramientas profesionales.",
+    "producto": "Producto",
+    "soluciones": "Soluciones",
+    "recursos": "Recursos",
+    "legal": "Legal",
+    "acceso": "Acceso",
+    "funcionalidades": "Funcionalidades",
+    "precios": "Precios",
+    "demo": "Demo",
+    "masterClass": "Master Class",
+    "marcaBlanca": "Marca Blanca",
+    "agendarReunion": "Agendar Reunión",
+    "contacto": "Contacto",
+    "soporte": "Soporte 24/7",
+    "privacidad": "Política de Privacidad",
+    "iniciarSesion": "Iniciar Sesión",
+    "registroGratis": "Registro Gratis",
+    "derechos": "Todos los derechos reservados."
+  },
+  "common": {
+    "learnMore": "Saber más",
+    "getStarted": "Empezar",
+    "contactUs": "Contáctanos"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "producto": "产品",
+    "soluciones": "解决方案",
+    "precios": "价格",
+    "demo": "演示",
+    "iniciarSesion": "登录",
+    "empiezaGratis": "免费开始"
+  },
+  "nav.producto": {
+    "generacionLeads": "潜客获取",
+    "generacionLeadsDesc": "全天候队列 + 6大数据源",
+    "crmPipeline": "CRM Pipeline",
+    "crmPipelineDesc": "Kanban + 0-100评分",
+    "erp": "ERP",
+    "erpDesc": "产品目录、库存、供应商",
+    "finanzas": "财务 + OCR",
+    "finanzasDesc": "AI智能开票",
+    "automatizaciones": "自动化",
+    "automatizacionesDesc": "全天候队列与工作进程",
+    "eventosBodas": "活动与婚礼",
+    "eventosBodasDesc": "RSVP、宴席、供应商",
+    "analytics": "Analytics",
+    "analyticsDesc": "实时数据看板"
+  },
+  "nav.soluciones": {
+    "agenciasMarketing": "营销代理机构",
+    "agenciasMarketingDesc": "为客户获取潜客",
+    "equiposVentas": "销售团队",
+    "equiposVentasDesc": "能获客的CRM",
+    "weddingPlanners": "婚礼策划师",
+    "weddingPlannersDesc": "婚礼专属CRM",
+    "startups": "初创企业",
+    "startupsDesc": "你的首位虚拟SDR",
+    "finanzas": "财务",
+    "finanzasDesc": "OCR与AI开票",
+    "consultores": "咨询顾问",
+    "consultoresDesc": "夜间自动拓客",
+    "venues": "场地",
+    "venuesDesc": "场地管理",
+    "distribuidores": "经销商",
+    "distribuidoresDesc": "拓展新销售点"
+  },
+  "hero": {
+    "badge": "领先的活动管理平台",
+    "question": "今天",
+    "suffix": "？",
+    "rotating1": "我们创办什么活动",
+    "rotating2": "我们筹备什么婚礼",
+    "rotating3": "我们举办什么节日",
+    "rotating4": "我们策划什么会议",
+    "rotating5": "我们打造什么体验",
+    "subtitle": "通过EventosOrganizador.com，专业地创建活动、分享、协作、邀请和推广。",
+    "cta1": "创建你的首个活动",
+    "cta2": "预约会议",
+    "cta3": "免费Master Class"
+  },
+  "footer": {
+    "description": "一站式社交活动与票务管理平台，提供专业级工具。",
+    "producto": "产品",
+    "soluciones": "解决方案",
+    "recursos": "资源",
+    "legal": "法律信息",
+    "acceso": "登录入口",
+    "funcionalidades": "功能",
+    "precios": "价格",
+    "demo": "演示",
+    "masterClass": "Master Class",
+    "marcaBlanca": "白标方案",
+    "agendarReunion": "预约会议",
+    "contacto": "联系我们",
+    "soporte": "全天候客服",
+    "privacidad": "隐私政策",
+    "iniciarSesion": "登录",
+    "registroGratis": "免费注册",
+    "derechos": "版权所有。"
+  },
+  "common": {
+    "learnMore": "了解更多",
+    "getStarted": "立即开始",
+    "contactUs": "联系我们"
+  }
+}

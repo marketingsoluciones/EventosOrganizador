@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "producto": "製品",
+    "soluciones": "ソリューション",
+    "precios": "料金",
+    "demo": "デモ",
+    "iniciarSesion": "ログイン",
+    "empiezaGratis": "無料で始める"
+  },
+  "nav.producto": {
+    "generacionLeads": "リード獲得",
+    "generacionLeadsDesc": "24時間キュー + 6つのデータソース",
+    "crmPipeline": "CRM Pipeline",
+    "crmPipelineDesc": "Kanban + スコアリング 0-100",
+    "erp": "ERP",
+    "erpDesc": "カタログ、在庫、仕入先",
+    "finanzas": "財務 + OCR",
+    "finanzasDesc": "AI搭載の請求書発行",
+    "automatizaciones": "自動化",
+    "automatizacionesDesc": "24時間キューとワーカー",
+    "eventosBodas": "イベント＆ウェディング",
+    "eventosBodasDesc": "RSVP、ケータリング、業者",
+    "analytics": "Analytics",
+    "analyticsDesc": "リアルタイムダッシュボード"
+  },
+  "nav.soluciones": {
+    "agenciasMarketing": "マーケティング代理店",
+    "agenciasMarketingDesc": "クライアント向けリード獲得",
+    "equiposVentas": "営業チーム",
+    "equiposVentasDesc": "リードを生み出すCRM",
+    "weddingPlanners": "ウェディングプランナー",
+    "weddingPlannersDesc": "ウェディング向けCRM",
+    "startups": "スタートアップ",
+    "startupsDesc": "初めてのバーチャルSDR",
+    "finanzas": "財務",
+    "finanzasDesc": "OCRとAI請求書発行",
+    "consultores": "コンサルタント",
+    "consultoresDesc": "夜間の自動見込み客開拓",
+    "venues": "会場",
+    "venuesDesc": "会場管理",
+    "distribuidores": "ディストリビューター",
+    "distribuidoresDesc": "新たな販売拠点の開拓"
+  },
+  "hero": {
+    "badge": "イベント管理のリーディングプラットフォーム",
+    "question": "今日は",
+    "suffix": "？",
+    "rotating1": "どんなイベントを作りましょう",
+    "rotating2": "どんなウェディングを企画しましょう",
+    "rotating3": "どんなフェスティバルを開催しましょう",
+    "rotating4": "どんなカンファレンスを行いましょう",
+    "rotating5": "どんな体験を生み出しましょう",
+    "subtitle": "EventosOrganizador.comで、イベントの作成・共有・コラボレーション・招待・プロモーションをプロフェッショナルに。",
+    "cta1": "最初のイベントを作成",
+    "cta2": "ミーティングを予約",
+    "cta3": "無料Master Class"
+  },
+  "footer": {
+    "description": "ソーシャルイベントとチケット販売をプロのツールで管理するオールインワンプラットフォーム。",
+    "producto": "製品",
+    "soluciones": "ソリューション",
+    "recursos": "リソース",
+    "legal": "法的情報",
+    "acceso": "アクセス",
+    "funcionalidades": "機能",
+    "precios": "料金",
+    "demo": "デモ",
+    "masterClass": "Master Class",
+    "marcaBlanca": "ホワイトラベル",
+    "agendarReunion": "ミーティングを予約",
+    "contacto": "お問い合わせ",
+    "soporte": "24時間サポート",
+    "privacidad": "プライバシーポリシー",
+    "iniciarSesion": "ログイン",
+    "registroGratis": "無料登録",
+    "derechos": "全著作権所有。"
+  },
+  "common": {
+    "learnMore": "詳しく見る",
+    "getStarted": "始める",
+    "contactUs": "お問い合わせ"
+  }
+}

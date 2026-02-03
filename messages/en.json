@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "producto": "Product",
+    "soluciones": "Solutions",
+    "precios": "Pricing",
+    "demo": "Demo",
+    "iniciarSesion": "Sign In",
+    "empiezaGratis": "Start Free"
+  },
+  "nav.producto": {
+    "generacionLeads": "Lead Generation",
+    "generacionLeadsDesc": "24/7 queue + 6 data sources",
+    "crmPipeline": "CRM Pipeline",
+    "crmPipelineDesc": "Kanban + scoring 0-100",
+    "erp": "ERP",
+    "erpDesc": "Catalog, inventory, suppliers",
+    "finanzas": "Finance + OCR",
+    "finanzasDesc": "AI-powered invoicing",
+    "automatizaciones": "Automations",
+    "automatizacionesDesc": "24/7 queues and workers",
+    "eventosBodas": "Events & Weddings",
+    "eventosBodasDesc": "RSVP, catering, vendors",
+    "analytics": "Analytics",
+    "analyticsDesc": "Real-time dashboards"
+  },
+  "nav.soluciones": {
+    "agenciasMarketing": "Marketing Agencies",
+    "agenciasMarketingDesc": "Leads for your clients",
+    "equiposVentas": "Sales Teams",
+    "equiposVentasDesc": "CRM that generates leads",
+    "weddingPlanners": "Wedding Planners",
+    "weddingPlannersDesc": "CRM for weddings",
+    "startups": "Startups",
+    "startupsDesc": "Your first virtual SDR",
+    "finanzas": "Finance",
+    "finanzasDesc": "OCR and AI invoicing",
+    "consultores": "Consultants",
+    "consultoresDesc": "Overnight prospecting",
+    "venues": "Venues",
+    "venuesDesc": "Venue management",
+    "distribuidores": "Distributors",
+    "distribuidoresDesc": "New points of sale"
+  },
+  "hero": {
+    "badge": "Leading event management platform",
+    "question": "What",
+    "suffix": "today?",
+    "rotating1": "event shall we create",
+    "rotating2": "wedding shall we plan",
+    "rotating3": "festival shall we launch",
+    "rotating4": "conference shall we host",
+    "rotating5": "experience shall we craft",
+    "subtitle": "With EventosOrganizador.com, create your events, share, collaborate, invite, and promote like a pro.",
+    "cta1": "Create Your First Event",
+    "cta2": "Book a Meeting",
+    "cta3": "Free Master Class"
+  },
+  "footer": {
+    "description": "The all-in-one platform for organizing social and ticketing events with professional tools.",
+    "producto": "Product",
+    "soluciones": "Solutions",
+    "recursos": "Resources",
+    "legal": "Legal",
+    "acceso": "Access",
+    "funcionalidades": "Features",
+    "precios": "Pricing",
+    "demo": "Demo",
+    "masterClass": "Master Class",
+    "marcaBlanca": "White Label",
+    "agendarReunion": "Book a Meeting",
+    "contacto": "Contact",
+    "soporte": "24/7 Support",
+    "privacidad": "Privacy Policy",
+    "iniciarSesion": "Sign In",
+    "registroGratis": "Free Sign Up",
+    "derechos": "All rights reserved."
+  },
+  "common": {
+    "learnMore": "Learn more",
+    "getStarted": "Get started",
+    "contactUs": "Contact us"
+  }
+}

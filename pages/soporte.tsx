@@ -1,9 +1,15 @@
+import { GetStaticPropsContext } from 'next';
+import Head from 'next/head';
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/IndexFooter';
 
 const Soporte: React.FC = () => {
   return (
     <div className="w-full flex flex-col bg-white text-black items-center justify-items-center min-h-screen pt-8">
+      <Head>
+        <title>Soporte 24/7 — EventosOrganizador</title>
+        <meta name="description" content="Centro de soporte de EventosOrganizador. Asistencia técnica disponible 24/7 para resolver cualquier duda." />
+      </Head>
       <Navbar />
 
       {/* Hero Section */}
@@ -40,3 +46,11 @@ const Soporte: React.FC = () => {
 };
 
 export default Soporte;
+
+export async function getStaticProps(context: GetStaticPropsContext) {
+  return {
+    props: {
+      messages: (await import(`../messages/${context.locale ?? 'es'}.json`)).default,
+    },
+  };
+}

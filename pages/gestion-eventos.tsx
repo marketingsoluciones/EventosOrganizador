@@ -1,4 +1,5 @@
 import React from 'react';
+import { GetStaticPropsContext } from 'next';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/IndexFooter';
 import Head from 'next/head';
@@ -22,6 +23,14 @@ const tiposEvento = [
   { nombre: 'Cumpleaños', emoji: '🎂', cantidad: '+4,000 fiestas' },
   { nombre: 'Graduaciones', emoji: '🎓', cantidad: '+1,000 ceremonias' }
 ];
+
+export async function getStaticProps(context: GetStaticPropsContext) {
+  return {
+    props: {
+      messages: (await import(`../messages/${context.locale ?? 'es'}.json`)).default,
+    },
+  };
+}
 
 export default function GestionEventos() {
   return (

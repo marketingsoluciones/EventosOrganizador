@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { GetStaticPropsContext } from 'next';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/IndexFooter';
@@ -67,6 +69,21 @@ const AgendarReunion = () => {
       }
 
       setSuccess(true);
+      // Track Facebook Pixel conversion
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "Schedule");
+        (window as any).fbq("track", "Lead", {
+          content_name: "Reunión Agendada",
+          content_category: formData.motivo,
+        });
+      }
+      // Track Google Analytics conversion
+      if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("event", "generate_lead", {
+          event_category: "engagement",
+          event_label: "reunion_agendada",
+        });
+      }
       setTimeout(() => router.push('/'), 3000);
     } catch (err: any) {
       setError(err.message);
@@ -128,6 +145,10 @@ const AgendarReunion = () => {
 
   return (
     <>
+      <Head>
+        <title>Agendar Reunión — EventosOrganizador</title>
+        <meta name="description" content="Agenda una reunión con nuestro equipo para conocer cómo EventosOrganizador puede ayudarte a gestionar tus eventos." />
+      </Head>
       <Navbar />
       <div className="w-full bg-white">
         <div className="max-w-[700px] mx-auto px-6 py-20 md:py-28">
@@ -279,3 +300,11 @@ const AgendarReunion = () => {
 };
 
 export default AgendarReunion;
+
+export async function getStaticProps(context: GetStaticPropsContext) {
+  return {
+    props: {
+      messages: (await import(`../messages/${context.locale ?? 'es'}.json`)).default,
+    },
+  };
+}

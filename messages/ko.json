@@ -1,0 +1,83 @@
+{
+  "nav": {
+    "producto": "제품",
+    "soluciones": "솔루션",
+    "precios": "요금제",
+    "demo": "데모",
+    "iniciarSesion": "로그인",
+    "empiezaGratis": "무료로 시작"
+  },
+  "nav.producto": {
+    "generacionLeads": "리드 생성",
+    "generacionLeadsDesc": "24/7 대기열 + 6개 데이터 소스",
+    "crmPipeline": "CRM Pipeline",
+    "crmPipelineDesc": "Kanban + 0-100 스코어링",
+    "erp": "ERP",
+    "erpDesc": "카탈로그, 재고, 공급업체",
+    "finanzas": "재무 + OCR",
+    "finanzasDesc": "AI 기반 청구서 발행",
+    "automatizaciones": "자동화",
+    "automatizacionesDesc": "24/7 대기열 및 워커",
+    "eventosBodas": "이벤트 & 웨딩",
+    "eventosBodasDesc": "RSVP, 케이터링, 협력업체",
+    "analytics": "Analytics",
+    "analyticsDesc": "실시간 대시보드"
+  },
+  "nav.soluciones": {
+    "agenciasMarketing": "마케팅 에이전시",
+    "agenciasMarketingDesc": "고객을 위한 리드 확보",
+    "equiposVentas": "영업팀",
+    "equiposVentasDesc": "리드를 생성하는 CRM",
+    "weddingPlanners": "웨딩 플래너",
+    "weddingPlannersDesc": "웨딩 전용 CRM",
+    "startups": "스타트업",
+    "startupsDesc": "첫 번째 가상 SDR",
+    "finanzas": "재무",
+    "finanzasDesc": "OCR 및 AI 청구서 발행",
+    "consultores": "컨설턴트",
+    "consultoresDesc": "야간 자동 영업 탐색",
+    "venues": "베뉴",
+    "venuesDesc": "행사장 관리",
+    "distribuidores": "유통업체",
+    "distribuidoresDesc": "새로운 판매 거점 확보"
+  },
+  "hero": {
+    "badge": "이벤트 관리의 선도적 플랫폼",
+    "question": "오늘",
+    "suffix": "?",
+    "rotating1": "어떤 이벤트를 만들까요",
+    "rotating2": "어떤 웨딩을 기획할까요",
+    "rotating3": "어떤 페스티벌을 열까요",
+    "rotating4": "어떤 컨퍼런스를 개최할까요",
+    "rotating5": "어떤 경험을 만들까요",
+    "subtitle": "EventosOrganizador.com으로 이벤트를 만들고, 공유하고, 협업하고, 초대하고, 전문적으로 홍보하세요.",
+    "cta1": "첫 이벤트 만들기",
+    "cta2": "미팅 예약",
+    "cta3": "무료 Master Class"
+  },
+  "footer": {
+    "description": "전문 도구를 갖춘 소셜 이벤트 및 티켓팅 올인원 플랫폼.",
+    "producto": "제품",
+    "soluciones": "솔루션",
+    "recursos": "리소스",
+    "legal": "법적 고지",
+    "acceso": "접속",
+    "funcionalidades": "기능",
+    "precios": "요금제",
+    "demo": "데모",
+    "masterClass": "Master Class",
+    "marcaBlanca": "화이트 라벨",
+    "agendarReunion": "미팅 예약",
+    "contacto": "문의",
+    "soporte": "24/7 고객지원",
+    "privacidad": "개인정보 처리방침",
+    "iniciarSesion": "로그인",
+    "registroGratis": "무료 가입",
+    "derechos": "모든 권리 보유."
+  },
+  "common": {
+    "learnMore": "자세히 보기",
+    "getStarted": "시작하기",
+    "contactUs": "문의하기"
+  }
+}
