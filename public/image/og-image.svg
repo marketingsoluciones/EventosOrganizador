@@ -1,0 +1,36 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F46E5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="150" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="1100" cy="530" r="200" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="900" cy="100" r="100" fill="rgba(255,255,255,0.05)"/>
+
+  <!-- Main Title -->
+  <text x="600" y="250" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">
+    EventosOrganizador
+  </text>
+
+  <!-- Subtitle -->
+  <text x="600" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="32" fill="rgba(255,255,255,0.9)" text-anchor="middle">
+    Plataforma de Gestión de Eventos
+  </text>
+
+  <!-- Features line -->
+  <text x="600" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="rgba(255,255,255,0.8)" text-anchor="middle">
+    CRM • Ticketing • Automatizaciones • Analytics
+  </text>
+
+  <!-- Website URL -->
+  <text x="600" y="560" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="rgba(255,255,255,0.7)" text-anchor="middle">
+    www.eventosorganizador.com
+  </text>
+</svg>
