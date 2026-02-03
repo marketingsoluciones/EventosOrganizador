@@ -82,7 +82,7 @@ export const fetchApi: CallableFunction = async ({
       return Object.values(data.data)[0];
     }
   } catch (error) {
-    console.log(error);
+    // Error silenciado en producción
   }
 };
 

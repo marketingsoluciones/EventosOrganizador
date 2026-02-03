@@ -62,7 +62,6 @@ export default function BlogComponent() {
       variables: { sort: { createdAt: -1 }, skip: 0, limit: 8, development: "bodasdehoy" },
     }).then((results: Results) => {
       setData(results.results);
-      console.log(results);
 
       // Automatically select the first post
       if (results.results.length > 0) {
@@ -71,9 +70,6 @@ export default function BlogComponent() {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   const handleTitleClick = (post: Post) => {
     setSelectedPost(post);

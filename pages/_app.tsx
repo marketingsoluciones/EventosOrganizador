@@ -5,17 +5,24 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Script from "next/script";
 
-// Facebook Pixel ID
+// Analytics IDs
 const FB_PIXEL_ID = "2111053733054920";
+const GA_MEASUREMENT_ID = "G-ZMCYV9KL23";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   useEffect(() => {
-    // Track page views on route change
-    const handleRouteChange = () => {
+    const handleRouteChange = (url: string) => {
+      // Facebook Pixel - track page view
       if (typeof window !== "undefined" && (window as any).fbq) {
         (window as any).fbq("track", "PageView");
+      }
+      // Google Analytics - track page view
+      if (typeof window !== "undefined" && (window as any).gtag) {
+        (window as any).gtag("config", GA_MEASUREMENT_ID, {
+          page_path: url,
+        });
       }
     };
 
@@ -27,6 +34,26 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      {/* Google Analytics 4 */}
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
+
       {/* Facebook Pixel */}
       <Script
         id="facebook-pixel"
