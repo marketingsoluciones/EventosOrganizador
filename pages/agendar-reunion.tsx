@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -14,12 +14,18 @@ interface FormData {
   hora: string;
 }
 
+interface BookedSlot {
+  fecha: string;
+  hora: string;
+}
+
 const AgendarReunion = () => {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const [bookedSlots, setBookedSlots] = useState<BookedSlot[]>([]);
 
   const [formData, setFormData] = useState<FormData>({
     nombre: '',
@@ -29,6 +35,31 @@ const AgendarReunion = () => {
     fecha: '',
     hora: ''
   });
+
+  const fetchBookedSlots = useCallback(async () => {
+    try {
+      const response = await fetch('/api/agendar-reunion');
+      const data = await response.json();
+      if (data.bookedSlots) {
+        setBookedSlots(data.bookedSlots);
+      }
+    } catch {
+      // silently fail — slots will just appear available
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchBookedSlots();
+  }, [fetchBookedSlots]);
+
+  const isSlotBooked = (fecha: string, hora: string): boolean => {
+    return bookedSlots.some(slot => slot.fecha === fecha && slot.hora === hora);
+  };
+
+  const isDateFullyBooked = (dateStr: string): boolean => {
+    const allHours = ['17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00'];
+    return allHours.every(hora => isSlotBooked(dateStr, hora));
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -42,6 +73,7 @@ const AgendarReunion = () => {
         return;
       }
       setError('');
+      fetchBookedSlots();
       setStep(2);
     }
   };
@@ -224,16 +256,33 @@ const AgendarReunion = () => {
                     {getAvailableDates().slice(0, 12).map((date, index) => {
                       const dateStr = date.toISOString().split('T')[0];
                       const isSelected = formData.fecha === dateStr;
+                      const fullyBooked = isDateFullyBooked(dateStr);
                       return (
                         <button key={index}
-                          onClick={() => setFormData(prev => ({ ...prev, fecha: dateStr, hora: '' }))}
-                          className={`p-3 rounded-lg border text-left transition-colors ${isSelected ? 'border-[#6096B9] bg-[#6096B9]/5 text-[#6096B9]' : 'border-gray-200 hover:border-gray-300'}`}>
-                          <div className="text-xs text-gray-400 capitalize">
+                          disabled={fullyBooked}
+                          onClick={() => !fullyBooked && setFormData(prev => ({ ...prev, fecha: dateStr, hora: '' }))}
+                          className={`p-3 rounded-lg border text-left transition-colors ${
+                            fullyBooked
+                              ? 'border-gray-100 bg-gray-50 cursor-not-allowed opacity-50'
+                              : isSelected
+                                ? 'border-[#6096B9] bg-[#6096B9]/5 text-[#6096B9]'
+                                : 'border-gray-200 hover:border-gray-300'
+                          }`}>
+                          <div className={`text-xs capitalize ${fullyBooked ? 'text-gray-300' : 'text-gray-400'}`}>
                             {date.toLocaleDateString('es-ES', { weekday: 'short' })}
                           </div>
-                          <div className={`text-sm font-semibold ${isSelected ? 'text-[#6096B9]' : 'text-gray-900'}`}>
+                          <div className={`text-sm font-semibold ${
+                            fullyBooked
+                              ? 'text-gray-300 line-through'
+                              : isSelected
+                                ? 'text-[#6096B9]'
+                                : 'text-gray-900'
+                          }`}>
                             {date.getDate()} {date.toLocaleDateString('es-ES', { month: 'short' })}
                           </div>
+                          {fullyBooked && (
+                            <div className="text-[10px] text-red-400 mt-0.5">Completo</div>
+                          )}
                         </button>
                       );
                     })}
@@ -246,11 +295,20 @@ const AgendarReunion = () => {
                     <div className="grid grid-cols-4 gap-2">
                       {availableHours.map((hour) => {
                         const isSelected = formData.hora === hour;
+                        const booked = isSlotBooked(formData.fecha, hour);
                         return (
                           <button key={hour}
-                            onClick={() => setFormData(prev => ({ ...prev, hora: hour }))}
-                            className={`p-3 rounded-lg border text-sm font-medium transition-colors ${isSelected ? 'border-[#6096B9] bg-[#6096B9] text-white' : 'border-gray-200 hover:border-gray-300 text-gray-700'}`}>
+                            disabled={booked}
+                            onClick={() => !booked && setFormData(prev => ({ ...prev, hora: hour }))}
+                            className={`p-3 rounded-lg border text-sm font-medium transition-colors ${
+                              booked
+                                ? 'border-gray-100 bg-gray-50 text-gray-300 cursor-not-allowed line-through'
+                                : isSelected
+                                  ? 'border-[#6096B9] bg-[#6096B9] text-white'
+                                  : 'border-gray-200 hover:border-gray-300 text-gray-700'
+                            }`}>
                             {hour}
+                            {booked && <span className="block text-[10px] text-red-400 no-underline" style={{ textDecoration: 'none' }}>Reservado</span>}
                           </button>
                         );
                       })}

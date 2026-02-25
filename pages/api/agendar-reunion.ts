@@ -43,6 +43,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  if (req.method === 'GET') {
+    try {
+      const bookings = getBookings();
+      const bookedSlots = bookings.map((b: any) => ({ fecha: b.fecha, hora: b.hora }));
+      return res.status(200).json({ bookedSlots });
+    } catch {
+      return res.status(200).json({ bookedSlots: [] });
+    }
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
