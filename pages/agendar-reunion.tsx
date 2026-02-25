@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -9,10 +9,11 @@ interface FormData {
   nombre: string;
   email: string;
   telefono: string;
-  motivo: string;
   fecha: string;
   hora: string;
 }
+
+const ALL_SLOTS = ['17:00', '17:30', '18:00', '18:30', '19:00', '19:30'];
 
 const AgendarReunion = () => {
   const router = useRouter();
@@ -22,86 +23,113 @@ const AgendarReunion = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const [meetLink, setMeetLink] = useState<string | null>(null);
+  const [bookedSlots, setBookedSlots] = useState<string[]>([]);
+  const [loadingSlots, setLoadingSlots] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const [formData, setFormData] = useState<FormData>({
     nombre: '',
     email: '',
     telefono: '',
-    motivo: '',
     fecha: '',
     hora: ''
   });
 
-  const t = locale === 'es' ? {
+  const isEs = locale === 'es';
+
+  const t = isEs ? {
     title: 'Agenda tu reunión',
-    subtitle: 'Completa el formulario y selecciona el mejor horario para ti',
+    subtitle: 'Reserva 30 minutos con nuestro equipo',
     step1Title: 'Tus datos',
     fullName: 'Nombre completo',
     email: 'Email',
     phone: 'Teléfono',
-    subject: 'Motivo de la reunión (opcional)',
-    subjectPlaceholder: 'Cuéntanos brevemente de qué trata tu consulta...',
     continue: 'Continuar',
     step2Title: 'Selecciona fecha y hora',
     back: 'Volver',
     dateLabel: 'Fecha',
-    timeLabel: 'Hora (9:00 AM - 5:00 PM EST)',
+    timeLabel: 'Hora (17:00 - 19:30 hora de Madrid)',
+    booked: 'Reservado',
     summary: 'Resumen',
     confirm: 'Confirmar reunión',
     scheduling: 'Agendando...',
-    successTitle: 'Reunión agendada',
-    successMsg: 'Recibirás una invitación de calendario en',
-    redirecting: 'Redirigiendo a la página principal...',
+    successTitle: 'Reunión confirmada',
+    successMsg: 'Recibirás una invitación de Google Calendar con enlace de Google Meet en',
+    redirecting: 'Redirigiendo...',
     joinMeet: 'Unirse a Google Meet',
     infoTitle: 'Información',
-    info1: 'Lunes a Viernes de 9:00 AM a 5:00 PM (EST)',
-    info2: 'Recibirás invitación de Google Calendar',
-    info3: 'Duración aproximada: 30 minutos',
-    errorRequired: 'Por favor completa todos los campos obligatorios',
+    info1: 'Lunes a Viernes, 17:00 - 19:30 (hora de Madrid)',
+    info2: 'Recibirás invitación de Google Calendar + Google Meet',
+    info3: 'Duración: 30 minutos',
+    shareLink: 'Compartir enlace',
+    linkCopied: 'Enlace copiado',
+    errorRequired: 'Por favor completa todos los campos',
     errorDateTime: 'Por favor selecciona una fecha y hora',
+    loadingSlots: 'Cargando disponibilidad...',
+    timezone: 'Hora de Madrid (CET/CEST)',
   } : {
     title: 'Schedule a Meeting',
-    subtitle: 'Fill out the form and select the best time for you',
+    subtitle: 'Book 30 minutes with our team',
     step1Title: 'Your Details',
     fullName: 'Full name',
     email: 'Email',
     phone: 'Phone',
-    subject: 'Meeting subject (optional)',
-    subjectPlaceholder: 'Briefly tell us what your inquiry is about...',
     continue: 'Continue',
     step2Title: 'Select date and time',
     back: 'Back',
     dateLabel: 'Date',
-    timeLabel: 'Time (9:00 AM - 5:00 PM EST)',
+    timeLabel: 'Time (5:00 PM - 7:30 PM Madrid time)',
+    booked: 'Booked',
     summary: 'Summary',
     confirm: 'Confirm meeting',
     scheduling: 'Scheduling...',
-    successTitle: 'Meeting Scheduled',
-    successMsg: 'You will receive a calendar invite at',
-    redirecting: 'Redirecting to the homepage...',
+    successTitle: 'Meeting Confirmed',
+    successMsg: 'You will receive a Google Calendar invite with a Google Meet link at',
+    redirecting: 'Redirecting...',
     joinMeet: 'Join Google Meet',
     infoTitle: 'Information',
-    info1: 'Monday to Friday, 9:00 AM - 5:00 PM (EST)',
-    info2: 'You will receive a Google Calendar invite',
-    info3: 'Approximate duration: 30 minutes',
+    info1: 'Monday to Friday, 5:00 PM - 7:30 PM (Madrid time)',
+    info2: 'You will receive a Google Calendar invite + Google Meet link',
+    info3: 'Duration: 30 minutes',
+    shareLink: 'Share link',
+    linkCopied: 'Link copied!',
     errorRequired: 'Please fill in all required fields',
     errorDateTime: 'Please select a date and time',
+    loadingSlots: 'Loading availability...',
+    timezone: 'Madrid time (CET/CEST)',
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const fetchBookedSlots = useCallback(async (fecha: string) => {
+    setLoadingSlots(true);
+    try {
+      const response = await fetch(`/api/agendar-reunion?fecha=${fecha}`);
+      const data = await response.json();
+      setBookedSlots(data.bookedSlots || []);
+    } catch {
+      setBookedSlots([]);
+    } finally {
+      setLoadingSlots(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (formData.fecha) {
+      fetchBookedSlots(formData.fecha);
+    }
+  }, [formData.fecha, fetchBookedSlots]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleNextStep = () => {
-    if (step === 1) {
-      if (!formData.nombre || !formData.email || !formData.telefono) {
-        setError(t.errorRequired);
-        return;
-      }
-      setError('');
-      setStep(2);
+    if (!formData.nombre || !formData.email || !formData.telefono) {
+      setError(t.errorRequired);
+      return;
     }
+    setError('');
+    setStep(2);
   };
 
   const handleSubmit = async () => {
@@ -127,30 +155,41 @@ const AgendarReunion = () => {
       }
 
       setSuccess(true);
-      if (data.meetLink) {
-        setMeetLink(data.meetLink);
-      }
+      if (data.meetLink) setMeetLink(data.meetLink);
 
-      // Track Facebook Pixel conversion
       if (typeof window !== "undefined" && (window as any).fbq) {
         (window as any).fbq("track", "Schedule");
-        (window as any).fbq("track", "Lead", {
-          content_name: "Meeting Scheduled",
-          content_category: formData.motivo,
-        });
+        (window as any).fbq("track", "Lead", { content_name: "Meeting Scheduled" });
       }
-      // Track Google Analytics conversion
       if (typeof window !== "undefined" && (window as any).gtag) {
         (window as any).gtag("event", "generate_lead", {
           event_category: "engagement",
           event_label: "meeting_scheduled",
         });
       }
-      setTimeout(() => router.push('/'), 5000);
+      setTimeout(() => router.push('/'), 6000);
     } catch (err: any) {
       setError(err.message);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleShareLink = async () => {
+    const url = typeof window !== 'undefined' ? window.location.href : 'https://www.eventosorganizador.com/agendar-reunion';
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      const textArea = document.createElement('textarea');
+      textArea.value = url;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     }
   };
 
@@ -170,14 +209,8 @@ const AgendarReunion = () => {
     return dates;
   };
 
-  const availableHours = [
-    '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
-    '12:00', '12:30', '13:00', '13:30', '14:00', '14:30',
-    '15:00', '15:30', '16:00', '16:30'
-  ];
-
   const formatDate = (date: Date) => {
-    return date.toLocaleDateString(locale === 'es' ? 'es-ES' : 'en-US', {
+    return date.toLocaleDateString(isEs ? 'es-ES' : 'en-US', {
       weekday: 'long',
       year: 'numeric',
       month: 'long',
@@ -188,8 +221,9 @@ const AgendarReunion = () => {
   const formatHour = (hour: string) => {
     const [h, m] = hour.split(':');
     const hNum = parseInt(h);
+    if (isEs) return `${h}:${m}`;
     const ampm = hNum >= 12 ? 'PM' : 'AM';
-    const h12 = hNum > 12 ? hNum - 12 : hNum === 0 ? 12 : hNum;
+    const h12 = hNum > 12 ? hNum - 12 : hNum;
     return `${h12}:${m} ${ampm}`;
   };
 
@@ -231,10 +265,10 @@ const AgendarReunion = () => {
   return (
     <>
       <Head>
-        <title>{locale === 'es' ? 'Agendar Reunión' : 'Schedule a Meeting'} — EventosOrganizador</title>
-        <meta name="description" content={locale === 'es'
-          ? 'Agenda una reunión con nuestro equipo para conocer cómo EventosOrganizador puede ayudarte.'
-          : 'Schedule a meeting with our team to learn how EventosOrganizador can help you.'
+        <title>{isEs ? 'Agendar Reunión' : 'Schedule a Meeting'} — EventosOrganizador</title>
+        <meta name="description" content={isEs
+          ? 'Agenda una reunión de 30 minutos con nuestro equipo. Lunes a viernes, 17:00-19:30 hora de Madrid.'
+          : 'Schedule a 30-minute meeting with our team. Monday to Friday, 5:00-7:30 PM Madrid time.'
         } />
       </Head>
       <Navbar />
@@ -244,9 +278,18 @@ const AgendarReunion = () => {
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-3">
               {t.title}
             </h1>
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-500 text-lg mb-4">
               {t.subtitle}
             </p>
+            <button
+              onClick={handleShareLink}
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm text-[#6096B9] border border-[#6096B9]/30 rounded-lg hover:bg-[#6096B9]/5 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
+              </svg>
+              {copied ? t.linkCopied : t.shareLink}
+            </button>
           </div>
 
           <div className="flex items-center justify-center gap-3 mb-10">
@@ -287,12 +330,6 @@ const AgendarReunion = () => {
                     className="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-[#6096B9] focus:border-transparent outline-none transition-all"
                     placeholder="+1 (555) 000-0000" />
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">{t.subject}</label>
-                  <textarea name="motivo" value={formData.motivo} onChange={handleInputChange} rows={3}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-[#6096B9] focus:border-transparent outline-none transition-all resize-none"
-                    placeholder={t.subjectPlaceholder} />
-                </div>
                 <button onClick={handleNextStep}
                   className="w-full bg-[#6096B9] text-white py-3.5 rounded-lg text-[15px] font-medium hover:bg-[#4b7591] transition-colors">
                   {t.continue}
@@ -317,10 +354,10 @@ const AgendarReunion = () => {
                           onClick={() => setFormData(prev => ({ ...prev, fecha: dateStr, hora: '' }))}
                           className={`p-3 rounded-lg border text-left transition-colors ${isSelected ? 'border-[#6096B9] bg-[#6096B9]/5 text-[#6096B9]' : 'border-gray-200 hover:border-gray-300'}`}>
                           <div className="text-xs text-gray-400 capitalize">
-                            {date.toLocaleDateString(locale === 'es' ? 'es-ES' : 'en-US', { weekday: 'short' })}
+                            {date.toLocaleDateString(isEs ? 'es-ES' : 'en-US', { weekday: 'short' })}
                           </div>
                           <div className={`text-sm font-semibold ${isSelected ? 'text-[#6096B9]' : 'text-gray-900'}`}>
-                            {date.getDate()} {date.toLocaleDateString(locale === 'es' ? 'es-ES' : 'en-US', { month: 'short' })}
+                            {date.getDate()} {date.toLocaleDateString(isEs ? 'es-ES' : 'en-US', { month: 'short' })}
                           </div>
                         </button>
                       );
@@ -330,19 +367,33 @@ const AgendarReunion = () => {
 
                 {formData.fecha && (
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-3">{t.timeLabel} *</label>
-                    <div className="grid grid-cols-4 gap-2">
-                      {availableHours.map((hour) => {
-                        const isSelected = formData.hora === hour;
-                        return (
-                          <button key={hour}
-                            onClick={() => setFormData(prev => ({ ...prev, hora: hour }))}
-                            className={`p-3 rounded-lg border text-sm font-medium transition-colors ${isSelected ? 'border-[#6096B9] bg-[#6096B9] text-white' : 'border-gray-200 hover:border-gray-300 text-gray-700'}`}>
-                            {formatHour(hour)}
-                          </button>
-                        );
-                      })}
-                    </div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">{t.timeLabel} *</label>
+                    <p className="text-xs text-gray-400 mb-3">{t.timezone}</p>
+                    {loadingSlots ? (
+                      <p className="text-sm text-gray-400 py-4 text-center">{t.loadingSlots}</p>
+                    ) : (
+                      <div className="grid grid-cols-3 gap-2">
+                        {ALL_SLOTS.map((hour) => {
+                          const isBooked = bookedSlots.includes(hour);
+                          const isSelected = formData.hora === hour;
+                          return (
+                            <button key={hour}
+                              disabled={isBooked}
+                              onClick={() => setFormData(prev => ({ ...prev, hora: hour }))}
+                              className={`p-3 rounded-lg border text-sm font-medium transition-colors ${
+                                isBooked
+                                  ? 'border-gray-100 bg-gray-50 text-gray-300 cursor-not-allowed line-through'
+                                  : isSelected
+                                    ? 'border-[#6096B9] bg-[#6096B9] text-white'
+                                    : 'border-gray-200 hover:border-gray-300 text-gray-700'
+                              }`}>
+                              {formatHour(hour)}
+                              {isBooked && <span className="block text-[10px] mt-0.5">{t.booked}</span>}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
                 )}
 
@@ -351,7 +402,7 @@ const AgendarReunion = () => {
                     <p className="text-sm font-medium text-gray-900 mb-1">{t.summary}</p>
                     <p className="text-sm text-gray-600">{formData.nombre} &middot; {formData.email}</p>
                     <p className="text-sm text-gray-600 mt-1">
-                      {formatDate(new Date(formData.fecha + 'T00:00:00'))} — {formatHour(formData.hora)} EST
+                      {formatDate(new Date(formData.fecha + 'T00:00:00'))} — {formatHour(formData.hora)} ({t.timezone})
                     </p>
                   </div>
                 )}

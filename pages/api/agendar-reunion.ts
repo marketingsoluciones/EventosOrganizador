@@ -1,11 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { google } from 'googleapis';
 
+const TIMEZONE = 'Europe/Madrid';
+const CALENDAR_ID = process.env.GOOGLE_CALENDAR_ID || 'eventosorganizador.com@gmail.com';
+const ORGANIZER_EMAIL = process.env.GOOGLE_ORGANIZER_EMAIL || 'eventosorganizador.com@gmail.com';
+
 interface ReunionData {
   nombre: string;
   email: string;
   telefono: string;
-  motivo: string;
   fecha: string;
   hora: string;
 }
@@ -20,18 +23,17 @@ function getCalendarClient() {
   return google.calendar({ version: 'v3', auth });
 }
 
+function getEndTime(hora: string): string {
+  const [h, m] = hora.split(':').map(Number);
+  const totalMinutes = h * 60 + m + 30;
+  const endH = Math.floor(totalMinutes / 60);
+  const endM = totalMinutes % 60;
+  return `${String(endH).padStart(2, '0')}:${String(endM).padStart(2, '0')}`;
+}
+
 async function createCalendarEvent(data: ReunionData) {
   const calendar = getCalendarClient();
-  const calendarId = process.env.GOOGLE_CALENDAR_ID;
-  const organizerEmail = process.env.GOOGLE_ORGANIZER_EMAIL;
-
-  // Build start/end times (30-minute meeting)
-  const startDateTime = `${data.fecha}T${data.hora}:00`;
-  const endHour = parseInt(data.hora.split(':')[0]);
-  const endMinute = parseInt(data.hora.split(':')[1]) + 30;
-  const endH = endMinute >= 60 ? endHour + 1 : endHour;
-  const endM = endMinute >= 60 ? endMinute - 60 : endMinute;
-  const endDateTime = `${data.fecha}T${String(endH).padStart(2, '0')}:${String(endM).padStart(2, '0')}:00`;
+  const endTime = getEndTime(data.hora);
 
   const event = {
     summary: `Meeting with ${data.nombre} — EventosOrganizador`,
@@ -39,27 +41,27 @@ async function createCalendarEvent(data: ReunionData) {
       `Name: ${data.nombre}`,
       `Email: ${data.email}`,
       `Phone: ${data.telefono}`,
-      data.motivo ? `Subject: ${data.motivo}` : '',
       '',
-      'Booked via eventosorganizador.com',
-    ].filter(Boolean).join('\n'),
+      'Booked via eventosorganizador.com/agendar-reunion',
+    ].join('\n'),
     start: {
-      dateTime: startDateTime,
-      timeZone: 'America/New_York',
+      dateTime: `${data.fecha}T${data.hora}:00`,
+      timeZone: TIMEZONE,
     },
     end: {
-      dateTime: endDateTime,
-      timeZone: 'America/New_York',
+      dateTime: `${data.fecha}T${endTime}:00`,
+      timeZone: TIMEZONE,
     },
     attendees: [
       { email: data.email, displayName: data.nombre },
-      ...(organizerEmail ? [{ email: organizerEmail }] : []),
+      { email: ORGANIZER_EMAIL },
     ],
     reminders: {
       useDefault: false,
       overrides: [
-        { method: 'email' as const, minutes: 60 },
-        { method: 'popup' as const, minutes: 15 },
+        { method: 'email' as const, minutes: 1440 }, // 24h before
+        { method: 'email' as const, minutes: 60 },   // 1h before
+        { method: 'popup' as const, minutes: 15 },    // 15min before
       ],
     },
     conferenceData: {
@@ -71,7 +73,7 @@ async function createCalendarEvent(data: ReunionData) {
   };
 
   const response = await calendar.events.insert({
-    calendarId: calendarId || 'primary',
+    calendarId: CALENDAR_ID,
     requestBody: event,
     sendUpdates: 'all',
     conferenceDataVersion: 1,
@@ -80,28 +82,32 @@ async function createCalendarEvent(data: ReunionData) {
   return response.data;
 }
 
-async function checkSlotAvailability(fecha: string, hora: string): Promise<boolean> {
+async function getBookedSlots(fecha: string): Promise<string[]> {
   try {
     const calendar = getCalendarClient();
-    const calendarId = process.env.GOOGLE_CALENDAR_ID || 'primary';
-
-    const startDateTime = `${fecha}T${hora}:00`;
-    const endHour = parseInt(hora.split(':')[0]);
-    const endMinute = parseInt(hora.split(':')[1]) + 30;
-    const endH = endMinute >= 60 ? endHour + 1 : endHour;
-    const endM = endMinute >= 60 ? endMinute - 60 : endMinute;
-    const endDateTime = `${fecha}T${String(endH).padStart(2, '0')}:${String(endM).padStart(2, '0')}:00`;
 
     const response = await calendar.events.list({
-      calendarId,
-      timeMin: new Date(`${startDateTime}-05:00`).toISOString(),
-      timeMax: new Date(`${endDateTime}-05:00`).toISOString(),
+      calendarId: CALENDAR_ID,
+      timeMin: `${fecha}T17:00:00+01:00`,
+      timeMax: `${fecha}T20:00:00+01:00`,
+      timeZone: TIMEZONE,
       singleEvents: true,
+      orderBy: 'startTime',
     });
 
-    return (response.data.items?.length || 0) > 0;
+    const bookedSlots: string[] = [];
+    for (const event of response.data.items || []) {
+      if (event.start?.dateTime) {
+        const startTime = new Date(event.start.dateTime);
+        const hours = String(startTime.getHours()).padStart(2, '0');
+        const minutes = String(startTime.getMinutes()).padStart(2, '0');
+        bookedSlots.push(`${hours}:${minutes}`);
+      }
+    }
+
+    return bookedSlots;
   } catch {
-    return false;
+    return [];
   }
 }
 
@@ -109,44 +115,64 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // GET: return booked slots for a given date
+  if (req.method === 'GET') {
+    const { fecha } = req.query;
+    if (!fecha || typeof fecha !== 'string') {
+      return res.status(400).json({ error: 'Missing fecha parameter' });
+    }
+
+    if (process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
+      const bookedSlots = await getBookedSlots(fecha);
+      return res.status(200).json({ bookedSlots });
+    }
+
+    return res.status(200).json({ bookedSlots: [] });
+  }
+
+  // POST: create a booking
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const { nombre, email, telefono, motivo, fecha, hora }: ReunionData = req.body;
+    const { nombre, email, telefono, fecha, hora }: ReunionData = req.body;
 
     if (!nombre || !email || !telefono || !fecha || !hora) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return res.status(400).json({ error: 'Invalid email address' });
     }
 
-    // Check if Google Calendar is configured
+    // Validate the time slot is within allowed range
+    const allowedSlots = ['17:00', '17:30', '18:00', '18:30', '19:00', '19:30'];
+    if (!allowedSlots.includes(hora)) {
+      return res.status(400).json({ error: 'Invalid time slot' });
+    }
+
     if (process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
-      // Check slot availability via Google Calendar
-      if (await checkSlotAvailability(fecha, hora)) {
+      // Check if slot is already booked
+      const bookedSlots = await getBookedSlots(fecha);
+      if (bookedSlots.includes(hora)) {
         return res.status(400).json({
           error: 'This time slot is no longer available. Please select another.'
         });
       }
 
-      // Create Google Calendar event with invite
-      const event = await createCalendarEvent({ nombre, email, telefono, motivo, fecha, hora });
+      // Create Google Calendar event (sends invite to all attendees)
+      const event = await createCalendarEvent({ nombre, email, telefono, fecha, hora });
 
       return res.status(200).json({
         success: true,
-        message: 'Meeting scheduled successfully! You will receive a calendar invite shortly.',
+        message: 'Meeting scheduled successfully! You will receive a calendar invite with a Google Meet link.',
         meetLink: event.hangoutLink || null,
         eventId: event.id,
       });
     }
 
-    // Fallback: if Google Calendar is not configured, return success
     return res.status(200).json({
       success: true,
       message: 'Meeting request received. Our team will confirm shortly.',
