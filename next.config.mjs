@@ -4,7 +4,7 @@ const nextConfig = {
   i18n: {
     locales: ['en', 'es', 'fr', 'it', 'de', 'pt', 'zh', 'ko', 'ja'],
     defaultLocale: 'en',
-    localeDetection: true,
+    // localeDetection is true by default in Next.js 14
   },
   async headers() {
     return [
