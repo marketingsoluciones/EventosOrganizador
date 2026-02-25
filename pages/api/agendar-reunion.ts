@@ -1,86 +1,146 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import fs from 'fs';
-import path from 'path';
+import { google } from 'googleapis';
 
 interface ReunionData {
-  nombre: string;
-  email: string;
-  telefono: string;
-  motivo: string;
-  fecha: string;
-  hora: string;
+    nombre: string;
+    email: string;
+    telefono: string;
+    motivo: string;
+    fecha: string;
+    hora: string;
 }
 
-const BOOKINGS_FILE = path.join(process.cwd(), 'data', 'reuniones.json');
+function getGoogleAuth() {
+    const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n');
+    const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
 
-function getBookings(): ReunionData[] {
-  try {
-    if (fs.existsSync(BOOKINGS_FILE)) {
-      return JSON.parse(fs.readFileSync(BOOKINGS_FILE, 'utf-8'));
+  if (!privateKey || !clientEmail) {
+        throw new Error('Google Calendar credentials not configured');
+  }
+
+  const auth = new google.auth.GoogleAuth({
+        credentials: {
+                client_email: clientEmail,
+                private_key: privateKey,
+        },
+        scopes: ['https://www.googleapis.com/auth/calendar'],
+  });
+
+  return auth;
+}
+
+async function isSlotTaken(fecha: string, hora: string): Promise<boolean> {
+    try {
+          const auth = getGoogleAuth();
+          const calendar = google.calendar({ version: 'v3', auth });
+          const calendarId = process.env.GOOGLE_CALENDAR_ID || 'primary';
+
+      const [year, month, day] = fecha.split('-').map(Number);
+          const [hour, minute] = hora.split(':').map(Number);
+
+      const timeMin = new Date(year, month - 1, day, hour, minute, 0);
+          const timeMax = new Date(year, month - 1, day, hour, minute + 30, 0);
+
+      const response = await calendar.events.list({
+              calendarId,
+              timeMin: timeMin.toISOString(),
+              timeMax: timeMax.toISOString(),
+              singleEvents: true,
+      });
+
+      const events = response.data.items || [];
+          return events.length > 0;
+    } catch {
+          return false;
     }
-  } catch {
-    // ignore
-  }
-  return [];
 }
 
-function saveBooking(booking: ReunionData & { createdAt: string }) {
-  const dir = path.dirname(BOOKINGS_FILE);
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
-  const bookings = getBookings();
-  bookings.push(booking as any);
-  fs.writeFileSync(BOOKINGS_FILE, JSON.stringify(bookings, null, 2));
-}
+async function createCalendarEvent(booking: ReunionData & { createdAt: string }) {
+    const auth = getGoogleAuth();
+    const calendar = google.calendar({ version: 'v3', auth });
+    const calendarId = process.env.GOOGLE_CALENDAR_ID || 'primary';
+    const organizerEmail = process.env.GOOGLE_ORGANIZER_EMAIL;
 
-function isSlotTaken(fecha: string, hora: string): boolean {
-  const bookings = getBookings();
-  return bookings.some((b: any) => b.fecha === fecha && b.hora === hora);
+  const [year, month, day] = booking.fecha.split('-').map(Number);
+    const [hour, minute] = booking.hora.split(':').map(Number);
+
+  const startTime = new Date(year, month - 1, day, hour, minute, 0);
+    const endTime = new Date(year, month - 1, day, hour, minute + 30, 0);
+
+  const attendees: { email: string }[] = [{ email: booking.email }];
+    if (organizerEmail) {
+          attendees.push({ email: organizerEmail });
+    }
+
+  await calendar.events.insert({
+        calendarId,
+        sendUpdates: 'all',
+        requestBody: {
+                summary: `Reunión con ${booking.nombre}`,
+                description: `Nombre: ${booking.nombre}\nEmail: ${booking.email}\nTeléfono: ${booking.telefono}\nMotivo: ${booking.motivo || 'No especificado'}`,
+                start: {
+                          dateTime: startTime.toISOString(),
+                          timeZone: 'Europe/Madrid',
+                },
+                end: {
+                          dateTime: endTime.toISOString(),
+                          timeZone: 'Europe/Madrid',
+                },
+                attendees,
+                reminders: {
+                          useDefault: false,
+                          overrides: [
+                            { method: 'email', minutes: 24 * 60 },
+                            { method: 'popup', minutes: 30 },
+                                    ],
+                },
+        },
+  });
 }
 
 export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+    req: NextApiRequest,
+    res: NextApiResponse
+  ) {
+    if (req.method !== 'POST') {
+          return res.status(405).json({ error: 'Method not allowed' });
+    }
 
   try {
-    const { nombre, email, telefono, motivo, fecha, hora }: ReunionData = req.body;
+        const { nombre, email, telefono, motivo, fecha, hora }: ReunionData = req.body;
 
-    if (!nombre || !email || !telefono || !fecha || !hora) {
-      return res.status(400).json({ error: 'Faltan datos obligatorios' });
-    }
+      if (!nombre || !email || !telefono || !fecha || !hora) {
+              return res.status(400).json({ error: 'Faltan datos obligatorios' });
+      }
 
-    // Check slot availability
-    if (isSlotTaken(fecha, hora)) {
-      return res.status(400).json({
-        error: 'Este horario ya no está disponible. Por favor selecciona otro.'
+      // Check slot availability
+      const slotTaken = await isSlotTaken(fecha, hora);
+        if (slotTaken) {
+                return res.status(400).json({
+                          error: 'Este horario ya no está disponible. Por favor selecciona otro.'
+                });
+        }
+
+      // Create Google Calendar event
+      await createCalendarEvent({
+              nombre,
+              email,
+              telefono,
+              motivo,
+              fecha,
+              hora,
+              createdAt: new Date().toISOString()
       });
-    }
 
-    // Save booking
-    saveBooking({
-      nombre,
-      email,
-      telefono,
-      motivo,
-      fecha,
-      hora,
-      createdAt: new Date().toISOString()
-    });
-
-    return res.status(200).json({
-      success: true,
-      message: 'Reunión agendada exitosamente',
-    });
+      return res.status(200).json({
+              success: true,
+              message: 'Reunión agendada exitosamente',
+      });
 
   } catch (error: any) {
-    console.error('Error al agendar reunión:', error);
-    return res.status(500).json({
-      error: 'Error al agendar la reunión. Por favor intenta nuevamente.',
-    });
+        console.error('Error al agendar reunión:', error);
+        return res.status(500).json({
+                error: 'Error al agendar la reunión. Por favor intenta nuevamente.',
+        });
   }
 }
