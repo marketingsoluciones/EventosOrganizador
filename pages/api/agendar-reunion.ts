@@ -14,9 +14,16 @@ interface ReunionData {
 }
 
 function getCalendarClient() {
+  const privateKey = (process.env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n');
+  const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
+
+  if (!clientEmail || !privateKey || privateKey === '') {
+    throw new Error('Google Calendar credentials not configured: missing GOOGLE_CLIENT_EMAIL or GOOGLE_PRIVATE_KEY');
+  }
+
   const auth = new google.auth.JWT({
-    email: process.env.GOOGLE_CLIENT_EMAIL,
-    key: (process.env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n'),
+    email: clientEmail,
+    key: privateKey,
     scopes: ['https://www.googleapis.com/auth/calendar'],
   });
 
@@ -83,32 +90,34 @@ async function createCalendarEvent(data: ReunionData) {
 }
 
 async function getBookedSlots(fecha: string): Promise<string[]> {
-  try {
-    const calendar = getCalendarClient();
+  const calendar = getCalendarClient();
 
-    const response = await calendar.events.list({
-      calendarId: CALENDAR_ID,
-      timeMin: `${fecha}T17:00:00+01:00`,
-      timeMax: `${fecha}T20:00:00+01:00`,
-      timeZone: TIMEZONE,
-      singleEvents: true,
-      orderBy: 'startTime',
-    });
+  // Use full ISO datetime with timezone name instead of hardcoded offset
+  // (Madrid is +01:00 in winter CET, +02:00 in summer CEST)
+  const response = await calendar.events.list({
+    calendarId: CALENDAR_ID,
+    timeMin: new Date(`${fecha}T17:00:00`).toLocaleString('sv', { timeZone: TIMEZONE }).replace(' ', 'T') + ':00',
+    timeMax: new Date(`${fecha}T20:00:00`).toLocaleString('sv', { timeZone: TIMEZONE }).replace(' ', 'T') + ':00',
+    timeZone: TIMEZONE,
+    singleEvents: true,
+    orderBy: 'startTime',
+  });
 
-    const bookedSlots: string[] = [];
-    for (const event of response.data.items || []) {
-      if (event.start?.dateTime) {
-        const startTime = new Date(event.start.dateTime);
-        const hours = String(startTime.getHours()).padStart(2, '0');
-        const minutes = String(startTime.getMinutes()).padStart(2, '0');
-        bookedSlots.push(`${hours}:${minutes}`);
-      }
+  const bookedSlots: string[] = [];
+  for (const event of response.data.items || []) {
+    if (event.start?.dateTime) {
+      // Extract time in Madrid timezone
+      const madridTime = new Date(event.start.dateTime).toLocaleString('en-GB', {
+        timeZone: TIMEZONE,
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      });
+      bookedSlots.push(madridTime);
     }
-
-    return bookedSlots;
-  } catch {
-    return [];
   }
+
+  return bookedSlots;
 }
 
 export default async function handler(
@@ -123,8 +132,14 @@ export default async function handler(
     }
 
     if (process.env.GOOGLE_CLIENT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
-      const bookedSlots = await getBookedSlots(fecha);
-      return res.status(200).json({ bookedSlots });
+      try {
+        const bookedSlots = await getBookedSlots(fecha);
+        return res.status(200).json({ bookedSlots });
+      } catch (error: any) {
+        console.error('Error fetching booked slots:', error?.message || error);
+        // Return empty slots but log the error so we know auth is failing
+        return res.status(200).json({ bookedSlots: [], warning: 'Could not connect to Google Calendar' });
+      }
     }
 
     return res.status(200).json({ bookedSlots: [] });
@@ -179,9 +194,33 @@ export default async function handler(
     });
 
   } catch (error: any) {
-    console.error('Error scheduling meeting:', error?.message || error);
+    const errorMsg = error?.message || String(error);
+    const errorCode = error?.code || error?.response?.status;
+    console.error('Error scheduling meeting:', {
+      message: errorMsg,
+      code: errorCode,
+      details: error?.response?.data?.error || null,
+    });
+
+    // Return specific error messages based on Google API error codes
+    if (errorCode === 403 || errorMsg.includes('forbidden') || errorMsg.includes('insufficient')) {
+      return res.status(500).json({
+        error: 'Calendar access denied. The service account does not have permission to access this calendar. Please share the calendar with the service account email.',
+      });
+    }
+    if (errorCode === 404 || errorMsg.includes('notFound')) {
+      return res.status(500).json({
+        error: 'Calendar not found. Please verify the GOOGLE_CALENDAR_ID is correct.',
+      });
+    }
+    if (errorMsg.includes('invalid_grant') || errorMsg.includes('Invalid JWT')) {
+      return res.status(500).json({
+        error: 'Authentication failed. The service account key may be invalid or expired.',
+      });
+    }
+
     return res.status(500).json({
-      error: 'Error scheduling the meeting. Please try again.',
+      error: `Error scheduling the meeting: ${errorMsg}`,
     });
   }
 }
