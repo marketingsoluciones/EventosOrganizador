@@ -1,6 +1,11 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 
 const Footer: React.FC = () => {
+  const router = useRouter();
+  const locale = router?.locale || 'en';
+  const isEs = locale === 'es';
+
   return (
     <footer className="w-full bg-[#0a2540] text-white">
       <div className="max-w-[1200px] mx-auto px-6 py-16">
@@ -10,60 +15,64 @@ const Footer: React.FC = () => {
           <div className="max-w-xs shrink-0">
             <img src="/image/logo1.svg" alt="EventosOrganizador" className="h-8 brightness-0 invert mb-4" />
             <p className="text-sm text-gray-400 leading-relaxed">
-              La plataforma todo en uno para organizar eventos sociales y de ticketing con herramientas profesionales.
+              {isEs
+                ? 'La plataforma todo en uno para organizar eventos sociales y de ticketing con herramientas profesionales.'
+                : 'The all-in-one platform for organizing social and ticketing events with professional tools.'}
             </p>
           </div>
 
           {/* Links grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
-              <h4 className="text-sm font-semibold text-white mb-4">Producto</h4>
+              <h4 className="text-sm font-semibold text-white mb-4">{isEs ? 'Producto' : 'Product'}</h4>
               <div className="flex flex-col gap-2.5">
-                <a href="/funcionalidades" className="text-sm text-gray-400 hover:text-white transition-colors">Funcionalidades</a>
-                <a href="/funcionalidades/generacion-leads" className="text-sm text-gray-400 hover:text-white transition-colors">Generación de Leads</a>
+                <a href="/funcionalidades" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Funcionalidades' : 'Features'}</a>
+                <a href="/funcionalidades/generacion-leads" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Generación de Leads' : 'Lead Generation'}</a>
                 <a href="/funcionalidades/crm" className="text-sm text-gray-400 hover:text-white transition-colors">CRM Pipeline</a>
                 <a href="/funcionalidades/erp" className="text-sm text-gray-400 hover:text-white transition-colors">ERP</a>
-                <a href="/funcionalidades/finanzas" className="text-sm text-gray-400 hover:text-white transition-colors">Finanzas + OCR</a>
-                <a href="/funcionalidades/automatizaciones" className="text-sm text-gray-400 hover:text-white transition-colors">Automatizaciones</a>
-                <a href="/funcionalidades/eventos-bodas" className="text-sm text-gray-400 hover:text-white transition-colors">Eventos y Bodas</a>
+                <a href="/funcionalidades/finanzas" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Finanzas + OCR' : 'Finance + OCR'}</a>
+                <a href="/funcionalidades/automatizaciones" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Automatizaciones' : 'Automations'}</a>
+                <a href="/funcionalidades/eventos-bodas" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Eventos y Bodas' : 'Events & Weddings'}</a>
                 <a href="/funcionalidades/analytics" className="text-sm text-gray-400 hover:text-white transition-colors">Analytics</a>
               </div>
             </div>
             <div>
-              <h4 className="text-sm font-semibold text-white mb-4">Soluciones</h4>
+              <h4 className="text-sm font-semibold text-white mb-4">{isEs ? 'Soluciones' : 'Solutions'}</h4>
               <div className="flex flex-col gap-2.5">
-                <a href="/soluciones/agencias-marketing" className="text-sm text-gray-400 hover:text-white transition-colors">Agencias Marketing</a>
-                <a href="/soluciones/equipos-ventas" className="text-sm text-gray-400 hover:text-white transition-colors">Equipos de Ventas</a>
+                <a href="/soluciones/agencias-marketing" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Agencias Marketing' : 'Marketing Agencies'}</a>
+                <a href="/soluciones/equipos-ventas" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Equipos de Ventas' : 'Sales Teams'}</a>
                 <a href="/soluciones/wedding-planners" className="text-sm text-gray-400 hover:text-white transition-colors">Wedding Planners</a>
                 <a href="/soluciones/startups" className="text-sm text-gray-400 hover:text-white transition-colors">Startups</a>
-                <a href="/soluciones/finanzas" className="text-sm text-gray-400 hover:text-white transition-colors">Finanzas</a>
-                <a href="/soluciones/consultores" className="text-sm text-gray-400 hover:text-white transition-colors">Consultores</a>
+                <a href="/soluciones/finanzas" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Finanzas' : 'Finance'}</a>
+                <a href="/soluciones/consultores" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Consultores' : 'Consultants'}</a>
                 <a href="/soluciones/venues" className="text-sm text-gray-400 hover:text-white transition-colors">Venues</a>
-                <a href="/soluciones/distribuidores" className="text-sm text-gray-400 hover:text-white transition-colors">Distribuidores</a>
+                <a href="/soluciones/distribuidores" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Distribuidores' : 'Distributors'}</a>
               </div>
             </div>
             <div>
-              <h4 className="text-sm font-semibold text-white mb-4">Recursos</h4>
+              <h4 className="text-sm font-semibold text-white mb-4">{isEs ? 'Recursos' : 'Resources'}</h4>
               <div className="flex flex-col gap-2.5">
-                <a href="/pricing" className="text-sm text-gray-400 hover:text-white transition-colors">Precios</a>
+                <a href="/pricing" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Precios' : 'Pricing'}</a>
                 <a href="/demo" className="text-sm text-gray-400 hover:text-white transition-colors">Demo</a>
                 <a href="/masterclass" className="text-sm text-gray-400 hover:text-white transition-colors">Master Class</a>
-                <a href="/marcablanca" className="text-sm text-gray-400 hover:text-white transition-colors">Marca Blanca</a>
-                <a href="/agendar-reunion" className="text-sm text-gray-400 hover:text-white transition-colors">Agendar Reunión</a>
-                <a href="/contacto" className="text-sm text-gray-400 hover:text-white transition-colors">Contacto</a>
-                <a href="/soporte" className="text-sm text-gray-400 hover:text-white transition-colors">Soporte 24/7</a>
+                <a href="/marcablanca" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Marca Blanca' : 'White Label'}</a>
+                <a href="/agendar-reunion" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Agendar Reunión' : 'Schedule a Meeting'}</a>
+                <a href="/contacto" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Contacto' : 'Contact'}</a>
+                <a href="/soporte" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Soporte 24/7' : 'Support 24/7'}</a>
               </div>
             </div>
             <div>
               <h4 className="text-sm font-semibold text-white mb-4">Legal</h4>
               <div className="flex flex-col gap-2.5">
-                <a href="/politicas" className="text-sm text-gray-400 hover:text-white transition-colors">Política de Privacidad</a>
+                <a href="/privacy-policy" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Política de Privacidad' : 'Privacy Policy'}</a>
+                <a href="/terms" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Términos de Servicio' : 'Terms of Service'}</a>
+                <a href="/cookie-policy" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Política de Cookies' : 'Cookie Policy'}</a>
               </div>
 
-              <h4 className="text-sm font-semibold text-white mt-6 mb-4">Acceso</h4>
+              <h4 className="text-sm font-semibold text-white mt-6 mb-4">{isEs ? 'Acceso' : 'Access'}</h4>
               <div className="flex flex-col gap-2.5">
-                <a href="https://app.eventosorganizador.com/login?d=/" className="text-sm text-gray-400 hover:text-white transition-colors">Iniciar Sesión</a>
-                <a href="https://app.eventosorganizador.com/login?q=register&d=/" className="text-sm text-gray-400 hover:text-white transition-colors">Registro Gratis</a>
+                <a href="https://app.eventosorganizador.com/login?d=/" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Iniciar Sesión' : 'Sign In'}</a>
+                <a href="https://app.eventosorganizador.com/login?q=register&d=/" className="text-sm text-gray-400 hover:text-white transition-colors">{isEs ? 'Registro Gratis' : 'Free Sign Up'}</a>
               </div>
             </div>
           </div>
@@ -71,7 +80,10 @@ const Footer: React.FC = () => {
 
         {/* Bottom */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-gray-500">&copy; 2025 EventosOrganizador. Todos los derechos reservados.</p>
+          <div className="text-center md:text-left">
+            <p className="text-sm text-gray-500">&copy; {new Date().getFullYear()} Eventos Organizador, LLC. {isEs ? 'Todos los derechos reservados.' : 'All rights reserved.'}</p>
+            <p className="text-xs text-gray-600 mt-1">1111B S Governors Ave STE 7392, Dover, DE 19904, United States</p>
+          </div>
           <div className="flex items-center gap-4">
             <a href="https://www.facebook.com/profile.php?id=61559662832886" className="text-gray-500 hover:text-white transition-colors" aria-label="Facebook">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>

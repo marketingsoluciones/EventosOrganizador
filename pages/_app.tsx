@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Script from "next/script";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 // Analytics IDs
 const FB_PIXEL_ID = "2111053733054920";
@@ -85,10 +86,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <NextIntlClientProvider
         locale={router.locale}
-        timeZone="Europe/Madrid"
+        timeZone="America/New_York"
         messages={pageProps.messages}
       >
         <Component {...pageProps} />
+        <WhatsAppButton />
       </NextIntlClientProvider>
     </>
   );

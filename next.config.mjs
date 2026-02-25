@@ -2,8 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   i18n: {
-    locales: ['es', 'en', 'fr', 'it', 'de', 'pt', 'zh', 'ko', 'ja'],
-    defaultLocale: 'es',
+    locales: ['en', 'es', 'fr', 'it', 'de', 'pt', 'zh', 'ko', 'ja'],
+    defaultLocale: 'en',
+    localeDetection: true,
   },
   async headers() {
     return [
@@ -34,6 +35,7 @@ const nextConfig = {
       { source: '/integraciones', destination: '/funcionalidades', permanent: true },
       { source: '/comparativas', destination: '/funcionalidades', permanent: true },
       { source: '/casos-exito', destination: '/funcionalidades', permanent: true },
+      { source: '/politicas', destination: '/privacy-policy', permanent: true },
     ];
   },
 };
