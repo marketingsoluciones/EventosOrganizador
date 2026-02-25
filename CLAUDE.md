@@ -4,6 +4,7 @@
 
 EventosOrganizador is a multi-language marketing and product website for an event management SaaS platform. It serves as the public-facing site for a product that includes CRM, ticketing, lead generation, ERP, finance/OCR, automations, event/wedding management, and analytics modules.
 
+- **Company**: Eventos Organizador, LLC (Delaware, US)
 - **Live URL**: https://www.eventosorganizador.com
 - **App URL**: https://app.eventosorganizador.com
 - **Backend API**: https://api.bodasdehoy.com (GraphQL)
@@ -17,7 +18,7 @@ EventosOrganizador is a multi-language marketing and product website for an even
 | Language | TypeScript |
 | Styling | Tailwind CSS 3 + custom CSS animations |
 | UI Libraries | Material-UI 6, Headless UI, Heroicons |
-| i18n | next-intl 4 (9 locales, default: `es`) |
+| i18n | next-intl 4 (9 locales, default: `en`, auto-detection enabled) |
 | Carousels | Swiper 11, react-slick |
 | HTTP | Axios (GraphQL client) |
 | Analytics | Google Analytics 4, Facebook Pixel |
@@ -44,7 +45,7 @@ No test framework is currently configured. There are no `npm test` or unit test 
 │   ├── index.tsx            # Homepage
 │   ├── api/                 # API routes
 │   │   ├── hello.ts         # Health check endpoint
-│   │   └── agendar-reunion.ts  # Meeting booking (POST, saves to JSON file)
+│   │   └── agendar-reunion.ts  # Meeting booking (GET slots + POST create) via Google Calendar API
 │   ├── funcionalidades/     # Feature pages (7 modules + index)
 │   │   ├── index.tsx        # Features overview
 │   │   ├── generacion-leads.tsx
@@ -66,9 +67,12 @@ No test framework is currently configured. There are no `npm test` or unit test 
 │   ├── pricing.tsx          # Pricing plans
 │   ├── demo.tsx             # Product demo
 │   ├── contacto.tsx         # Contact form
-│   ├── agendar-reunion.tsx  # Schedule meeting page
+│   ├── agendar-reunion.tsx  # Schedule meeting (2-step form, real-time availability)
+│   ├── privacy-policy.tsx   # US Privacy Policy (CCPA/GDPR compliant)
+│   ├── terms.tsx            # US Terms of Service (Delaware law)
+│   ├── cookie-policy.tsx    # Cookie Policy (GA4, FB Pixel)
 │   ├── soporte.tsx          # Support page
-│   ├── politicas.tsx        # Policies (privacy, terms)
+│   ├── politicas.tsx        # Legacy policies (redirects to /privacy-policy)
 │   ├── marcablanca.tsx      # White-label solution
 │   ├── masterclass.tsx      # Training/masterclass
 │   └── [...slug].js         # Catch-all route
@@ -93,6 +97,7 @@ No test framework is currently configured. There are no `npm test` or unit test 
 │   ├── Ticketing/           # Event ticketing section + Modales/
 │   ├── Ayuda/               # Help/support section
 │   ├── LanguageSelector/    # Language switcher dropdown
+│   ├── WhatsAppButton.tsx   # Floating WhatsApp support button (all pages)
 │   ├── Modal.tsx            # Generic modal wrapper
 │   ├── Socials.tsx          # Socials wrapper export
 │   └── Tiketing.tsx         # Ticketing wrapper export (note: "Tiketing" spelling)
@@ -104,8 +109,8 @@ No test framework is currently configured. There are no `npm test` or unit test 
 │   └── Fetching.tsx         # GraphQL API client (fetchApi + predefined queries)
 ├── api.tsx                  # Axios instance for GraphQL (base: api.bodasdehoy.com)
 ├── messages/                # i18n JSON files
-│   ├── es.json (default)
-│   ├── en.json, fr.json, de.json, it.json, pt.json
+│   ├── en.json (default)
+│   ├── es.json, fr.json, de.json, it.json, pt.json
 │   ├── zh.json, ko.json, ja.json
 ├── styles/
 │   └── globals.css          # Tailwind directives + custom animations + Swiper styles
@@ -155,7 +160,7 @@ export default MyPage;
 export async function getStaticProps(context: GetStaticPropsContext) {
   return {
     props: {
-      messages: (await import(`../messages/${context.locale ?? 'es'}.json`)).default,
+      messages: (await import(`../messages/${context.locale ?? 'en'}.json`)).default,
     },
   };
 }
@@ -185,9 +190,10 @@ Feature and solution pages are built by composing shared components. Use these i
 ### Internationalization (i18n)
 
 - **Library**: `next-intl` via `NextIntlClientProvider` in `_app.tsx`
-- **Locales**: `es` (default), `en`, `fr`, `it`, `de`, `pt`, `zh`, `ko`, `ja`
+- **Locales**: `en` (default), `es`, `fr`, `it`, `de`, `pt`, `zh`, `ko`, `ja`
+- **Locale detection**: Enabled (`localeDetection: true` in `next.config.mjs`) — auto-detects browser language
 - **Message files**: `messages/{locale}.json`
-- **Timezone**: `Europe/Madrid`
+- **Timezone**: `America/New_York` (company is US-based)
 - **Usage in components**: `useTranslations()` from `next-intl`
 - **Page-level**: Messages loaded via `getStaticProps` → `context.locale`
 - When adding new UI text, add keys to all 9 locale files
@@ -232,18 +238,44 @@ Feature and solution pages are built by composing shared components. Use these i
 
 Legacy routes are redirected in `next.config.mjs`. When removing or renaming pages, add a redirect entry there rather than deleting old URLs.
 
+## Meeting Booking System
+
+The `/agendar-reunion` page + API provides a complete meeting booking system:
+
+- **Calendar**: Google Calendar API via `googleapis` (JWT service account auth)
+- **Account**: `eventosorganizador.com@gmail.com`
+- **Schedule**: Monday-Friday, 17:00-19:30 Madrid time (Europe/Madrid), 30-min slots
+- **Slots**: `17:00`, `17:30`, `18:00`, `18:30`, `19:00`, `19:30`
+- **API GET** `/api/agendar-reunion?fecha=YYYY-MM-DD` → returns booked slots for that date
+- **API POST** `/api/agendar-reunion` → creates Google Calendar event with Google Meet link
+- **Features**: Double-booking prevention, email invites to all parties, 24h/1h/15min reminders
+- **Frontend**: 2-step bilingual form (EN/ES), real-time slot availability, share link button
+- **Fallback**: If Google credentials are not configured, returns success without creating calendar event
+
+## Customer Support
+
+- **WhatsApp Button**: Floating button on all pages (`components/WhatsAppButton.tsx`)
+- **Number**: +1 (305) 777-7937 (13057777937)
+- **Rendered in**: `_app.tsx` inside `NextIntlClientProvider`
+
+## Legal Pages
+
+All legal pages are US-compliant for a Delaware LLC:
+
+- `/privacy-policy` — CCPA/CPRA + GDPR compliant privacy policy
+- `/terms` — Terms of Service with Delaware governing law
+- `/cookie-policy` — Cookie policy (Essential, GA4 Analytics, FB Pixel Marketing)
+- `/politicas` → redirects to `/privacy-policy` (legacy URL)
+
 ## Environment Variables
 
-Required for Google Calendar API integration (see `.env.local.example`):
+Required for Google Calendar API integration:
 
 ```
-GOOGLE_PROJECT_ID
-GOOGLE_PRIVATE_KEY_ID
-GOOGLE_PRIVATE_KEY
-GOOGLE_CLIENT_EMAIL
-GOOGLE_CLIENT_ID
-GOOGLE_CALENDAR_ID
-GOOGLE_ORGANIZER_EMAIL
+GOOGLE_PRIVATE_KEY       # Service account private key
+GOOGLE_CLIENT_EMAIL      # Service account email
+GOOGLE_CALENDAR_ID       # Calendar ID (default: eventosorganizador.com@gmail.com)
+GOOGLE_ORGANIZER_EMAIL   # Organizer email (default: eventosorganizador.com@gmail.com)
 ```
 
 These are only needed for the meeting scheduling feature. The site builds and runs without them.
@@ -252,11 +284,11 @@ These are only needed for the meeting scheduling feature. The site builds and ru
 
 - **No test suite**: There are no unit/integration tests. Be extra careful with changes and verify with `npm run build`.
 - **Path alias**: `@/*` maps to project root (configured in `tsconfig.json`).
-- **Spanish-first**: Default content language is Spanish. Page copy is mostly hardcoded in Spanish on feature/solution pages; only the homepage and navigation use i18n message keys extensively.
+- **English-first**: Default content language is English (US-based company). Page copy on feature/solution pages is mostly hardcoded; homepage, navigation, footer, and booking page use i18n message keys.
 - **Typo in codebase**: "Tiketing" is used throughout (component names, file names) instead of "Ticketing". Maintain this spelling for consistency unless doing a full rename.
 - **Large SVG banners**: `public/image/banner*.svg` files are very large (8-26 MB each). Avoid adding more large assets without optimization.
 - **`package copy.json`**: This is a backup file; the actual config is `package.json`.
-- **Data directory**: The `/data` directory (gitignored) stores booking JSON files created by the `agendar-reunion` API route at runtime.
+- **WhatsApp support**: Floating button rendered on every page via `_app.tsx`. Number: +1 (305) 777-7937.
 - **No ESLint config file**: Linting uses Next.js defaults (`next lint`).
 
 ## Workflow for Adding New Pages
