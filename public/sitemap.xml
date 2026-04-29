@@ -26,12 +26,12 @@
   </url>
 
   <!-- PÁGINAS PRINCIPALES -->
-  <url>
+  <!-- <url>
     <loc>https://www.eventosorganizador.com/pricing</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-  </url>
+  </url> -->
   <url>
     <loc>https://www.eventosorganizador.com/demo</loc>
     <lastmod>2026-02-03</lastmod>
@@ -184,12 +184,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  <url>
+  <!-- <url>
     <loc>https://www.eventosorganizador.com/en/pricing</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  </url> -->
   <url>
     <loc>https://www.eventosorganizador.com/en/demo</loc>
     <lastmod>2026-02-03</lastmod>

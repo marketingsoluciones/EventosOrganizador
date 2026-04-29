@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
             <div>
               <h4 className="text-sm font-semibold text-white mb-4">Recursos</h4>
               <div className="flex flex-col gap-2.5">
-                <a href="/pricing" className="text-sm text-gray-400 hover:text-white transition-colors">Precios</a>
+                {/* <a href="/pricing" className="text-sm text-gray-400 hover:text-white transition-colors">Precios</a> */}
                 <a href="/demo" className="text-sm text-gray-400 hover:text-white transition-colors">Demo</a>
                 <a href="/masterclass" className="text-sm text-gray-400 hover:text-white transition-colors">Master Class</a>
                 <a href="/marcablanca" className="text-sm text-gray-400 hover:text-white transition-colors">Marca Blanca</a>

@@ -85,7 +85,7 @@ const Navbar: FC = () => {
             </div>
           ))}
           <div className="w-px h-4 bg-gray-200 mx-0.5" />
-          <a href="/pricing" className="px-3.5 py-1.5 text-[13px] text-gray-500 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all rounded-full">Precios</a>
+          {/* <a href="/pricing" className="px-3.5 py-1.5 text-[13px] text-gray-500 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all rounded-full">Precios</a> */}
           <a href="/demo" className="px-3.5 py-1.5 text-[13px] text-gray-500 hover:text-gray-900 hover:bg-gray-50 font-medium transition-all rounded-full">Demo</a>
         </div>
 
@@ -124,7 +124,7 @@ const Navbar: FC = () => {
               <span>{item.icon}</span> {item.t}
             </a>
           ))}
-          <a href="/pricing" className="block py-2.5 mt-2 text-sm text-gray-700 font-medium hover:text-[#6096B9]">Precios</a>
+          {/* <a href="/pricing" className="block py-2.5 mt-2 text-sm text-gray-700 font-medium hover:text-[#6096B9]">Precios</a> */}
           <a href="/demo" className="block py-2.5 text-sm text-gray-700 font-medium hover:text-[#6096B9]">Demo</a>
 
           <div className="pt-4 mt-3 border-t border-gray-100 space-y-2">

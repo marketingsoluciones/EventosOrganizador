@@ -1,3 +1,22 @@
+import type { GetStaticPropsContext } from 'next';
+
+export default function Pricing() {
+  return null;
+}
+
+export async function getStaticProps(context: GetStaticPropsContext) {
+  const destination =
+    context.locale && context.locale !== 'es' ? `/${context.locale}` : '/';
+
+  return {
+    redirect: {
+      destination,
+      permanent: false,
+    },
+  };
+}
+
+/*
 import React, { useState } from 'react';
 import { GetStaticPropsContext } from 'next';
 import Navbar from '@/components/Navbar/Navbar';
@@ -128,7 +147,7 @@ export default function Pricing() {
       <div className="w-full flex flex-col bg-white text-black items-center justify-items-center min-h-screen pt-8">
         <Navbar />
 
-        {/* Hero Section */}
+        {/* Hero Section *\/}
         <section className="w-full bg-gradient-to-b from-gray-50 to-white py-20 px-4">
           <div className="max-w-[1200px] mx-auto text-center">
             <span className="inline-block px-4 py-2 bg-[#6096B9]/10 text-[#6096B9] rounded-full text-sm font-medium mb-6">
@@ -142,7 +161,7 @@ export default function Pricing() {
               Sin contratos a largo plazo. Sin costos ocultos. Empieza gratis y escala cuando lo necesites.
             </p>
 
-            {/* Toggle */}
+            {/* Toggle *\/}
             <div className="flex items-center justify-center gap-4 mb-12">
               <span className={`text-sm font-medium ${!anual ? 'text-gray-900' : 'text-gray-500'}`}>
                 Mensual
@@ -166,7 +185,7 @@ export default function Pricing() {
           </div>
         </section>
 
-        {/* Pricing Cards */}
+        {/* Pricing Cards *\/}
         <section className="w-full pb-20 px-4 -mt-4">
           <div className="max-w-[1200px] mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -253,7 +272,7 @@ export default function Pricing() {
           </div>
         </section>
 
-        {/* FAQs */}
+        {/* FAQs *\/}
         <section className="w-full bg-gray-50 py-20 px-4">
           <div className="max-w-[800px] mx-auto">
             <div className="text-center mb-12">
@@ -283,7 +302,7 @@ export default function Pricing() {
           </div>
         </section>
 
-        {/* CTA Final */}
+        {/* CTA Final *\/}
         <section className="w-full py-20 px-4">
           <div className="max-w-[800px] mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
@@ -317,3 +336,4 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     },
   };
 }
+*/
